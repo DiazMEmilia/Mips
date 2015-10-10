@@ -1,0 +1,302 @@
+-- VHDL data flow description generated from `mips_model_boom`
+--		date : Tue Oct  6 12:13:15 2015
+
+
+-- Entity Declaration
+
+ENTITY mips_model_boom IS
+  PORT (
+  spcen : in BIT;	-- spcen
+  siord : in BIT;	-- siord
+  sirwrite : in BIT;	-- sirwrite
+  sregdst : in BIT;	-- sregdst
+  smemtoreg : in BIT;	-- smemtoreg
+  sregwrite : in BIT;	-- sregwrite
+  salusrca : in BIT;	-- salusrca
+  saluzero : in BIT;	-- saluzero
+  wememo : in BIT;	-- wememo
+  salusrcb : in bit_vector(1 DOWNTO 0) ;	-- salusrcb
+  spcsrcmux : in bit_vector(1 DOWNTO 0) ;	-- spcsrcmux
+  rdmemo : in bit_vector(31 DOWNTO 0) ;	-- rdmemo
+  wdmemo : in bit_vector(31 DOWNTO 0) ;	-- wdmemo
+  adrmemo : in bit_vector(31 DOWNTO 0) ;	-- adrmemo
+  sinstrfunc : in bit_vector(5 DOWNTO 0) ;	-- sinstrfunc
+  sinstrop : in bit_vector(5 DOWNTO 0) ;	-- sinstrop
+  salucontrol : in bit_vector(2 DOWNTO 0) ;	-- salucontrol
+  vss : in BIT;	-- vss
+  vdd : in BIT;	-- vdd
+  xalusrcb : out bit_vector(1 DOWNTO 0) ;	-- xalusrcb
+  xalucontrol : out bit_vector(2 DOWNTO 0) ;	-- xalucontrol
+  xpcen : out BIT;	-- xpcen
+  xpcsrc : out bit_vector(1 DOWNTO 0) ;	-- xpcsrc
+  xaluzero : out BIT;	-- xaluzero
+  xalusrca : out BIT;	-- xalusrca
+  xregwrite : out BIT;	-- xregwrite
+  xmemtoreg : out BIT;	-- xmemtoreg
+  xregdst : out BIT;	-- xregdst
+  xinstrfunc : out bit_vector(5 DOWNTO 0) ;	-- xinstrfunc
+  xinstrop : out bit_vector(5 DOWNTO 0) ;	-- xinstrop
+  irwrite : out BIT;	-- irwrite
+  xiord : out BIT;	-- xiord
+  xmemwrite : out BIT;	-- xmemwrite
+  xadr : out bit_vector(31 DOWNTO 0) ;	-- xadr
+  xwd : out bit_vector(31 DOWNTO 0) ;	-- xwd
+  xrd : out bit_vector(31 DOWNTO 0) 	-- xrd
+  );
+END mips_model_boom;
+
+
+-- Architecture Declaration
+
+ARCHITECTURE behaviour_data_flow OF mips_model_boom IS
+
+BEGIN
+
+xrd (0) <= rdmemo(0);
+
+xrd (1) <= rdmemo(1);
+
+xrd (2) <= rdmemo(2);
+
+xrd (3) <= rdmemo(3);
+
+xrd (4) <= rdmemo(4);
+
+xrd (5) <= rdmemo(5);
+
+xrd (6) <= rdmemo(6);
+
+xrd (7) <= rdmemo(7);
+
+xrd (8) <= rdmemo(8);
+
+xrd (9) <= rdmemo(9);
+
+xrd (10) <= rdmemo(10);
+
+xrd (11) <= rdmemo(11);
+
+xrd (12) <= rdmemo(12);
+
+xrd (13) <= rdmemo(13);
+
+xrd (14) <= rdmemo(14);
+
+xrd (15) <= rdmemo(15);
+
+xrd (16) <= rdmemo(16);
+
+xrd (17) <= rdmemo(17);
+
+xrd (18) <= rdmemo(18);
+
+xrd (19) <= rdmemo(19);
+
+xrd (20) <= rdmemo(20);
+
+xrd (21) <= rdmemo(21);
+
+xrd (22) <= rdmemo(22);
+
+xrd (23) <= rdmemo(23);
+
+xrd (24) <= rdmemo(24);
+
+xrd (25) <= rdmemo(25);
+
+xrd (26) <= rdmemo(26);
+
+xrd (27) <= rdmemo(27);
+
+xrd (28) <= rdmemo(28);
+
+xrd (29) <= rdmemo(29);
+
+xrd (30) <= rdmemo(30);
+
+xrd (31) <= rdmemo(31);
+
+xwd (0) <= wdmemo(0);
+
+xwd (1) <= wdmemo(1);
+
+xwd (2) <= wdmemo(2);
+
+xwd (3) <= wdmemo(3);
+
+xwd (4) <= wdmemo(4);
+
+xwd (5) <= wdmemo(5);
+
+xwd (6) <= wdmemo(6);
+
+xwd (7) <= wdmemo(7);
+
+xwd (8) <= wdmemo(8);
+
+xwd (9) <= wdmemo(9);
+
+xwd (10) <= wdmemo(10);
+
+xwd (11) <= wdmemo(11);
+
+xwd (12) <= wdmemo(12);
+
+xwd (13) <= wdmemo(13);
+
+xwd (14) <= wdmemo(14);
+
+xwd (15) <= wdmemo(15);
+
+xwd (16) <= wdmemo(16);
+
+xwd (17) <= wdmemo(17);
+
+xwd (18) <= wdmemo(18);
+
+xwd (19) <= wdmemo(19);
+
+xwd (20) <= wdmemo(20);
+
+xwd (21) <= wdmemo(21);
+
+xwd (22) <= wdmemo(22);
+
+xwd (23) <= wdmemo(23);
+
+xwd (24) <= wdmemo(24);
+
+xwd (25) <= wdmemo(25);
+
+xwd (26) <= wdmemo(26);
+
+xwd (27) <= wdmemo(27);
+
+xwd (28) <= wdmemo(28);
+
+xwd (29) <= wdmemo(29);
+
+xwd (30) <= wdmemo(30);
+
+xwd (31) <= wdmemo(31);
+
+xadr (0) <= adrmemo(0);
+
+xadr (1) <= adrmemo(1);
+
+xadr (2) <= adrmemo(2);
+
+xadr (3) <= adrmemo(3);
+
+xadr (4) <= adrmemo(4);
+
+xadr (5) <= adrmemo(5);
+
+xadr (6) <= adrmemo(6);
+
+xadr (7) <= adrmemo(7);
+
+xadr (8) <= adrmemo(8);
+
+xadr (9) <= adrmemo(9);
+
+xadr (10) <= adrmemo(10);
+
+xadr (11) <= adrmemo(11);
+
+xadr (12) <= adrmemo(12);
+
+xadr (13) <= adrmemo(13);
+
+xadr (14) <= adrmemo(14);
+
+xadr (15) <= adrmemo(15);
+
+xadr (16) <= adrmemo(16);
+
+xadr (17) <= adrmemo(17);
+
+xadr (18) <= adrmemo(18);
+
+xadr (19) <= adrmemo(19);
+
+xadr (20) <= adrmemo(20);
+
+xadr (21) <= adrmemo(21);
+
+xadr (22) <= adrmemo(22);
+
+xadr (23) <= adrmemo(23);
+
+xadr (24) <= adrmemo(24);
+
+xadr (25) <= adrmemo(25);
+
+xadr (26) <= adrmemo(26);
+
+xadr (27) <= adrmemo(27);
+
+xadr (28) <= adrmemo(28);
+
+xadr (29) <= adrmemo(29);
+
+xadr (30) <= adrmemo(30);
+
+xadr (31) <= adrmemo(31);
+
+xmemwrite <= wememo;
+
+xiord <= siord;
+
+irwrite <= sirwrite;
+
+xinstrop (0) <= sinstrop(0);
+
+xinstrop (1) <= sinstrop(1);
+
+xinstrop (2) <= sinstrop(2);
+
+xinstrop (3) <= sinstrop(3);
+
+xinstrop (4) <= sinstrop(4);
+
+xinstrop (5) <= sinstrop(5);
+
+xinstrfunc (0) <= sinstrfunc(0);
+
+xinstrfunc (1) <= sinstrfunc(1);
+
+xinstrfunc (2) <= sinstrfunc(2);
+
+xinstrfunc (3) <= sinstrfunc(3);
+
+xinstrfunc (4) <= sinstrfunc(4);
+
+xinstrfunc (5) <= sinstrfunc(5);
+
+xregdst <= sregdst;
+
+xmemtoreg <= smemtoreg;
+
+xregwrite <= sregwrite;
+
+xalusrca <= salusrca;
+
+xaluzero <= saluzero;
+
+xpcsrc (0) <= spcsrcmux(0);
+
+xpcsrc (1) <= spcsrcmux(1);
+
+xpcen <= spcen;
+
+xalucontrol (0) <= salucontrol(0);
+
+xalucontrol (1) <= salucontrol(1);
+
+xalucontrol (2) <= salucontrol(2);
+
+xalusrcb (0) <= salusrcb(0);
+
+xalusrcb (1) <= salusrcb(1);
+END;

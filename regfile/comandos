@@ -1,0 +1,4 @@
+vasy -Vaop -I vhd regfile
+boom -l 3 -d 0 regfile regfile_boom
+boog regfile_boom regfile_boog -x 0 -m 4
+loon regfile_boog regfile -x 0 -m 4

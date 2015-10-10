@@ -1,0 +1,5 @@
+vasy -Vaop -I vhd mips
+boom -d 0 -l 3 mips_model mips_model_boom
+boog mips_model_boom mips_model_boog -x 0 -m 4
+loon mips_model_boog mips_model -x 0 -m 4
+flatbeh mips mips

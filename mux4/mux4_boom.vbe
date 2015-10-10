@@ -1,0 +1,154 @@
+-- VHDL data flow description generated from `mux4_boom`
+--		date : Wed Sep 16 18:06:27 2015
+
+
+-- Entity Declaration
+
+ENTITY mux4_boom IS
+  PORT (
+  d0 : in bit_vector(31 DOWNTO 0) ;	-- d0
+  d1 : in bit_vector(31 DOWNTO 0) ;	-- d1
+  d2 : in bit_vector(31 DOWNTO 0) ;	-- d2
+  d3 : in bit_vector(31 DOWNTO 0) ;	-- d3
+  s : in bit_vector(1 DOWNTO 0) ;	-- s
+  y : out bit_vector(31 DOWNTO 0) ;	-- y
+  vdd : in BIT;	-- vdd
+  vss : in BIT	-- vss
+  );
+END mux4_boom;
+
+
+-- Architecture Declaration
+
+ARCHITECTURE behaviour_data_flow OF mux4_boom IS
+
+BEGIN
+
+y (0) <= (((NOT(s(0)) OR d3(0)) AND (s(0) OR d2(0)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(0)) AND (s(0) OR d0(0)) 
+AND NOT(s(1))));
+
+y (1) <= (((NOT(s(0)) OR d3(1)) AND (s(0) OR d2(1)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(1)) AND (s(0) OR d0(1)) 
+AND NOT(s(1))));
+
+y (2) <= (((NOT(s(0)) OR d3(2)) AND (s(0) OR d2(2)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(2)) AND (s(0) OR d0(2)) 
+AND NOT(s(1))));
+
+y (3) <= (((NOT(s(0)) OR d3(3)) AND (s(0) OR d2(3)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(3)) AND (s(0) OR d0(3)) 
+AND NOT(s(1))));
+
+y (4) <= (((NOT(s(0)) OR d3(4)) AND (s(0) OR d2(4)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(4)) AND (d0(4) OR s(0)) 
+AND NOT(s(1))));
+
+y (5) <= (((NOT(s(0)) OR d3(5)) AND (s(0) OR d2(5)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(5)) AND (d0(5) OR s(0)) 
+AND NOT(s(1))));
+
+y (6) <= (((NOT(s(0)) OR d3(6)) AND (s(0) OR d2(6)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(6)) AND (s(0) OR d0(6)) 
+AND NOT(s(1))));
+
+y (7) <= (((s(0) OR d2(7)) AND (NOT(s(0)) OR d3(7)) AND 
+s(1)) OR ((s(0) OR d0(7)) AND (NOT(s(0)) OR d1(7)) 
+AND NOT(s(1))));
+
+y (8) <= (((NOT(s(0)) OR d3(8)) AND (s(0) OR d2(8)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(8)) AND (s(0) OR d0(8)) 
+AND NOT(s(1))));
+
+y (9) <= (((NOT(s(0)) OR d3(9)) AND (s(0) OR d2(9)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(9)) AND (s(0) OR d0(9)) 
+AND NOT(s(1))));
+
+y (10) <= (((NOT(s(0)) OR d3(10)) AND (s(0) OR d2(10)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(10)) AND (s(0) OR d0(10)) 
+AND NOT(s(1))));
+
+y (11) <= (((NOT(s(0)) OR d3(11)) AND (s(0) OR d2(11)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(11)) AND (s(0) OR d0(11)) 
+AND NOT(s(1))));
+
+y (12) <= (((NOT(s(0)) OR d3(12)) AND (s(0) OR d2(12)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(12)) AND (s(0) OR d0(12)) 
+AND NOT(s(1))));
+
+y (13) <= (((s(0) OR d2(13)) AND (NOT(s(0)) OR d3(13)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(13)) AND (s(0) OR d0(13)) 
+AND NOT(s(1))));
+
+y (14) <= (((NOT(s(0)) OR d3(14)) AND (s(0) OR d2(14)) AND 
+s(1)) OR ((s(0) OR d0(14)) AND (d1(14) OR NOT(s(0))) 
+AND NOT(s(1))));
+
+y (15) <= (((NOT(s(0)) OR d3(15)) AND (s(0) OR d2(15)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(15)) AND (s(0) OR d0(15)) 
+AND NOT(s(1))));
+
+y (16) <= (((NOT(s(0)) OR d3(16)) AND (s(0) OR d2(16)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(16)) AND (s(0) OR d0(16)) 
+AND NOT(s(1))));
+
+y (17) <= (((NOT(s(0)) OR d3(17)) AND (s(0) OR d2(17)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(17)) AND (s(0) OR d0(17)) 
+AND NOT(s(1))));
+
+y (18) <= (((NOT(s(0)) OR d3(18)) AND (s(0) OR d2(18)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(18)) AND (s(0) OR d0(18)) 
+AND NOT(s(1))));
+
+y (19) <= (((NOT(s(0)) OR d3(19)) AND (s(0) OR d2(19)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(19)) AND (s(0) OR d0(19)) 
+AND NOT(s(1))));
+
+y (20) <= (((NOT(s(0)) OR d3(20)) AND (s(0) OR d2(20)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(20)) AND (d0(20) OR s(0)) 
+AND NOT(s(1))));
+
+y (21) <= (((NOT(s(0)) OR d3(21)) AND (s(0) OR d2(21)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(21)) AND (d0(21) OR s(0)) 
+AND NOT(s(1))));
+
+y (22) <= (((NOT(s(0)) OR d3(22)) AND (s(0) OR d2(22)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(22)) AND (s(0) OR d0(22)) 
+AND NOT(s(1))));
+
+y (23) <= (((s(0) OR d2(23)) AND (NOT(s(0)) OR d3(23)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(23)) AND (s(0) OR d0(23)) 
+AND NOT(s(1))));
+
+y (24) <= (((NOT(s(0)) OR d3(24)) AND (s(0) OR d2(24)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(24)) AND (d0(24) OR s(0)) 
+AND NOT(s(1))));
+
+y (25) <= (((NOT(s(0)) OR d3(25)) AND (s(0) OR d2(25)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(25)) AND (s(0) OR d0(25)) 
+AND NOT(s(1))));
+
+y (26) <= (((NOT(s(0)) OR d3(26)) AND (s(0) OR d2(26)) AND 
+s(1)) OR ((s(0) OR d0(26)) AND (d1(26) OR NOT(s(0))) 
+AND NOT(s(1))));
+
+y (27) <= (((s(0) OR d2(27)) AND (NOT(s(0)) OR d3(27)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(27)) AND (d0(27) OR s(0)) 
+AND NOT(s(1))));
+
+y (28) <= (((NOT(s(0)) OR d3(28)) AND (s(0) OR d2(28)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(28)) AND (s(0) OR d0(28)) 
+AND NOT(s(1))));
+
+y (29) <= (((NOT(s(0)) OR d3(29)) AND (s(0) OR d2(29)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(29)) AND (s(0) OR d0(29)) 
+AND NOT(s(1))));
+
+y (30) <= (((NOT(s(0)) OR d3(30)) AND (s(0) OR d2(30)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(30)) AND (s(0) OR d0(30)) 
+AND NOT(s(1))));
+
+y (31) <= (((NOT(s(0)) OR d3(31)) AND (s(0) OR d2(31)) AND 
+s(1)) OR ((NOT(s(0)) OR d1(31)) AND (s(0) OR d0(31)) 
+AND NOT(s(1))));
+END;

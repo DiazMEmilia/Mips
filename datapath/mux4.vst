@@ -1,0 +1,2348 @@
+entity mux4 is
+   port (
+      d0  : in      bit_vector(31 downto 0);
+      d1  : in      bit_vector(31 downto 0);
+      d2  : in      bit_vector(31 downto 0);
+      d3  : in      bit_vector(31 downto 0);
+      s   : in      bit_vector(1 downto 0);
+      y   : out     bit_vector(31 downto 0);
+      vdd : in      bit;
+      vss : in      bit
+ );
+end mux4;
+
+architecture structural of mux4 is
+Component inv_x8
+   port (
+      i   : in      bit;
+      nq  : out     bit;
+      vdd : in      bit;
+      vss : in      bit
+ );
+end component;
+
+Component on12_x1
+   port (
+      i0  : in      bit;
+      i1  : in      bit;
+      q   : out     bit;
+      vdd : in      bit;
+      vss : in      bit
+ );
+end component;
+
+Component na3_x1
+   port (
+      i0  : in      bit;
+      i1  : in      bit;
+      i2  : in      bit;
+      nq  : out     bit;
+      vdd : in      bit;
+      vss : in      bit
+ );
+end component;
+
+Component na2_x1
+   port (
+      i0  : in      bit;
+      i1  : in      bit;
+      nq  : out     bit;
+      vdd : in      bit;
+      vss : in      bit
+ );
+end component;
+
+signal not_s           : bit_vector( 1 downto 0);
+signal on12_x1_sig     : bit;
+signal on12_x1_9_sig   : bit;
+signal on12_x1_99_sig  : bit;
+signal on12_x1_98_sig  : bit;
+signal on12_x1_97_sig  : bit;
+signal on12_x1_96_sig  : bit;
+signal on12_x1_95_sig  : bit;
+signal on12_x1_94_sig  : bit;
+signal on12_x1_93_sig  : bit;
+signal on12_x1_92_sig  : bit;
+signal on12_x1_91_sig  : bit;
+signal on12_x1_90_sig  : bit;
+signal on12_x1_8_sig   : bit;
+signal on12_x1_89_sig  : bit;
+signal on12_x1_88_sig  : bit;
+signal on12_x1_87_sig  : bit;
+signal on12_x1_86_sig  : bit;
+signal on12_x1_85_sig  : bit;
+signal on12_x1_84_sig  : bit;
+signal on12_x1_83_sig  : bit;
+signal on12_x1_82_sig  : bit;
+signal on12_x1_81_sig  : bit;
+signal on12_x1_80_sig  : bit;
+signal on12_x1_7_sig   : bit;
+signal on12_x1_79_sig  : bit;
+signal on12_x1_78_sig  : bit;
+signal on12_x1_77_sig  : bit;
+signal on12_x1_76_sig  : bit;
+signal on12_x1_75_sig  : bit;
+signal on12_x1_74_sig  : bit;
+signal on12_x1_73_sig  : bit;
+signal on12_x1_72_sig  : bit;
+signal on12_x1_71_sig  : bit;
+signal on12_x1_70_sig  : bit;
+signal on12_x1_6_sig   : bit;
+signal on12_x1_69_sig  : bit;
+signal on12_x1_68_sig  : bit;
+signal on12_x1_67_sig  : bit;
+signal on12_x1_66_sig  : bit;
+signal on12_x1_65_sig  : bit;
+signal on12_x1_64_sig  : bit;
+signal on12_x1_63_sig  : bit;
+signal on12_x1_62_sig  : bit;
+signal on12_x1_61_sig  : bit;
+signal on12_x1_60_sig  : bit;
+signal on12_x1_5_sig   : bit;
+signal on12_x1_59_sig  : bit;
+signal on12_x1_58_sig  : bit;
+signal on12_x1_57_sig  : bit;
+signal on12_x1_56_sig  : bit;
+signal on12_x1_55_sig  : bit;
+signal on12_x1_54_sig  : bit;
+signal on12_x1_53_sig  : bit;
+signal on12_x1_52_sig  : bit;
+signal on12_x1_51_sig  : bit;
+signal on12_x1_50_sig  : bit;
+signal on12_x1_4_sig   : bit;
+signal on12_x1_49_sig  : bit;
+signal on12_x1_48_sig  : bit;
+signal on12_x1_47_sig  : bit;
+signal on12_x1_46_sig  : bit;
+signal on12_x1_45_sig  : bit;
+signal on12_x1_44_sig  : bit;
+signal on12_x1_43_sig  : bit;
+signal on12_x1_42_sig  : bit;
+signal on12_x1_41_sig  : bit;
+signal on12_x1_40_sig  : bit;
+signal on12_x1_3_sig   : bit;
+signal on12_x1_39_sig  : bit;
+signal on12_x1_38_sig  : bit;
+signal on12_x1_37_sig  : bit;
+signal on12_x1_36_sig  : bit;
+signal on12_x1_35_sig  : bit;
+signal on12_x1_34_sig  : bit;
+signal on12_x1_33_sig  : bit;
+signal on12_x1_32_sig  : bit;
+signal on12_x1_31_sig  : bit;
+signal on12_x1_30_sig  : bit;
+signal on12_x1_2_sig   : bit;
+signal on12_x1_29_sig  : bit;
+signal on12_x1_28_sig  : bit;
+signal on12_x1_27_sig  : bit;
+signal on12_x1_26_sig  : bit;
+signal on12_x1_25_sig  : bit;
+signal on12_x1_24_sig  : bit;
+signal on12_x1_23_sig  : bit;
+signal on12_x1_22_sig  : bit;
+signal on12_x1_21_sig  : bit;
+signal on12_x1_20_sig  : bit;
+signal on12_x1_19_sig  : bit;
+signal on12_x1_18_sig  : bit;
+signal on12_x1_17_sig  : bit;
+signal on12_x1_16_sig  : bit;
+signal on12_x1_15_sig  : bit;
+signal on12_x1_14_sig  : bit;
+signal on12_x1_13_sig  : bit;
+signal on12_x1_12_sig  : bit;
+signal on12_x1_128_sig : bit;
+signal on12_x1_127_sig : bit;
+signal on12_x1_126_sig : bit;
+signal on12_x1_125_sig : bit;
+signal on12_x1_124_sig : bit;
+signal on12_x1_123_sig : bit;
+signal on12_x1_122_sig : bit;
+signal on12_x1_121_sig : bit;
+signal on12_x1_120_sig : bit;
+signal on12_x1_11_sig  : bit;
+signal on12_x1_119_sig : bit;
+signal on12_x1_118_sig : bit;
+signal on12_x1_117_sig : bit;
+signal on12_x1_116_sig : bit;
+signal on12_x1_115_sig : bit;
+signal on12_x1_114_sig : bit;
+signal on12_x1_113_sig : bit;
+signal on12_x1_112_sig : bit;
+signal on12_x1_111_sig : bit;
+signal on12_x1_110_sig : bit;
+signal on12_x1_10_sig  : bit;
+signal on12_x1_109_sig : bit;
+signal on12_x1_108_sig : bit;
+signal on12_x1_107_sig : bit;
+signal on12_x1_106_sig : bit;
+signal on12_x1_105_sig : bit;
+signal on12_x1_104_sig : bit;
+signal on12_x1_103_sig : bit;
+signal on12_x1_102_sig : bit;
+signal on12_x1_101_sig : bit;
+signal on12_x1_100_sig : bit;
+signal na3_x1_sig      : bit;
+signal na3_x1_9_sig    : bit;
+signal na3_x1_8_sig    : bit;
+signal na3_x1_7_sig    : bit;
+signal na3_x1_6_sig    : bit;
+signal na3_x1_64_sig   : bit;
+signal na3_x1_63_sig   : bit;
+signal na3_x1_62_sig   : bit;
+signal na3_x1_61_sig   : bit;
+signal na3_x1_60_sig   : bit;
+signal na3_x1_5_sig    : bit;
+signal na3_x1_59_sig   : bit;
+signal na3_x1_58_sig   : bit;
+signal na3_x1_57_sig   : bit;
+signal na3_x1_56_sig   : bit;
+signal na3_x1_55_sig   : bit;
+signal na3_x1_54_sig   : bit;
+signal na3_x1_53_sig   : bit;
+signal na3_x1_52_sig   : bit;
+signal na3_x1_51_sig   : bit;
+signal na3_x1_50_sig   : bit;
+signal na3_x1_4_sig    : bit;
+signal na3_x1_49_sig   : bit;
+signal na3_x1_48_sig   : bit;
+signal na3_x1_47_sig   : bit;
+signal na3_x1_46_sig   : bit;
+signal na3_x1_45_sig   : bit;
+signal na3_x1_44_sig   : bit;
+signal na3_x1_43_sig   : bit;
+signal na3_x1_42_sig   : bit;
+signal na3_x1_41_sig   : bit;
+signal na3_x1_40_sig   : bit;
+signal na3_x1_3_sig    : bit;
+signal na3_x1_39_sig   : bit;
+signal na3_x1_38_sig   : bit;
+signal na3_x1_37_sig   : bit;
+signal na3_x1_36_sig   : bit;
+signal na3_x1_35_sig   : bit;
+signal na3_x1_34_sig   : bit;
+signal na3_x1_33_sig   : bit;
+signal na3_x1_32_sig   : bit;
+signal na3_x1_31_sig   : bit;
+signal na3_x1_30_sig   : bit;
+signal na3_x1_2_sig    : bit;
+signal na3_x1_29_sig   : bit;
+signal na3_x1_28_sig   : bit;
+signal na3_x1_27_sig   : bit;
+signal na3_x1_26_sig   : bit;
+signal na3_x1_25_sig   : bit;
+signal na3_x1_24_sig   : bit;
+signal na3_x1_23_sig   : bit;
+signal na3_x1_22_sig   : bit;
+signal na3_x1_21_sig   : bit;
+signal na3_x1_20_sig   : bit;
+signal na3_x1_19_sig   : bit;
+signal na3_x1_18_sig   : bit;
+signal na3_x1_17_sig   : bit;
+signal na3_x1_16_sig   : bit;
+signal na3_x1_15_sig   : bit;
+signal na3_x1_14_sig   : bit;
+signal na3_x1_13_sig   : bit;
+signal na3_x1_12_sig   : bit;
+signal na3_x1_11_sig   : bit;
+signal na3_x1_10_sig   : bit;
+
+begin
+
+not_s_1_ins : inv_x8
+   port map (
+      i   => s(1),
+      nq  => not_s(1),
+      vdd => vdd,
+      vss => vss
+   );
+
+not_s_0_ins : inv_x8
+   port map (
+      i   => s(0),
+      nq  => not_s(0),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(0),
+      q   => on12_x1_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_2_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(0),
+      q   => on12_x1_2_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_ins : na3_x1
+   port map (
+      i0  => on12_x1_2_sig,
+      i1  => s(1),
+      i2  => on12_x1_sig,
+      nq  => na3_x1_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_3_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(0),
+      q   => on12_x1_3_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_4_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(0),
+      q   => on12_x1_4_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_2_ins : na3_x1
+   port map (
+      i0  => on12_x1_4_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_3_sig,
+      nq  => na3_x1_2_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_0_ins : na2_x1
+   port map (
+      i0  => na3_x1_2_sig,
+      i1  => na3_x1_sig,
+      nq  => y(0),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_5_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(1),
+      q   => on12_x1_5_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_6_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(1),
+      q   => on12_x1_6_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_3_ins : na3_x1
+   port map (
+      i0  => on12_x1_6_sig,
+      i1  => s(1),
+      i2  => on12_x1_5_sig,
+      nq  => na3_x1_3_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_7_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(1),
+      q   => on12_x1_7_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_8_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(1),
+      q   => on12_x1_8_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_4_ins : na3_x1
+   port map (
+      i0  => on12_x1_8_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_7_sig,
+      nq  => na3_x1_4_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_1_ins : na2_x1
+   port map (
+      i0  => na3_x1_4_sig,
+      i1  => na3_x1_3_sig,
+      nq  => y(1),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_9_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(2),
+      q   => on12_x1_9_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_10_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(2),
+      q   => on12_x1_10_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_5_ins : na3_x1
+   port map (
+      i0  => on12_x1_10_sig,
+      i1  => s(1),
+      i2  => on12_x1_9_sig,
+      nq  => na3_x1_5_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_11_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(2),
+      q   => on12_x1_11_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_12_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(2),
+      q   => on12_x1_12_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_6_ins : na3_x1
+   port map (
+      i0  => on12_x1_12_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_11_sig,
+      nq  => na3_x1_6_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_2_ins : na2_x1
+   port map (
+      i0  => na3_x1_6_sig,
+      i1  => na3_x1_5_sig,
+      nq  => y(2),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_13_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(3),
+      q   => on12_x1_13_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_14_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(3),
+      q   => on12_x1_14_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_7_ins : na3_x1
+   port map (
+      i0  => on12_x1_14_sig,
+      i1  => s(1),
+      i2  => on12_x1_13_sig,
+      nq  => na3_x1_7_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_15_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(3),
+      q   => on12_x1_15_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_16_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(3),
+      q   => on12_x1_16_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_8_ins : na3_x1
+   port map (
+      i0  => on12_x1_16_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_15_sig,
+      nq  => na3_x1_8_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_3_ins : na2_x1
+   port map (
+      i0  => na3_x1_8_sig,
+      i1  => na3_x1_7_sig,
+      nq  => y(3),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_17_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(4),
+      q   => on12_x1_17_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_18_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(4),
+      q   => on12_x1_18_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_9_ins : na3_x1
+   port map (
+      i0  => on12_x1_18_sig,
+      i1  => s(1),
+      i2  => on12_x1_17_sig,
+      nq  => na3_x1_9_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_19_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(4),
+      q   => on12_x1_19_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_20_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(4),
+      q   => on12_x1_20_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_10_ins : na3_x1
+   port map (
+      i0  => on12_x1_20_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_19_sig,
+      nq  => na3_x1_10_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_4_ins : na2_x1
+   port map (
+      i0  => na3_x1_10_sig,
+      i1  => na3_x1_9_sig,
+      nq  => y(4),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_21_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(5),
+      q   => on12_x1_21_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_22_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(5),
+      q   => on12_x1_22_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_11_ins : na3_x1
+   port map (
+      i0  => on12_x1_22_sig,
+      i1  => s(1),
+      i2  => on12_x1_21_sig,
+      nq  => na3_x1_11_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_23_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(5),
+      q   => on12_x1_23_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_24_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(5),
+      q   => on12_x1_24_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_12_ins : na3_x1
+   port map (
+      i0  => on12_x1_24_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_23_sig,
+      nq  => na3_x1_12_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_5_ins : na2_x1
+   port map (
+      i0  => na3_x1_12_sig,
+      i1  => na3_x1_11_sig,
+      nq  => y(5),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_25_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(6),
+      q   => on12_x1_25_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_26_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(6),
+      q   => on12_x1_26_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_13_ins : na3_x1
+   port map (
+      i0  => on12_x1_26_sig,
+      i1  => s(1),
+      i2  => on12_x1_25_sig,
+      nq  => na3_x1_13_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_27_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(6),
+      q   => on12_x1_27_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_28_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(6),
+      q   => on12_x1_28_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_14_ins : na3_x1
+   port map (
+      i0  => on12_x1_28_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_27_sig,
+      nq  => na3_x1_14_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_6_ins : na2_x1
+   port map (
+      i0  => na3_x1_14_sig,
+      i1  => na3_x1_13_sig,
+      nq  => y(6),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_29_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(7),
+      q   => on12_x1_29_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_30_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(7),
+      q   => on12_x1_30_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_15_ins : na3_x1
+   port map (
+      i0  => on12_x1_30_sig,
+      i1  => s(1),
+      i2  => on12_x1_29_sig,
+      nq  => na3_x1_15_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_31_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(7),
+      q   => on12_x1_31_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_32_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(7),
+      q   => on12_x1_32_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_16_ins : na3_x1
+   port map (
+      i0  => on12_x1_32_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_31_sig,
+      nq  => na3_x1_16_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_7_ins : na2_x1
+   port map (
+      i0  => na3_x1_16_sig,
+      i1  => na3_x1_15_sig,
+      nq  => y(7),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_33_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(8),
+      q   => on12_x1_33_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_34_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(8),
+      q   => on12_x1_34_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_17_ins : na3_x1
+   port map (
+      i0  => on12_x1_34_sig,
+      i1  => s(1),
+      i2  => on12_x1_33_sig,
+      nq  => na3_x1_17_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_35_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(8),
+      q   => on12_x1_35_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_36_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(8),
+      q   => on12_x1_36_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_18_ins : na3_x1
+   port map (
+      i0  => on12_x1_36_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_35_sig,
+      nq  => na3_x1_18_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_8_ins : na2_x1
+   port map (
+      i0  => na3_x1_18_sig,
+      i1  => na3_x1_17_sig,
+      nq  => y(8),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_37_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(9),
+      q   => on12_x1_37_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_38_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(9),
+      q   => on12_x1_38_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_19_ins : na3_x1
+   port map (
+      i0  => on12_x1_38_sig,
+      i1  => s(1),
+      i2  => on12_x1_37_sig,
+      nq  => na3_x1_19_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_39_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(9),
+      q   => on12_x1_39_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_40_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(9),
+      q   => on12_x1_40_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_20_ins : na3_x1
+   port map (
+      i0  => on12_x1_40_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_39_sig,
+      nq  => na3_x1_20_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_9_ins : na2_x1
+   port map (
+      i0  => na3_x1_20_sig,
+      i1  => na3_x1_19_sig,
+      nq  => y(9),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_41_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(10),
+      q   => on12_x1_41_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_42_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(10),
+      q   => on12_x1_42_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_21_ins : na3_x1
+   port map (
+      i0  => on12_x1_42_sig,
+      i1  => s(1),
+      i2  => on12_x1_41_sig,
+      nq  => na3_x1_21_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_43_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(10),
+      q   => on12_x1_43_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_44_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(10),
+      q   => on12_x1_44_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_22_ins : na3_x1
+   port map (
+      i0  => on12_x1_44_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_43_sig,
+      nq  => na3_x1_22_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_10_ins : na2_x1
+   port map (
+      i0  => na3_x1_22_sig,
+      i1  => na3_x1_21_sig,
+      nq  => y(10),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_45_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(11),
+      q   => on12_x1_45_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_46_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(11),
+      q   => on12_x1_46_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_23_ins : na3_x1
+   port map (
+      i0  => on12_x1_46_sig,
+      i1  => s(1),
+      i2  => on12_x1_45_sig,
+      nq  => na3_x1_23_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_47_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(11),
+      q   => on12_x1_47_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_48_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(11),
+      q   => on12_x1_48_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_24_ins : na3_x1
+   port map (
+      i0  => on12_x1_48_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_47_sig,
+      nq  => na3_x1_24_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_11_ins : na2_x1
+   port map (
+      i0  => na3_x1_24_sig,
+      i1  => na3_x1_23_sig,
+      nq  => y(11),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_49_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(12),
+      q   => on12_x1_49_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_50_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(12),
+      q   => on12_x1_50_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_25_ins : na3_x1
+   port map (
+      i0  => on12_x1_50_sig,
+      i1  => s(1),
+      i2  => on12_x1_49_sig,
+      nq  => na3_x1_25_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_51_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(12),
+      q   => on12_x1_51_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_52_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(12),
+      q   => on12_x1_52_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_26_ins : na3_x1
+   port map (
+      i0  => on12_x1_52_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_51_sig,
+      nq  => na3_x1_26_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_12_ins : na2_x1
+   port map (
+      i0  => na3_x1_26_sig,
+      i1  => na3_x1_25_sig,
+      nq  => y(12),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_53_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(13),
+      q   => on12_x1_53_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_54_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(13),
+      q   => on12_x1_54_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_27_ins : na3_x1
+   port map (
+      i0  => on12_x1_54_sig,
+      i1  => s(1),
+      i2  => on12_x1_53_sig,
+      nq  => na3_x1_27_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_55_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(13),
+      q   => on12_x1_55_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_56_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(13),
+      q   => on12_x1_56_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_28_ins : na3_x1
+   port map (
+      i0  => on12_x1_56_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_55_sig,
+      nq  => na3_x1_28_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_13_ins : na2_x1
+   port map (
+      i0  => na3_x1_28_sig,
+      i1  => na3_x1_27_sig,
+      nq  => y(13),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_57_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(14),
+      q   => on12_x1_57_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_58_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(14),
+      q   => on12_x1_58_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_29_ins : na3_x1
+   port map (
+      i0  => on12_x1_58_sig,
+      i1  => s(1),
+      i2  => on12_x1_57_sig,
+      nq  => na3_x1_29_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_59_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(14),
+      q   => on12_x1_59_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_60_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(14),
+      q   => on12_x1_60_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_30_ins : na3_x1
+   port map (
+      i0  => on12_x1_60_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_59_sig,
+      nq  => na3_x1_30_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_14_ins : na2_x1
+   port map (
+      i0  => na3_x1_30_sig,
+      i1  => na3_x1_29_sig,
+      nq  => y(14),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_61_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(15),
+      q   => on12_x1_61_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_62_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(15),
+      q   => on12_x1_62_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_31_ins : na3_x1
+   port map (
+      i0  => on12_x1_62_sig,
+      i1  => s(1),
+      i2  => on12_x1_61_sig,
+      nq  => na3_x1_31_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_63_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(15),
+      q   => on12_x1_63_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_64_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(15),
+      q   => on12_x1_64_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_32_ins : na3_x1
+   port map (
+      i0  => on12_x1_64_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_63_sig,
+      nq  => na3_x1_32_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_15_ins : na2_x1
+   port map (
+      i0  => na3_x1_32_sig,
+      i1  => na3_x1_31_sig,
+      nq  => y(15),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_65_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(16),
+      q   => on12_x1_65_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_66_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(16),
+      q   => on12_x1_66_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_33_ins : na3_x1
+   port map (
+      i0  => on12_x1_66_sig,
+      i1  => s(1),
+      i2  => on12_x1_65_sig,
+      nq  => na3_x1_33_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_67_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(16),
+      q   => on12_x1_67_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_68_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(16),
+      q   => on12_x1_68_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_34_ins : na3_x1
+   port map (
+      i0  => on12_x1_68_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_67_sig,
+      nq  => na3_x1_34_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_16_ins : na2_x1
+   port map (
+      i0  => na3_x1_34_sig,
+      i1  => na3_x1_33_sig,
+      nq  => y(16),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_69_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(17),
+      q   => on12_x1_69_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_70_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(17),
+      q   => on12_x1_70_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_35_ins : na3_x1
+   port map (
+      i0  => on12_x1_70_sig,
+      i1  => s(1),
+      i2  => on12_x1_69_sig,
+      nq  => na3_x1_35_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_71_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(17),
+      q   => on12_x1_71_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_72_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(17),
+      q   => on12_x1_72_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_36_ins : na3_x1
+   port map (
+      i0  => on12_x1_72_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_71_sig,
+      nq  => na3_x1_36_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_17_ins : na2_x1
+   port map (
+      i0  => na3_x1_36_sig,
+      i1  => na3_x1_35_sig,
+      nq  => y(17),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_73_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(18),
+      q   => on12_x1_73_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_74_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(18),
+      q   => on12_x1_74_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_37_ins : na3_x1
+   port map (
+      i0  => on12_x1_74_sig,
+      i1  => s(1),
+      i2  => on12_x1_73_sig,
+      nq  => na3_x1_37_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_75_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(18),
+      q   => on12_x1_75_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_76_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(18),
+      q   => on12_x1_76_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_38_ins : na3_x1
+   port map (
+      i0  => on12_x1_76_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_75_sig,
+      nq  => na3_x1_38_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_18_ins : na2_x1
+   port map (
+      i0  => na3_x1_38_sig,
+      i1  => na3_x1_37_sig,
+      nq  => y(18),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_77_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(19),
+      q   => on12_x1_77_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_78_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(19),
+      q   => on12_x1_78_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_39_ins : na3_x1
+   port map (
+      i0  => on12_x1_78_sig,
+      i1  => s(1),
+      i2  => on12_x1_77_sig,
+      nq  => na3_x1_39_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_79_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(19),
+      q   => on12_x1_79_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_80_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(19),
+      q   => on12_x1_80_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_40_ins : na3_x1
+   port map (
+      i0  => on12_x1_80_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_79_sig,
+      nq  => na3_x1_40_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_19_ins : na2_x1
+   port map (
+      i0  => na3_x1_40_sig,
+      i1  => na3_x1_39_sig,
+      nq  => y(19),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_81_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(20),
+      q   => on12_x1_81_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_82_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(20),
+      q   => on12_x1_82_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_41_ins : na3_x1
+   port map (
+      i0  => on12_x1_82_sig,
+      i1  => s(1),
+      i2  => on12_x1_81_sig,
+      nq  => na3_x1_41_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_83_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(20),
+      q   => on12_x1_83_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_84_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(20),
+      q   => on12_x1_84_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_42_ins : na3_x1
+   port map (
+      i0  => on12_x1_84_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_83_sig,
+      nq  => na3_x1_42_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_20_ins : na2_x1
+   port map (
+      i0  => na3_x1_42_sig,
+      i1  => na3_x1_41_sig,
+      nq  => y(20),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_85_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(21),
+      q   => on12_x1_85_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_86_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(21),
+      q   => on12_x1_86_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_43_ins : na3_x1
+   port map (
+      i0  => on12_x1_86_sig,
+      i1  => s(1),
+      i2  => on12_x1_85_sig,
+      nq  => na3_x1_43_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_87_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(21),
+      q   => on12_x1_87_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_88_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(21),
+      q   => on12_x1_88_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_44_ins : na3_x1
+   port map (
+      i0  => on12_x1_88_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_87_sig,
+      nq  => na3_x1_44_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_21_ins : na2_x1
+   port map (
+      i0  => na3_x1_44_sig,
+      i1  => na3_x1_43_sig,
+      nq  => y(21),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_89_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(22),
+      q   => on12_x1_89_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_90_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(22),
+      q   => on12_x1_90_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_45_ins : na3_x1
+   port map (
+      i0  => on12_x1_90_sig,
+      i1  => s(1),
+      i2  => on12_x1_89_sig,
+      nq  => na3_x1_45_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_91_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(22),
+      q   => on12_x1_91_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_92_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(22),
+      q   => on12_x1_92_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_46_ins : na3_x1
+   port map (
+      i0  => on12_x1_92_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_91_sig,
+      nq  => na3_x1_46_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_22_ins : na2_x1
+   port map (
+      i0  => na3_x1_46_sig,
+      i1  => na3_x1_45_sig,
+      nq  => y(22),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_93_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(23),
+      q   => on12_x1_93_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_94_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(23),
+      q   => on12_x1_94_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_47_ins : na3_x1
+   port map (
+      i0  => on12_x1_94_sig,
+      i1  => s(1),
+      i2  => on12_x1_93_sig,
+      nq  => na3_x1_47_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_95_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(23),
+      q   => on12_x1_95_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_96_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(23),
+      q   => on12_x1_96_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_48_ins : na3_x1
+   port map (
+      i0  => on12_x1_96_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_95_sig,
+      nq  => na3_x1_48_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_23_ins : na2_x1
+   port map (
+      i0  => na3_x1_48_sig,
+      i1  => na3_x1_47_sig,
+      nq  => y(23),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_97_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(24),
+      q   => on12_x1_97_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_98_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(24),
+      q   => on12_x1_98_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_49_ins : na3_x1
+   port map (
+      i0  => on12_x1_98_sig,
+      i1  => s(1),
+      i2  => on12_x1_97_sig,
+      nq  => na3_x1_49_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_99_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(24),
+      q   => on12_x1_99_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_100_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(24),
+      q   => on12_x1_100_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_50_ins : na3_x1
+   port map (
+      i0  => on12_x1_100_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_99_sig,
+      nq  => na3_x1_50_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_24_ins : na2_x1
+   port map (
+      i0  => na3_x1_50_sig,
+      i1  => na3_x1_49_sig,
+      nq  => y(24),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_101_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(25),
+      q   => on12_x1_101_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_102_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(25),
+      q   => on12_x1_102_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_51_ins : na3_x1
+   port map (
+      i0  => on12_x1_102_sig,
+      i1  => s(1),
+      i2  => on12_x1_101_sig,
+      nq  => na3_x1_51_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_103_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(25),
+      q   => on12_x1_103_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_104_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(25),
+      q   => on12_x1_104_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_52_ins : na3_x1
+   port map (
+      i0  => on12_x1_104_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_103_sig,
+      nq  => na3_x1_52_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_25_ins : na2_x1
+   port map (
+      i0  => na3_x1_52_sig,
+      i1  => na3_x1_51_sig,
+      nq  => y(25),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_105_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(26),
+      q   => on12_x1_105_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_106_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(26),
+      q   => on12_x1_106_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_53_ins : na3_x1
+   port map (
+      i0  => on12_x1_106_sig,
+      i1  => s(1),
+      i2  => on12_x1_105_sig,
+      nq  => na3_x1_53_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_107_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(26),
+      q   => on12_x1_107_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_108_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(26),
+      q   => on12_x1_108_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_54_ins : na3_x1
+   port map (
+      i0  => on12_x1_108_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_107_sig,
+      nq  => na3_x1_54_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_26_ins : na2_x1
+   port map (
+      i0  => na3_x1_54_sig,
+      i1  => na3_x1_53_sig,
+      nq  => y(26),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_109_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(27),
+      q   => on12_x1_109_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_110_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(27),
+      q   => on12_x1_110_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_55_ins : na3_x1
+   port map (
+      i0  => on12_x1_110_sig,
+      i1  => s(1),
+      i2  => on12_x1_109_sig,
+      nq  => na3_x1_55_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_111_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(27),
+      q   => on12_x1_111_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_112_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(27),
+      q   => on12_x1_112_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_56_ins : na3_x1
+   port map (
+      i0  => on12_x1_112_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_111_sig,
+      nq  => na3_x1_56_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_27_ins : na2_x1
+   port map (
+      i0  => na3_x1_56_sig,
+      i1  => na3_x1_55_sig,
+      nq  => y(27),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_113_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(28),
+      q   => on12_x1_113_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_114_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(28),
+      q   => on12_x1_114_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_57_ins : na3_x1
+   port map (
+      i0  => on12_x1_114_sig,
+      i1  => s(1),
+      i2  => on12_x1_113_sig,
+      nq  => na3_x1_57_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_115_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(28),
+      q   => on12_x1_115_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_116_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(28),
+      q   => on12_x1_116_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_58_ins : na3_x1
+   port map (
+      i0  => on12_x1_116_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_115_sig,
+      nq  => na3_x1_58_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_28_ins : na2_x1
+   port map (
+      i0  => na3_x1_58_sig,
+      i1  => na3_x1_57_sig,
+      nq  => y(28),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_117_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(29),
+      q   => on12_x1_117_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_118_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(29),
+      q   => on12_x1_118_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_59_ins : na3_x1
+   port map (
+      i0  => on12_x1_118_sig,
+      i1  => s(1),
+      i2  => on12_x1_117_sig,
+      nq  => na3_x1_59_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_119_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(29),
+      q   => on12_x1_119_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_120_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(29),
+      q   => on12_x1_120_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_60_ins : na3_x1
+   port map (
+      i0  => on12_x1_120_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_119_sig,
+      nq  => na3_x1_60_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_29_ins : na2_x1
+   port map (
+      i0  => na3_x1_60_sig,
+      i1  => na3_x1_59_sig,
+      nq  => y(29),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_121_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(30),
+      q   => on12_x1_121_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_122_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(30),
+      q   => on12_x1_122_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_61_ins : na3_x1
+   port map (
+      i0  => on12_x1_122_sig,
+      i1  => s(1),
+      i2  => on12_x1_121_sig,
+      nq  => na3_x1_61_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_123_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(30),
+      q   => on12_x1_123_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_124_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(30),
+      q   => on12_x1_124_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_62_ins : na3_x1
+   port map (
+      i0  => on12_x1_124_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_123_sig,
+      nq  => na3_x1_62_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_30_ins : na2_x1
+   port map (
+      i0  => na3_x1_62_sig,
+      i1  => na3_x1_61_sig,
+      nq  => y(30),
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_125_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d3(31),
+      q   => on12_x1_125_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_126_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d2(31),
+      q   => on12_x1_126_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_63_ins : na3_x1
+   port map (
+      i0  => on12_x1_126_sig,
+      i1  => s(1),
+      i2  => on12_x1_125_sig,
+      nq  => na3_x1_63_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_127_ins : on12_x1
+   port map (
+      i0  => s(0),
+      i1  => d1(31),
+      q   => on12_x1_127_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+on12_x1_128_ins : on12_x1
+   port map (
+      i0  => not_s(0),
+      i1  => d0(31),
+      q   => on12_x1_128_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+na3_x1_64_ins : na3_x1
+   port map (
+      i0  => on12_x1_128_sig,
+      i1  => not_s(1),
+      i2  => on12_x1_127_sig,
+      nq  => na3_x1_64_sig,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_31_ins : na2_x1
+   port map (
+      i0  => na3_x1_64_sig,
+      i1  => na3_x1_63_sig,
+      nq  => y(31),
+      vdd => vdd,
+      vss => vss
+   );
+
+
+end structural;

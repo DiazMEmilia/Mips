@@ -1,0 +1,34 @@
+-- VHDL data flow description generated from `mux2_5b_boom`
+--		date : Wed Sep 16 18:07:34 2015
+
+
+-- Entity Declaration
+
+ENTITY mux2_5b_boom IS
+  PORT (
+  d0 : in bit_vector(4 DOWNTO 0) ;	-- d0
+  d1 : in bit_vector(4 DOWNTO 0) ;	-- d1
+  s : in BIT;	-- s
+  y : out bit_vector(4 DOWNTO 0) ;	-- y
+  vdd : in BIT;	-- vdd
+  vss : in BIT	-- vss
+  );
+END mux2_5b_boom;
+
+
+-- Architecture Declaration
+
+ARCHITECTURE behaviour_data_flow OF mux2_5b_boom IS
+
+BEGIN
+
+y (0) <= ((s OR d0(0)) AND (d1(0) OR NOT(s)));
+
+y (1) <= ((s OR d0(1)) AND (d1(1) OR NOT(s)));
+
+y (2) <= ((d1(2) AND s) OR (d0(2) AND NOT(s)));
+
+y (3) <= ((NOT(s) OR d1(3)) AND (d0(3) OR s));
+
+y (4) <= ((s OR d0(4)) AND (NOT(s) OR d1(4)));
+END;

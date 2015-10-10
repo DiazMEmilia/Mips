@@ -1,0 +1,1136 @@
+entity datapath_model is
+   port (
+      rtl_map_5 : out     bit_vector(31 downto 0);
+      rtl_map_4 : out     bit;
+      rtl_map_3 : out     bit;
+      rtl_map_2 : out     bit;
+      rtl_map_1 : out     bit_vector(31 downto 0);
+      rtl_map_0 : out     bit;
+      instr     : in      bit_vector(31 downto 0);
+      opb       : in      bit_vector(31 downto 0);
+      pc        : in      bit_vector(31 downto 0);
+      salto     : out     bit_vector(31 downto 0);
+      pcjump    : in      bit_vector(27 downto 0);
+      vss       : in      bit;
+      vdd       : in      bit;
+      instrfunc : out     bit_vector(5 downto 0);
+      instrop   : out     bit_vector(5 downto 0);
+      writedata : out     bit_vector(31 downto 0)
+ );
+end datapath_model;
+
+architecture structural of datapath_model is
+Component buf_x8
+   port (
+      i   : in      bit;
+      q   : out     bit;
+      vdd : in      bit;
+      vss : in      bit
+ );
+end component;
+
+Component one_x0
+   port (
+      q   : out     bit;
+      vdd : in      bit;
+      vss : in      bit
+ );
+end component;
+
+Component zero_x0
+   port (
+      nq  : out     bit;
+      vdd : in      bit;
+      vss : in      bit
+ );
+end component;
+
+
+begin
+
+writedata_0_ins : buf_x8
+   port map (
+      i   => opb(0),
+      q   => writedata(0),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_1_ins : buf_x8
+   port map (
+      i   => opb(1),
+      q   => writedata(1),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_2_ins : buf_x8
+   port map (
+      i   => opb(2),
+      q   => writedata(2),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_3_ins : buf_x8
+   port map (
+      i   => opb(3),
+      q   => writedata(3),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_4_ins : buf_x8
+   port map (
+      i   => opb(4),
+      q   => writedata(4),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_5_ins : buf_x8
+   port map (
+      i   => opb(5),
+      q   => writedata(5),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_6_ins : buf_x8
+   port map (
+      i   => opb(6),
+      q   => writedata(6),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_7_ins : buf_x8
+   port map (
+      i   => opb(7),
+      q   => writedata(7),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_8_ins : buf_x8
+   port map (
+      i   => opb(8),
+      q   => writedata(8),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_9_ins : buf_x8
+   port map (
+      i   => opb(9),
+      q   => writedata(9),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_10_ins : buf_x8
+   port map (
+      i   => opb(10),
+      q   => writedata(10),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_11_ins : buf_x8
+   port map (
+      i   => opb(11),
+      q   => writedata(11),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_12_ins : buf_x8
+   port map (
+      i   => opb(12),
+      q   => writedata(12),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_13_ins : buf_x8
+   port map (
+      i   => opb(13),
+      q   => writedata(13),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_14_ins : buf_x8
+   port map (
+      i   => opb(14),
+      q   => writedata(14),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_15_ins : buf_x8
+   port map (
+      i   => opb(15),
+      q   => writedata(15),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_16_ins : buf_x8
+   port map (
+      i   => opb(16),
+      q   => writedata(16),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_17_ins : buf_x8
+   port map (
+      i   => opb(17),
+      q   => writedata(17),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_18_ins : buf_x8
+   port map (
+      i   => opb(18),
+      q   => writedata(18),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_19_ins : buf_x8
+   port map (
+      i   => opb(19),
+      q   => writedata(19),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_20_ins : buf_x8
+   port map (
+      i   => opb(20),
+      q   => writedata(20),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_21_ins : buf_x8
+   port map (
+      i   => opb(21),
+      q   => writedata(21),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_22_ins : buf_x8
+   port map (
+      i   => opb(22),
+      q   => writedata(22),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_23_ins : buf_x8
+   port map (
+      i   => opb(23),
+      q   => writedata(23),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_24_ins : buf_x8
+   port map (
+      i   => opb(24),
+      q   => writedata(24),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_25_ins : buf_x8
+   port map (
+      i   => opb(25),
+      q   => writedata(25),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_26_ins : buf_x8
+   port map (
+      i   => opb(26),
+      q   => writedata(26),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_27_ins : buf_x8
+   port map (
+      i   => opb(27),
+      q   => writedata(27),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_28_ins : buf_x8
+   port map (
+      i   => opb(28),
+      q   => writedata(28),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_29_ins : buf_x8
+   port map (
+      i   => opb(29),
+      q   => writedata(29),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_30_ins : buf_x8
+   port map (
+      i   => opb(30),
+      q   => writedata(30),
+      vdd => vdd,
+      vss => vss
+   );
+
+writedata_31_ins : buf_x8
+   port map (
+      i   => opb(31),
+      q   => writedata(31),
+      vdd => vdd,
+      vss => vss
+   );
+
+instrop_0_ins : buf_x8
+   port map (
+      i   => instr(26),
+      q   => instrop(0),
+      vdd => vdd,
+      vss => vss
+   );
+
+instrop_1_ins : buf_x8
+   port map (
+      i   => instr(27),
+      q   => instrop(1),
+      vdd => vdd,
+      vss => vss
+   );
+
+instrop_2_ins : buf_x8
+   port map (
+      i   => instr(28),
+      q   => instrop(2),
+      vdd => vdd,
+      vss => vss
+   );
+
+instrop_3_ins : buf_x8
+   port map (
+      i   => instr(29),
+      q   => instrop(3),
+      vdd => vdd,
+      vss => vss
+   );
+
+instrop_4_ins : buf_x8
+   port map (
+      i   => instr(30),
+      q   => instrop(4),
+      vdd => vdd,
+      vss => vss
+   );
+
+instrop_5_ins : buf_x8
+   port map (
+      i   => instr(31),
+      q   => instrop(5),
+      vdd => vdd,
+      vss => vss
+   );
+
+instrfunc_0_ins : buf_x8
+   port map (
+      i   => instr(0),
+      q   => instrfunc(0),
+      vdd => vdd,
+      vss => vss
+   );
+
+instrfunc_1_ins : buf_x8
+   port map (
+      i   => instr(1),
+      q   => instrfunc(1),
+      vdd => vdd,
+      vss => vss
+   );
+
+instrfunc_2_ins : buf_x8
+   port map (
+      i   => instr(2),
+      q   => instrfunc(2),
+      vdd => vdd,
+      vss => vss
+   );
+
+instrfunc_3_ins : buf_x8
+   port map (
+      i   => instr(3),
+      q   => instrfunc(3),
+      vdd => vdd,
+      vss => vss
+   );
+
+instrfunc_4_ins : buf_x8
+   port map (
+      i   => instr(4),
+      q   => instrfunc(4),
+      vdd => vdd,
+      vss => vss
+   );
+
+instrfunc_5_ins : buf_x8
+   port map (
+      i   => instr(5),
+      q   => instrfunc(5),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_0_ins : buf_x8
+   port map (
+      i   => pcjump(0),
+      q   => salto(0),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_1_ins : buf_x8
+   port map (
+      i   => pcjump(1),
+      q   => salto(1),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_2_ins : buf_x8
+   port map (
+      i   => pcjump(2),
+      q   => salto(2),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_3_ins : buf_x8
+   port map (
+      i   => pcjump(3),
+      q   => salto(3),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_4_ins : buf_x8
+   port map (
+      i   => pcjump(4),
+      q   => salto(4),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_5_ins : buf_x8
+   port map (
+      i   => pcjump(5),
+      q   => salto(5),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_6_ins : buf_x8
+   port map (
+      i   => pcjump(6),
+      q   => salto(6),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_7_ins : buf_x8
+   port map (
+      i   => pcjump(7),
+      q   => salto(7),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_8_ins : buf_x8
+   port map (
+      i   => pcjump(8),
+      q   => salto(8),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_9_ins : buf_x8
+   port map (
+      i   => pcjump(9),
+      q   => salto(9),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_10_ins : buf_x8
+   port map (
+      i   => pcjump(10),
+      q   => salto(10),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_11_ins : buf_x8
+   port map (
+      i   => pcjump(11),
+      q   => salto(11),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_12_ins : buf_x8
+   port map (
+      i   => pcjump(12),
+      q   => salto(12),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_13_ins : buf_x8
+   port map (
+      i   => pcjump(13),
+      q   => salto(13),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_14_ins : buf_x8
+   port map (
+      i   => pcjump(14),
+      q   => salto(14),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_15_ins : buf_x8
+   port map (
+      i   => pcjump(15),
+      q   => salto(15),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_16_ins : buf_x8
+   port map (
+      i   => pcjump(16),
+      q   => salto(16),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_17_ins : buf_x8
+   port map (
+      i   => pcjump(17),
+      q   => salto(17),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_18_ins : buf_x8
+   port map (
+      i   => pcjump(18),
+      q   => salto(18),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_19_ins : buf_x8
+   port map (
+      i   => pcjump(19),
+      q   => salto(19),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_20_ins : buf_x8
+   port map (
+      i   => pcjump(20),
+      q   => salto(20),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_21_ins : buf_x8
+   port map (
+      i   => pcjump(21),
+      q   => salto(21),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_22_ins : buf_x8
+   port map (
+      i   => pcjump(22),
+      q   => salto(22),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_23_ins : buf_x8
+   port map (
+      i   => pcjump(23),
+      q   => salto(23),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_24_ins : buf_x8
+   port map (
+      i   => pcjump(24),
+      q   => salto(24),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_25_ins : buf_x8
+   port map (
+      i   => pcjump(25),
+      q   => salto(25),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_26_ins : buf_x8
+   port map (
+      i   => pcjump(26),
+      q   => salto(26),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_27_ins : buf_x8
+   port map (
+      i   => pcjump(27),
+      q   => salto(27),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_28_ins : buf_x8
+   port map (
+      i   => pc(28),
+      q   => salto(28),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_29_ins : buf_x8
+   port map (
+      i   => pc(29),
+      q   => salto(29),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_30_ins : buf_x8
+   port map (
+      i   => pc(30),
+      q   => salto(30),
+      vdd => vdd,
+      vss => vss
+   );
+
+salto_31_ins : buf_x8
+   port map (
+      i   => pc(31),
+      q   => salto(31),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_0_ins : one_x0
+   port map (
+      q   => rtl_map_0,
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_0_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(0),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_1_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(1),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_2_ins : one_x0
+   port map (
+      q   => rtl_map_1(2),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_3_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(3),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_4_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(4),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_5_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(5),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_6_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(6),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_7_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(7),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_8_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(8),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_9_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(9),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_10_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(10),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_11_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(11),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_12_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(12),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_13_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(13),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_14_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(14),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_15_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(15),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_16_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(16),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_17_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(17),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_18_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(18),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_19_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(19),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_20_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(20),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_21_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(21),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_22_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(22),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_23_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(23),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_24_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(24),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_25_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(25),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_26_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(26),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_27_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(27),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_28_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(28),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_29_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(29),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_30_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(30),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_1_31_ins : zero_x0
+   port map (
+      nq  => rtl_map_1(31),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_2_ins : one_x0
+   port map (
+      q   => rtl_map_2,
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_3_ins : one_x0
+   port map (
+      q   => rtl_map_3,
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_4_ins : one_x0
+   port map (
+      q   => rtl_map_4,
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_0_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(0),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_1_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(1),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_2_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(2),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_3_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(3),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_4_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(4),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_5_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(5),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_6_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(6),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_7_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(7),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_8_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(8),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_9_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(9),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_10_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(10),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_11_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(11),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_12_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(12),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_13_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(13),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_14_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(14),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_15_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(15),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_16_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(16),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_17_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(17),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_18_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(18),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_19_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(19),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_20_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(20),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_21_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(21),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_22_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(22),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_23_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(23),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_24_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(24),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_25_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(25),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_26_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(26),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_27_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(27),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_28_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(28),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_29_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(29),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_30_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(30),
+      vdd => vdd,
+      vss => vss
+   );
+
+rtl_map_5_31_ins : zero_x0
+   port map (
+      nq  => rtl_map_5(31),
+      vdd => vdd,
+      vss => vss
+   );
+
+
+end structural;

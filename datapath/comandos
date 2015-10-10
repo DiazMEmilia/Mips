@@ -1,0 +1,5 @@
+vasy -Vaop -I vhd datapath
+boom -d 0 -l 3 datapath_model datapath_model_boom
+boog datapath_model_boom datapath_model_boog -x 0 -m 4
+loon datapath_model_boog datapath_model -x 0 -m 4
+flatbeh datapath datapath

@@ -1,0 +1,5 @@
+vasy -Vaop -I vhd control
+flatbeh control control
+boom -d 0 -l 3 control control_boom
+boog control_boom control_boog -x 0 -m 4
+loon control_boog control -x 0 -m 4

@@ -1,0 +1,9 @@
+N:i0:-1:0 ps
+N:i1:-1:0 ps
+N:q:-1:324 ps
+B:q_ins:32:324 ps
+C:q:32:324 ps
+C:i1:-1:0 ps
+C:i0:32:0 ps
+P:i0:i0:q_ins:32:324 ps
+P:q_ins:q:q:32:324 ps

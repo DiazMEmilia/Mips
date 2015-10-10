@@ -1,0 +1,35 @@
+entity and2 is
+   port (
+      i0  : in      bit;
+      i1  : in      bit;
+      q   : out     bit;
+      vdd : in      bit;
+      vss : in      bit
+ );
+end and2;
+
+architecture structural of and2 is
+Component a2_x2
+   port (
+      i0  : in      bit;
+      i1  : in      bit;
+      q   : out     bit;
+      vdd : in      bit;
+      vss : in      bit
+ );
+end component;
+
+
+begin
+
+q_ins : a2_x2
+   port map (
+      i0  => i1,
+      i1  => i0,
+      q   => q,
+      vdd => vdd,
+      vss => vss
+   );
+
+
+end structural;

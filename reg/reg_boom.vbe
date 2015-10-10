@@ -1,0 +1,252 @@
+-- VHDL data flow description generated from `reg_boom`
+--		date : Wed Sep 16 18:09:50 2015
+
+
+-- Entity Declaration
+
+ENTITY reg_boom IS
+  PORT (
+  clk : in BIT;	-- clk
+  rst : in BIT;	-- rst
+  en : in BIT;	-- en
+  d : in bit_vector(31 DOWNTO 0) ;	-- d
+  q : out bit_vector(31 DOWNTO 0) ;	-- q
+  vdd : in BIT;	-- vdd
+  vss : in BIT	-- vss
+  );
+END reg_boom;
+
+
+-- Architecture Declaration
+
+ARCHITECTURE behaviour_data_flow OF reg_boom IS
+  SIGNAL rtlalc_0 : REG_VECTOR(31 DOWNTO 0) REGISTER;	-- rtlalc_0
+  SIGNAL aux0 : BIT;		-- aux0
+
+BEGIN
+  aux0 <= (NOT(rst) AND en);
+  label0 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (0) <= GUARDED ((aux0 OR rtlalc_0(0)) AND NOT(rst) AND (NOT(en) 
+OR d(0)));
+  END BLOCK label0;
+  label1 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (1) <= GUARDED ((aux0 OR rtlalc_0(1)) AND NOT(rst) AND (NOT(en) 
+OR d(1)));
+  END BLOCK label1;
+  label2 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (2) <= GUARDED ((aux0 OR rtlalc_0(2)) AND NOT(rst) AND (NOT(en) 
+OR d(2)));
+  END BLOCK label2;
+  label3 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (3) <= GUARDED ((aux0 OR rtlalc_0(3)) AND NOT(rst) AND (NOT(en) 
+OR d(3)));
+  END BLOCK label3;
+  label4 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (4) <= GUARDED ((aux0 OR rtlalc_0(4)) AND NOT(rst) AND (NOT(en) 
+OR d(4)));
+  END BLOCK label4;
+  label5 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (5) <= GUARDED ((aux0 OR rtlalc_0(5)) AND NOT(rst) AND (NOT(en) 
+OR d(5)));
+  END BLOCK label5;
+  label6 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (6) <= GUARDED ((aux0 OR rtlalc_0(6)) AND NOT(rst) AND (NOT(en) 
+OR d(6)));
+  END BLOCK label6;
+  label7 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (7) <= GUARDED ((aux0 OR rtlalc_0(7)) AND NOT(rst) AND (NOT(en) 
+OR d(7)));
+  END BLOCK label7;
+  label8 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (8) <= GUARDED ((aux0 OR rtlalc_0(8)) AND NOT(rst) AND (NOT(en) 
+OR d(8)));
+  END BLOCK label8;
+  label9 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (9) <= GUARDED ((aux0 OR rtlalc_0(9)) AND NOT(rst) AND (NOT(en) 
+OR d(9)));
+  END BLOCK label9;
+  label10 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (10) <= GUARDED ((aux0 OR rtlalc_0(10)) AND NOT(rst) AND (NOT(en)
+ OR d(10)));
+  END BLOCK label10;
+  label11 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (11) <= GUARDED ((en OR rtlalc_0(11)) AND (d(11) OR NOT(en)) AND 
+NOT(rst));
+  END BLOCK label11;
+  label12 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (12) <= GUARDED ((aux0 OR rtlalc_0(12)) AND NOT(rst) AND (NOT(en)
+ OR d(12)));
+  END BLOCK label12;
+  label13 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (13) <= GUARDED ((aux0 OR rtlalc_0(13)) AND NOT(rst) AND (NOT(en)
+ OR d(13)));
+  END BLOCK label13;
+  label14 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (14) <= GUARDED ((aux0 OR rtlalc_0(14)) AND NOT(rst) AND (NOT(en)
+ OR d(14)));
+  END BLOCK label14;
+  label15 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (15) <= GUARDED ((aux0 OR rtlalc_0(15)) AND NOT(rst) AND (NOT(en)
+ OR d(15)));
+  END BLOCK label15;
+  label16 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (16) <= GUARDED ((aux0 OR rtlalc_0(16)) AND NOT(rst) AND (NOT(en)
+ OR d(16)));
+  END BLOCK label16;
+  label17 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (17) <= GUARDED ((aux0 OR rtlalc_0(17)) AND NOT(rst) AND (NOT(en)
+ OR d(17)));
+  END BLOCK label17;
+  label18 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (18) <= GUARDED ((aux0 OR rtlalc_0(18)) AND NOT(rst) AND (NOT(en)
+ OR d(18)));
+  END BLOCK label18;
+  label19 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (19) <= GUARDED ((aux0 OR rtlalc_0(19)) AND NOT(rst) AND (NOT(en)
+ OR d(19)));
+  END BLOCK label19;
+  label20 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (20) <= GUARDED ((aux0 OR rtlalc_0(20)) AND NOT(rst) AND (NOT(en)
+ OR d(20)));
+  END BLOCK label20;
+  label21 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (21) <= GUARDED ((en OR rtlalc_0(21)) AND (d(21) OR NOT(en)) AND 
+NOT(rst));
+  END BLOCK label21;
+  label22 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (22) <= GUARDED ((en OR rtlalc_0(22)) AND NOT(rst) AND (d(22) OR 
+NOT(en)));
+  END BLOCK label22;
+  label23 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (23) <= GUARDED ((aux0 OR rtlalc_0(23)) AND NOT(rst) AND (NOT(en)
+ OR d(23)));
+  END BLOCK label23;
+  label24 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (24) <= GUARDED ((aux0 OR rtlalc_0(24)) AND NOT(rst) AND (NOT(en)
+ OR d(24)));
+  END BLOCK label24;
+  label25 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (25) <= GUARDED ((aux0 OR rtlalc_0(25)) AND NOT(rst) AND (NOT(en)
+ OR d(25)));
+  END BLOCK label25;
+  label26 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (26) <= GUARDED ((aux0 OR rtlalc_0(26)) AND NOT(rst) AND (NOT(en)
+ OR d(26)));
+  END BLOCK label26;
+  label27 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (27) <= GUARDED ((aux0 OR rtlalc_0(27)) AND NOT(rst) AND (NOT(en)
+ OR d(27)));
+  END BLOCK label27;
+  label28 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (28) <= GUARDED ((en OR rtlalc_0(28)) AND (d(28) OR NOT(en)) AND 
+NOT(rst));
+  END BLOCK label28;
+  label29 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (29) <= GUARDED ((NOT(en) OR d(29)) AND NOT(rst) AND (
+rtlalc_0(29) OR en));
+  END BLOCK label29;
+  label30 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (30) <= GUARDED ((en OR rtlalc_0(30)) AND (d(30) OR NOT(en)) AND 
+NOT(rst));
+  END BLOCK label30;
+  label31 : BLOCK ((NOT((clk'STABLE)) AND clk) = '1')
+  BEGIN
+    rtlalc_0 (31) <= GUARDED ((en OR rtlalc_0(31)) AND (d(31) OR NOT(en)) AND 
+NOT(rst));
+  END BLOCK label31;
+
+q (0) <= rtlalc_0(0);
+
+q (1) <= rtlalc_0(1);
+
+q (2) <= rtlalc_0(2);
+
+q (3) <= rtlalc_0(3);
+
+q (4) <= rtlalc_0(4);
+
+q (5) <= rtlalc_0(5);
+
+q (6) <= rtlalc_0(6);
+
+q (7) <= rtlalc_0(7);
+
+q (8) <= rtlalc_0(8);
+
+q (9) <= rtlalc_0(9);
+
+q (10) <= rtlalc_0(10);
+
+q (11) <= rtlalc_0(11);
+
+q (12) <= rtlalc_0(12);
+
+q (13) <= rtlalc_0(13);
+
+q (14) <= rtlalc_0(14);
+
+q (15) <= rtlalc_0(15);
+
+q (16) <= rtlalc_0(16);
+
+q (17) <= rtlalc_0(17);
+
+q (18) <= rtlalc_0(18);
+
+q (19) <= rtlalc_0(19);
+
+q (20) <= rtlalc_0(20);
+
+q (21) <= rtlalc_0(21);
+
+q (22) <= rtlalc_0(22);
+
+q (23) <= rtlalc_0(23);
+
+q (24) <= rtlalc_0(24);
+
+q (25) <= rtlalc_0(25);
+
+q (26) <= rtlalc_0(26);
+
+q (27) <= rtlalc_0(27);
+
+q (28) <= rtlalc_0(28);
+
+q (29) <= rtlalc_0(29);
+
+q (30) <= rtlalc_0(30);
+
+q (31) <= rtlalc_0(31);
+END;

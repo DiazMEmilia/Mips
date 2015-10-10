@@ -1,0 +1,4 @@
+vasy -Vaop -I vhd and2
+boom -l 3 -d 0 and2 and2_boom
+boog and2_boom and2_boog -x 0 -m 4
+loon and2_boog and2 -x 0 -m 4

@@ -1,0 +1,9 @@
+alu 	 	C
+mux2_5b		C
+mux2		C
+mux4		C
+regfile		C
+reg		C
+signext		C
+sl2		C
+sl22		C

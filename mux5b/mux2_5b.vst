@@ -1,0 +1,114 @@
+entity mux2_5b is
+   port (
+      d0  : in      bit_vector(4 downto 0);
+      d1  : in      bit_vector(4 downto 0);
+      s   : in      bit;
+      y   : out     bit_vector(4 downto 0);
+      vdd : in      bit;
+      vss : in      bit
+ );
+end mux2_5b;
+
+architecture structural of mux2_5b is
+Component inv_x8
+   port (
+      i   : in      bit;
+      nq  : out     bit;
+      vdd : in      bit;
+      vss : in      bit
+ );
+end component;
+
+Component oa2a22_x2
+   port (
+      i1  : in      bit;
+      i0  : in      bit;
+      i2  : in      bit;
+      i3  : in      bit;
+      q   : out     bit;
+      vdd : in      bit;
+      vss : in      bit
+ );
+end component;
+
+Component ao2o22_x2
+   port (
+      i1  : in      bit;
+      i0  : in      bit;
+      i2  : in      bit;
+      i3  : in      bit;
+      q   : out     bit;
+      vdd : in      bit;
+      vss : in      bit
+ );
+end component;
+
+signal not_s : bit;
+
+begin
+
+not_s_ins : inv_x8
+   port map (
+      i   => s,
+      nq  => not_s,
+      vdd => vdd,
+      vss => vss
+   );
+
+y_0_ins : ao2o22_x2
+   port map (
+      i1  => d1(0),
+      i0  => not_s,
+      i2  => s,
+      i3  => d0(0),
+      q   => y(0),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_1_ins : ao2o22_x2
+   port map (
+      i1  => d1(1),
+      i0  => not_s,
+      i2  => s,
+      i3  => d0(1),
+      q   => y(1),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_2_ins : oa2a22_x2
+   port map (
+      i1  => d0(2),
+      i0  => not_s,
+      i2  => s,
+      i3  => d1(2),
+      q   => y(2),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_3_ins : ao2o22_x2
+   port map (
+      i1  => d1(3),
+      i0  => not_s,
+      i2  => s,
+      i3  => d0(3),
+      q   => y(3),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_4_ins : ao2o22_x2
+   port map (
+      i1  => d1(4),
+      i0  => not_s,
+      i2  => s,
+      i3  => d0(4),
+      q   => y(4),
+      vdd => vdd,
+      vss => vss
+   );
+
+
+end structural;

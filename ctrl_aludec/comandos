@@ -1,0 +1,4 @@
+vasy -Vaop -I vhd ctrl_aludec
+boom -l 3 -d 0 ctrl_aludec ctrl_aludec_boom
+boog ctrl_aludec_boom ctrl_aludec_boog -x 0 -m 4
+loon ctrl_aludec_boog ctrl_aludec -x 0 -m 4

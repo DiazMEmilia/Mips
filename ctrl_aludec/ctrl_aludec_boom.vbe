@@ -1,0 +1,37 @@
+-- VHDL data flow description generated from `ctrl_aludec_boom`
+--		date : Wed Sep 16 18:01:53 2015
+
+
+-- Entity Declaration
+
+ENTITY ctrl_aludec_boom IS
+  PORT (
+  funct : in bit_vector(5 DOWNTO 0) ;	-- funct
+  aluop : in bit_vector(1 DOWNTO 0) ;	-- aluop
+  alucontrol : out bit_vector(2 DOWNTO 0) ;	-- alucontrol
+  vdd : in BIT;	-- vdd
+  vss : in BIT	-- vss
+  );
+END ctrl_aludec_boom;
+
+
+-- Architecture Declaration
+
+ARCHITECTURE behaviour_data_flow OF ctrl_aludec_boom IS
+  SIGNAL aux1 : BIT;		-- aux1
+  SIGNAL aux3 : BIT;		-- aux3
+
+BEGIN
+  aux3 <= ((aux1 AND NOT(funct(0))) AND NOT(funct(2)));
+  aux1 <= ((funct(5) AND NOT(aluop(0))) AND NOT(funct(4)));
+
+alucontrol (0) <= (((aux3 AND funct(3) AND funct(1)) OR (aux1 AND 
+funct(0) AND funct(2) AND NOT(funct(3)) AND NOT(funct(1))
+)) AND aluop(1));
+
+alucontrol (1) <= ((aux3 AND (NOT(funct(3)) OR funct(1))) OR NOT(
+aluop(1)));
+
+alucontrol (2) <= ((aux3 AND funct(1) AND aluop(1)) OR (aluop(0) 
+AND NOT(aluop(1))));
+END;

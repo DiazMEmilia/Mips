@@ -1,0 +1,304 @@
+-- VHDL data flow description generated from `control_boom`
+--		date : Thu Oct  1 10:26:57 2015
+
+
+-- Entity Declaration
+
+ENTITY control_boom IS
+  PORT (
+  vss : in BIT;	-- vss
+  vdd : in BIT;	-- vdd
+  state : out bit_vector(3 DOWNTO 0) ;	-- state
+  regwrite : out BIT;	-- regwrite
+  branch : out BIT;	-- branch
+  pcwrite : out BIT;	-- pcwrite
+  memwrite : out BIT;	-- memwrite
+  irwrite : out BIT;	-- irwrite
+  alusrca : out BIT;	-- alusrca
+  alusrcb : out bit_vector(1 DOWNTO 0) ;	-- alusrcb
+  pcsrc : out bit_vector(1 DOWNTO 0) ;	-- pcsrc
+  iord : out BIT;	-- iord
+  regdst : out BIT;	-- regdst
+  memtoreg : out BIT;	-- memtoreg
+  alucontrol : out bit_vector(2 DOWNTO 0) ;	-- alucontrol
+  func : in bit_vector(5 DOWNTO 0) ;	-- func
+  opcode : in bit_vector(5 DOWNTO 0) ;	-- opcode
+  reset : in BIT;	-- reset
+  clk : in BIT	-- clk
+  );
+END control_boom;
+
+
+-- Architecture Declaration
+
+ARCHITECTURE behaviour_data_flow OF control_boom IS
+  SIGNAL ctrl_ppal_rtlalc_15 : REG_VECTOR(3 DOWNTO 0) REGISTER;	-- ctrl_ppal_rtlalc_15
+  SIGNAL ctrl_ppal_rtlalc_14 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_14
+  SIGNAL ctrl_ppal_rtlalc_13 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_13
+  SIGNAL ctrl_ppal_rtlalc_12 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_12
+  SIGNAL ctrl_ppal_rtlalc_11 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_11
+  SIGNAL ctrl_ppal_rtlalc_10 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_10
+  SIGNAL ctrl_ppal_rtlalc_9 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_9
+  SIGNAL ctrl_ppal_rtlalc_8 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_8
+  SIGNAL ctrl_ppal_rtlalc_7 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_7
+  SIGNAL ctrl_ppal_rtlalc_6 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_6
+  SIGNAL ctrl_ppal_rtlalc_5 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_5
+  SIGNAL ctrl_ppal_rtlalc_4 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_4
+  SIGNAL ctrl_ppal_rtlalc_3 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_3
+  SIGNAL ctrl_ppal_rtlalc_2 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_2
+  SIGNAL ctrl_ppal_rtlalc_1 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_1
+  SIGNAL ctrl_ppal_rtlalc_0 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_0
+  SIGNAL ctrl_ppal_nextstate : REG_VECTOR(3 DOWNTO 0) REGISTER;	-- ctrl_ppal_nextstate
+  SIGNAL aux0 : BIT;		-- aux0
+  SIGNAL aux2 : BIT;		-- aux2
+  SIGNAL aux3 : BIT;		-- aux3
+  SIGNAL aux4 : BIT;		-- aux4
+  SIGNAL aux5 : BIT;		-- aux5
+  SIGNAL aux7 : BIT;		-- aux7
+  SIGNAL aux8 : BIT;		-- aux8
+  SIGNAL aux9 : BIT;		-- aux9
+  SIGNAL aux12 : BIT;		-- aux12
+  SIGNAL aux13 : BIT;		-- aux13
+  SIGNAL aux14 : BIT;		-- aux14
+  SIGNAL aux15 : BIT;		-- aux15
+  SIGNAL aux16 : BIT;		-- aux16
+  SIGNAL aux18 : BIT;		-- aux18
+  SIGNAL aux19 : BIT;		-- aux19
+  SIGNAL aux20 : BIT;		-- aux20
+  SIGNAL aux21 : BIT;		-- aux21
+  SIGNAL aux22 : BIT;		-- aux22
+  SIGNAL aux23 : BIT;		-- aux23
+  SIGNAL aux24 : BIT;		-- aux24
+  SIGNAL aux25 : BIT;		-- aux25
+  SIGNAL aux27 : BIT;		-- aux27
+  SIGNAL aux28 : BIT;		-- aux28
+  SIGNAL aux29 : BIT;		-- aux29
+  SIGNAL aux30 : BIT;		-- aux30
+  SIGNAL aux31 : BIT;		-- aux31
+  SIGNAL aux32 : BIT;		-- aux32
+
+BEGIN
+  aux32 <= NOT((NOT(aux14) AND NOT(ctrl_ppal_nextstate(3))) 
+OR ctrl_ppal_nextstate(0));
+  aux31 <= (aux13 AND ctrl_ppal_nextstate(0));
+  aux30 <= NOT(NOT(ctrl_ppal_nextstate(3)) AND NOT(reset));
+  aux29 <= (NOT(func(0)) AND aux28);
+  aux28 <= (NOT(func(4)) AND NOT(ctrl_ppal_rtlalc_10));
+  aux27 <= ((ctrl_ppal_nextstate(1) AND NOT(
+ctrl_ppal_nextstate(3))) AND NOT(ctrl_ppal_nextstate(0)));
+  aux25 <= (ctrl_ppal_nextstate(1) XOR 
+ctrl_ppal_nextstate(2));
+  aux24 <= NOT(aux13 AND ctrl_ppal_nextstate(3));
+  aux23 <= NOT(NOT(ctrl_ppal_nextstate(3)) AND NOT(
+ctrl_ppal_nextstate(0)));
+  aux22 <= NOT((aux21 AND ctrl_ppal_nextstate(0)) OR aux19);
+  aux21 <= (aux15 AND ctrl_ppal_nextstate(3));
+  aux20 <= (aux13 AND NOT(ctrl_ppal_nextstate(0)));
+  aux19 <= NOT(aux18 OR ctrl_ppal_nextstate(0));
+  aux18 <= (NOT(aux13) OR ctrl_ppal_nextstate(3));
+  aux16 <= NOT(NOT(aux5) OR ctrl_ppal_nextstate(3));
+  aux15 <= NOT(NOT(ctrl_ppal_nextstate(1)) OR 
+ctrl_ppal_nextstate(2));
+  aux14 <= (NOT(ctrl_ppal_nextstate(1)) AND 
+ctrl_ppal_nextstate(2));
+  aux13 <= (NOT(ctrl_ppal_nextstate(1)) AND NOT(
+ctrl_ppal_nextstate(2)));
+  aux12 <= NOT(((NOT(aux2) OR NOT(opcode(3))) OR NOT(
+opcode(1))) OR opcode(2));
+  aux9 <= NOT(NOT(aux8) OR opcode(1));
+  aux8 <= NOT(NOT(aux7) OR opcode(3));
+  aux7 <= NOT((opcode(4) OR opcode(0)) OR opcode(5));
+  aux5 <= (ctrl_ppal_nextstate(1) AND 
+ctrl_ppal_nextstate(2));
+  aux4 <= NOT(aux3 AND NOT(opcode(2)));
+  aux3 <= (aux2 AND opcode(1));
+  aux2 <= ((NOT(opcode(4)) AND opcode(0)) AND opcode(5));
+  aux0 <= (func(5) AND NOT(func(2)));
+  label0 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_nextstate (0) <= GUARDED (((aux4 AND NOT(aux9) AND NOT(
+ctrl_ppal_nextstate(1))) OR NOT(ctrl_ppal_nextstate(0))) AND (aux5 OR (
+(NOT(aux4) OR NOT(ctrl_ppal_nextstate(1))) AND NOT
+(ctrl_ppal_nextstate(2)))) AND NOT(aux30));
+  END BLOCK label0;
+  label1 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_nextstate (1) <= GUARDED ((((((aux3 OR aux8) AND NOT(opcode(2))) OR 
+ctrl_ppal_nextstate(3)) AND aux31) OR ((NOT(aux12) OR 
+ctrl_ppal_nextstate(2)) AND ctrl_ppal_nextstate(1) AND NOT(
+ctrl_ppal_nextstate(3)) AND NOT(ctrl_ppal_nextstate(0)))) AND NOT(reset
+));
+  END BLOCK label1;
+  label2 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_nextstate (2) <= GUARDED (((((aux9 AND NOT(opcode(2))) OR 
+ctrl_ppal_nextstate(1)) AND NOT(ctrl_ppal_nextstate(2)) AND NOT(
+ctrl_ppal_nextstate(3)) AND ctrl_ppal_nextstate(0)) OR ((aux12 OR 
+ctrl_ppal_nextstate(2)) AND ctrl_ppal_nextstate(1) AND NOT(
+ctrl_ppal_nextstate(3)) AND NOT(ctrl_ppal_nextstate(0)))) AND NOT(reset
+));
+  END BLOCK label2;
+  label3 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_nextstate (3) <= GUARDED (((aux9 AND opcode(2)) OR (aux7 AND (opcode(3) 
+XOR opcode(1)) AND NOT(opcode(2))) OR 
+ctrl_ppal_nextstate(3)) AND aux13 AND ctrl_ppal_nextstate(0) AND NOT(
+reset));
+  END BLOCK label3;
+  label4 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_0 <= GUARDED ((ctrl_ppal_rtlalc_0 AND reset) OR (((NOT(aux16) 
+AND ctrl_ppal_rtlalc_0 AND ctrl_ppal_nextstate(0)) 
+OR (((NOT(aux15) AND ctrl_ppal_rtlalc_0) OR NOT(
+ctrl_ppal_nextstate(3))) AND (aux14 OR ctrl_ppal_rtlalc_0) AND NOT(
+ctrl_ppal_nextstate(0)))) AND NOT(reset)));
+  END BLOCK label4;
+  label5 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_1 <= GUARDED ((ctrl_ppal_rtlalc_1 AND reset) OR (((aux16 AND 
+ctrl_ppal_nextstate(0)) OR ctrl_ppal_rtlalc_1) AND ((NOT(aux15) AND 
+ctrl_ppal_nextstate(3)) OR NOT(aux32)) AND NOT(reset)));
+  END BLOCK label5;
+  label6 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_2 <= GUARDED ((aux20 OR ctrl_ppal_rtlalc_2) AND NOT(aux19) AND
+ NOT(reset));
+  END BLOCK label6;
+  label7 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_3 <= GUARDED (((ctrl_ppal_rtlalc_3 AND ctrl_ppal_nextstate(2))
+ OR aux15 OR ctrl_ppal_nextstate(3) OR 
+ctrl_ppal_nextstate(0)) AND (ctrl_ppal_rtlalc_3 OR (aux14 AND NOT(
+ctrl_ppal_nextstate(3)))) AND NOT(reset));
+  END BLOCK label7;
+  label8 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_4 <= GUARDED ((((ctrl_ppal_rtlalc_4 OR aux16) AND 
+ctrl_ppal_nextstate(0)) OR ((((ctrl_ppal_rtlalc_4 OR aux15) AND 
+ctrl_ppal_nextstate(3)) OR (NOT(aux13) AND (ctrl_ppal_rtlalc_4 OR NOT(
+ctrl_ppal_nextstate(1))) AND NOT(ctrl_ppal_nextstate(3)))) AND NOT(
+ctrl_ppal_nextstate(0)))) AND NOT(reset));
+  END BLOCK label8;
+  label9 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_5 <= GUARDED (((aux18 AND ctrl_ppal_rtlalc_5) OR NOT(aux22)) 
+AND NOT(reset));
+  END BLOCK label9;
+  label10 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_6 <= GUARDED ((aux18 OR NOT(ctrl_ppal_nextstate(0))) AND (
+ctrl_ppal_rtlalc_6 OR NOT(aux18)) AND NOT(reset));
+  END BLOCK label10;
+  label11 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_7 <= GUARDED ((ctrl_ppal_rtlalc_7 AND reset) OR (((
+ctrl_ppal_rtlalc_7 AND ctrl_ppal_nextstate(1)) OR 
+ctrl_ppal_nextstate(2) OR ctrl_ppal_nextstate(0)) AND (
+ctrl_ppal_rtlalc_7 OR aux21) AND NOT(reset)));
+  END BLOCK label11;
+  label12 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_8 <= GUARDED ((ctrl_ppal_rtlalc_8 AND reset) OR ((aux20 OR 
+ctrl_ppal_rtlalc_8) AND aux22 AND NOT(reset)));
+  END BLOCK label12;
+  label13 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_9 <= GUARDED ((ctrl_ppal_rtlalc_9 AND reset) OR (((
+ctrl_ppal_rtlalc_9 AND NOT(aux13) AND aux23) OR ((
+ctrl_ppal_rtlalc_9 OR ctrl_ppal_nextstate(1)) AND 
+ctrl_ppal_nextstate(2) AND NOT(aux23))) AND NOT(reset)));
+  END BLOCK label13;
+  label14 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_10 <= GUARDED ((ctrl_ppal_rtlalc_10 AND reset) OR ((NOT(aux24) 
+OR ctrl_ppal_rtlalc_10) AND ((NOT(aux13) AND 
+ctrl_ppal_nextstate(0)) OR aux32) AND NOT(reset)));
+  END BLOCK label14;
+  label15 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_11 <= GUARDED ((ctrl_ppal_rtlalc_11 AND reset) OR ((aux31 OR 
+aux27 OR ctrl_ppal_rtlalc_11) AND ((
+ctrl_ppal_nextstate(1) AND ctrl_ppal_nextstate(3)) OR aux25 OR 
+ctrl_ppal_nextstate(0)) AND NOT(reset)));
+  END BLOCK label15;
+  label16 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_12 <= GUARDED ((ctrl_ppal_rtlalc_12 AND reset) OR ((aux13 OR 
+ctrl_ppal_rtlalc_12) AND NOT(aux27) AND aux24 AND NOT(reset)));
+  END BLOCK label16;
+  label17 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_13 <= GUARDED ((ctrl_ppal_rtlalc_13 AND reset) OR ((aux27 OR (
+aux18 AND (ctrl_ppal_rtlalc_13 OR aux13))) AND NOT(
+reset)));
+  END BLOCK label17;
+  label18 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_14 <= GUARDED ((ctrl_ppal_rtlalc_14 AND reset) OR (((
+ctrl_ppal_rtlalc_14 AND NOT(aux13)) OR ctrl_ppal_nextstate(3) OR 
+ctrl_ppal_nextstate(0)) AND ((aux25 AND NOT(ctrl_ppal_nextstate(3))) OR
+ ctrl_ppal_rtlalc_14) AND NOT(reset)));
+  END BLOCK label18;
+  label19 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_15 (0) <= GUARDED (ctrl_ppal_nextstate(0) OR reset);
+  END BLOCK label19;
+  label20 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_15 (1) <= GUARDED (ctrl_ppal_nextstate(1) OR reset);
+  END BLOCK label20;
+  label21 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_15 (2) <= GUARDED (ctrl_ppal_nextstate(2) OR reset);
+  END BLOCK label21;
+  label22 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_15 (3) <= GUARDED aux30;
+  END BLOCK label22;
+
+alucontrol (0) <= (((func(5) AND func(2) AND NOT(func(3)) AND 
+ctrl_ppal_rtlalc_9 AND NOT(func(1)) AND func(0)) OR (aux0 AND 
+func(3) AND ctrl_ppal_rtlalc_9 AND func(1) AND NOT(
+func(0)))) AND aux28);
+
+alucontrol (1) <= ((aux0 AND (NOT(func(3)) OR func(1)) AND aux29) 
+OR NOT(ctrl_ppal_rtlalc_9));
+
+alucontrol (2) <= ((NOT(ctrl_ppal_rtlalc_9) AND ctrl_ppal_rtlalc_10
+) OR (aux0 AND ctrl_ppal_rtlalc_9 AND func(1) AND 
+aux29));
+
+memtoreg <= ctrl_ppal_rtlalc_0;
+
+regdst <= ctrl_ppal_rtlalc_1;
+
+iord <= ctrl_ppal_rtlalc_14;
+
+pcsrc (0) <= ctrl_ppal_rtlalc_8;
+
+pcsrc (1) <= ctrl_ppal_rtlalc_7;
+
+alusrcb (0) <= ctrl_ppal_rtlalc_12;
+
+alusrcb (1) <= ctrl_ppal_rtlalc_11;
+
+alusrca <= ctrl_ppal_rtlalc_13;
+
+irwrite <= ctrl_ppal_rtlalc_6;
+
+memwrite <= ctrl_ppal_rtlalc_3;
+
+pcwrite <= ctrl_ppal_rtlalc_5;
+
+branch <= ctrl_ppal_rtlalc_2;
+
+regwrite <= ctrl_ppal_rtlalc_4;
+
+state (0) <= ctrl_ppal_rtlalc_15(0);
+
+state (1) <= ctrl_ppal_rtlalc_15(1);
+
+state (2) <= ctrl_ppal_rtlalc_15(2);
+
+state (3) <= ctrl_ppal_rtlalc_15(3);
+END;

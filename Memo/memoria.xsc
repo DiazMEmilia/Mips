@@ -1,0 +1,303 @@
+N:a2_x2_2_sig:-1:360 ps
+N:a2_x2_3_sig:-1:612 ps
+N:a2_x2_4_sig:-1:344 ps
+N:a2_x2_sig:-1:612 ps
+N:adr 0:-1:0 ps
+N:adr 1:-1:0 ps
+N:adr 2:-1:0 ps
+N:adr 3:-1:0 ps
+N:adr 4:-1:0 ps
+N:adr 5:-1:0 ps
+N:adr 6:-1:0 ps
+N:adr 7:-1:0 ps
+N:adr 8:-1:0 ps
+N:adr 9:-1:0 ps
+N:adr 10:-1:0 ps
+N:adr 11:-1:0 ps
+N:adr 12:-1:0 ps
+N:adr 13:-1:0 ps
+N:adr 14:-1:0 ps
+N:adr 15:-1:0 ps
+N:adr 16:-1:0 ps
+N:adr 17:-1:0 ps
+N:adr 18:-1:0 ps
+N:adr 19:-1:0 ps
+N:adr 20:-1:0 ps
+N:adr 21:-1:0 ps
+N:adr 22:-1:0 ps
+N:adr 23:-1:0 ps
+N:adr 24:-1:0 ps
+N:adr 25:-1:0 ps
+N:adr 26:-1:0 ps
+N:adr 27:-1:0 ps
+N:adr 28:-1:0 ps
+N:adr 29:-1:0 ps
+N:adr 30:-1:0 ps
+N:adr 31:-1:0 ps
+N:aux12:-1:1346 ps
+N:aux13:-1:1395 ps
+N:aux4:-1:925 ps
+N:aux5:-1:1332 ps
+N:aux7:-1:1456 ps
+N:aux9:-1:932 ps
+N:clk:-1:0 ps
+N:na2_x1_2_sig:-1:487 ps
+N:na2_x1_3_sig:-1:212 ps
+N:na2_x1_4_sig:-1:533 ps
+N:na2_x1_5_sig:-1:487 ps
+N:na2_x1_6_sig:-1:212 ps
+N:na2_x1_sig:-1:487 ps
+N:no2_x1_2_sig:-1:542 ps
+N:no2_x1_3_sig:-1:493 ps
+N:no2_x1_4_sig:-1:887 ps
+N:no2_x1_sig:-1:250 ps
+N:no3_x1_2_sig:-1:949 ps
+N:no3_x1_sig:-1:949 ps
+N:not_adr 2:-1:200 ps
+N:not_adr 3:-1:275 ps
+N:not_adr 4:-1:291 ps
+N:not_aux1:-1:683 ps
+N:not_aux12:-1:1176 ps
+N:not_aux4:-1:1114 ps
+N:not_aux9:-1:1022 ps
+N:nxr2_x1_2_sig:-1:381 ps
+N:nxr2_x1_3_sig:-1:381 ps
+N:nxr2_x1_sig:-1:730 ps
+N:on12_x1_sig:-1:1025 ps
+N:rd 0:-1:912 ps
+N:rd 1:-1:907 ps
+N:rd 2:-1:1081 ps
+N:rd 3:-1:1732 ps
+N:rd 4:-1:1856 ps
+N:rd 5:-1:912 ps
+N:rd 6:-1:1856 ps
+N:rd 7:-1:1732 ps
+N:rd 8:-1:1856 ps
+N:rd 9:-1:1856 ps
+N:rd 10:-1:1856 ps
+N:rd 11:-1:1332 ps
+N:rd 12:-1:1332 ps
+N:rd 13:-1:1856 ps
+N:rd 14:-1:1856 ps
+N:rd 15:-1:1856 ps
+N:rd 16:-1:860 ps
+N:rd 17:-1:1830 ps
+N:rd 18:-1:1252 ps
+N:rd 19:-1:0 ps
+N:rd 20:-1:0 ps
+N:rd 21:-1:1819 ps
+N:rd 22:-1:1202 ps
+N:rd 23:-1:1291 ps
+N:rd 24:-1:0 ps
+N:rd 25:-1:0 ps
+N:rd 26:-1:1795 ps
+N:rd 27:-1:860 ps
+N:rd 28:-1:1353 ps
+N:rd 29:-1:1398 ps
+N:rd 30:-1:0 ps
+N:rd 31:-1:1795 ps
+N:wd 0:-1:0 ps
+N:wd 1:-1:0 ps
+N:wd 2:-1:0 ps
+N:wd 3:-1:0 ps
+N:wd 4:-1:0 ps
+N:wd 5:-1:0 ps
+N:wd 6:-1:0 ps
+N:wd 7:-1:0 ps
+N:wd 8:-1:0 ps
+N:wd 9:-1:0 ps
+N:wd 10:-1:0 ps
+N:wd 11:-1:0 ps
+N:wd 12:-1:0 ps
+N:wd 13:-1:0 ps
+N:wd 14:-1:0 ps
+N:wd 15:-1:0 ps
+N:wd 16:-1:0 ps
+N:wd 17:-1:0 ps
+N:wd 18:-1:0 ps
+N:wd 19:-1:0 ps
+N:wd 20:-1:0 ps
+N:wd 21:-1:0 ps
+N:wd 22:-1:0 ps
+N:wd 23:-1:0 ps
+N:wd 24:-1:0 ps
+N:wd 25:-1:0 ps
+N:wd 26:-1:0 ps
+N:wd 27:-1:0 ps
+N:wd 28:-1:0 ps
+N:wd 29:-1:0 ps
+N:wd 30:-1:0 ps
+N:wd 31:-1:0 ps
+N:we:-1:0 ps
+N:xr2_x1_2_sig:-1:394 ps
+N:xr2_x1_sig:-1:904 ps
+B:rd_31_ins:-1:1795 ps
+B:rd_30_ins:-1:-1 ps
+B:rd_29_ins:-1:1398 ps
+B:no3_x1_2_ins:-1:949 ps
+B:a2_x2_4_ins:-1:344 ps
+B:rd_28_ins:-1:1353 ps
+B:rd_27_ins:-1:860 ps
+B:na2_x1_6_ins:-1:212 ps
+B:rd_26_ins:-1:1795 ps
+B:rd_25_ins:-1:-1 ps
+B:rd_24_ins:-1:-1 ps
+B:rd_23_ins:-1:1291 ps
+B:nxr2_x1_3_ins:-1:381 ps
+B:rd_22_ins:-1:1202 ps
+B:on12_x1_ins:-1:1025 ps
+B:a2_x2_3_ins:-1:612 ps
+B:rd_21_ins:-1:1819 ps
+B:rd_20_ins:-1:-1 ps
+B:rd_19_ins:-1:-1 ps
+B:rd_18_ins:-1:1252 ps
+B:no3_x1_ins:-1:949 ps
+B:nxr2_x1_2_ins:-1:381 ps
+B:rd_17_ins:-1:1830 ps
+B:no2_x1_4_ins:-1:887 ps
+B:na2_x1_5_ins:-1:487 ps
+B:rd_16_ins:-1:860 ps
+B:xr2_x1_2_ins:-1:394 ps
+B:rd_15_ins:-1:1856 ps
+B:rd_14_ins:-1:1856 ps
+B:rd_13_ins:-1:1856 ps
+B:rd_12_ins:-1:1332 ps
+B:rd_11_ins:-1:1332 ps
+B:rd_10_ins:-1:1856 ps
+B:rd_9_ins:-1:1856 ps
+B:rd_8_ins:-1:1856 ps
+B:rd_7_ins:-1:1732 ps
+B:rd_6_ins:-1:1856 ps
+B:rd_5_ins:-1:912 ps
+B:no2_x1_3_ins:-1:493 ps
+B:rd_4_ins:32:1856 ps
+B:rd_3_ins:-1:1732 ps
+B:rd_2_ins:-1:1081 ps
+B:xr2_x1_ins:-1:904 ps
+B:na2_x1_4_ins:-1:533 ps
+B:rd_1_ins:-1:907 ps
+B:nxr2_x1_ins:-1:730 ps
+B:a2_x2_2_ins:-1:360 ps
+B:rd_0_ins:-1:912 ps
+B:no2_x1_2_ins:-1:542 ps
+B:na2_x1_3_ins:-1:212 ps
+B:no2_x1_ins:-1:250 ps
+B:aux4_ins:-1:925 ps
+B:aux5_ins:-1:1332 ps
+B:aux7_ins:32:1456 ps
+B:na2_x1_2_ins:-1:487 ps
+B:aux9_ins:-1:932 ps
+B:na2_x1_ins:-1:487 ps
+B:aux12_ins:-1:1346 ps
+B:aux13_ins:-1:1395 ps
+B:not_adr_2_ins:-1:200 ps
+B:not_adr_3_ins:-1:275 ps
+B:not_adr_4_ins:-1:291 ps
+B:not_aux1_ins:32:683 ps
+B:not_aux4_ins:32:1114 ps
+B:not_aux9_ins:-1:1022 ps
+B:a2_x2_ins:-1:612 ps
+B:not_aux12_ins:-1:1176 ps
+C:rd 0:-1:912 ps
+C:rd 1:-1:907 ps
+C:rd 2:-1:1081 ps
+C:rd 3:-1:1732 ps
+C:rd 4:32:1856 ps
+C:rd 5:-1:912 ps
+C:rd 6:-1:1856 ps
+C:rd 7:-1:1732 ps
+C:rd 8:-1:1856 ps
+C:rd 9:-1:1856 ps
+C:rd 10:-1:1856 ps
+C:rd 11:-1:1332 ps
+C:rd 12:-1:1332 ps
+C:rd 13:-1:1856 ps
+C:rd 14:-1:1856 ps
+C:rd 15:-1:1856 ps
+C:rd 16:-1:860 ps
+C:rd 17:-1:1830 ps
+C:rd 18:-1:1252 ps
+C:rd 19:-1:0 ps
+C:rd 20:-1:0 ps
+C:rd 21:-1:1819 ps
+C:rd 22:-1:1202 ps
+C:rd 23:-1:1291 ps
+C:rd 24:-1:0 ps
+C:rd 25:-1:0 ps
+C:rd 26:-1:1795 ps
+C:rd 27:-1:860 ps
+C:rd 28:-1:1353 ps
+C:rd 29:-1:1398 ps
+C:rd 30:-1:0 ps
+C:rd 31:-1:1795 ps
+C:wd 0:-1:0 ps
+C:wd 1:-1:0 ps
+C:wd 2:-1:0 ps
+C:wd 3:-1:0 ps
+C:wd 4:-1:0 ps
+C:wd 5:-1:0 ps
+C:wd 6:-1:0 ps
+C:wd 7:-1:0 ps
+C:wd 8:-1:0 ps
+C:wd 9:-1:0 ps
+C:wd 10:-1:0 ps
+C:wd 11:-1:0 ps
+C:wd 12:-1:0 ps
+C:wd 13:-1:0 ps
+C:wd 14:-1:0 ps
+C:wd 15:-1:0 ps
+C:wd 16:-1:0 ps
+C:wd 17:-1:0 ps
+C:wd 18:-1:0 ps
+C:wd 19:-1:0 ps
+C:wd 20:-1:0 ps
+C:wd 21:-1:0 ps
+C:wd 22:-1:0 ps
+C:wd 23:-1:0 ps
+C:wd 24:-1:0 ps
+C:wd 25:-1:0 ps
+C:wd 26:-1:0 ps
+C:wd 27:-1:0 ps
+C:wd 28:-1:0 ps
+C:wd 29:-1:0 ps
+C:wd 30:-1:0 ps
+C:wd 31:-1:0 ps
+C:adr 0:-1:0 ps
+C:adr 1:-1:0 ps
+C:adr 2:-1:0 ps
+C:adr 3:-1:0 ps
+C:adr 4:-1:0 ps
+C:adr 5:32:0 ps
+C:adr 6:-1:0 ps
+C:adr 7:-1:0 ps
+C:adr 8:-1:0 ps
+C:adr 9:-1:0 ps
+C:adr 10:-1:0 ps
+C:adr 11:-1:0 ps
+C:adr 12:-1:0 ps
+C:adr 13:-1:0 ps
+C:adr 14:-1:0 ps
+C:adr 15:-1:0 ps
+C:adr 16:-1:0 ps
+C:adr 17:-1:0 ps
+C:adr 18:-1:0 ps
+C:adr 19:-1:0 ps
+C:adr 20:-1:0 ps
+C:adr 21:-1:0 ps
+C:adr 22:-1:0 ps
+C:adr 23:-1:0 ps
+C:adr 24:-1:0 ps
+C:adr 25:-1:0 ps
+C:adr 26:-1:0 ps
+C:adr 27:-1:0 ps
+C:adr 28:-1:0 ps
+C:adr 29:-1:0 ps
+C:adr 30:-1:0 ps
+C:adr 31:-1:0 ps
+C:we:-1:0 ps
+C:clk:-1:0 ps
+P:adr 5:adr 5:not_aux1_ins:32:1176 ps
+P:not_aux1_ins:not_aux1:not_aux4_ins:32:1176 ps
+P:not_aux4_ins:not_aux4:aux7_ins:32:1176 ps
+P:aux7_ins:aux7:rd_4_ins:32:1176 ps
+P:rd_4_ins:rd 4:rd 4:32:1176 ps

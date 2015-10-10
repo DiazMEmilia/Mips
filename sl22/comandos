@@ -1,0 +1,4 @@
+vasy -Vaop -I vhd sl22
+boom -l 3 -d 0 sl22 sl22_boom
+boog sl22_boom sl22_boog -x 0 -m 4
+loon sl22_boog sl22 -x 0 -m 4

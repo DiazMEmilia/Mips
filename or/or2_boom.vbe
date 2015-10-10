@@ -1,0 +1,25 @@
+-- VHDL data flow description generated from `or2_boom`
+--		date : Wed Sep 16 18:08:51 2015
+
+
+-- Entity Declaration
+
+ENTITY or2_boom IS
+  PORT (
+  i0 : in BIT;	-- i0
+  i1 : in BIT;	-- i1
+  q : out BIT;	-- q
+  vdd : in BIT;	-- vdd
+  vss : in BIT	-- vss
+  );
+END or2_boom;
+
+
+-- Architecture Declaration
+
+ARCHITECTURE behaviour_data_flow OF or2_boom IS
+
+BEGIN
+
+q <= (i1 OR i0);
+END;

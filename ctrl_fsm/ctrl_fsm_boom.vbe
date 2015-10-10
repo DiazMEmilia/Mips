@@ -1,0 +1,278 @@
+-- VHDL data flow description generated from `ctrl_fsm_boom`
+--		date : Thu Oct  1 09:17:27 2015
+
+
+-- Entity Declaration
+
+ENTITY ctrl_fsm_boom IS
+  PORT (
+  clk : in BIT;	-- clk
+  reset : in BIT;	-- reset
+  opcode : in bit_vector(5 DOWNTO 0) ;	-- opcode
+  iord : out BIT;	-- iord
+  irwrite : out BIT;	-- irwrite
+  regdst : out BIT;	-- regdst
+  memtoreg : out BIT;	-- memtoreg
+  regwrite : out BIT;	-- regwrite
+  alusrca : out BIT;	-- alusrca
+  alusrcb : out bit_vector(1 DOWNTO 0) ;	-- alusrcb
+  aluop : out bit_vector(1 DOWNTO 0) ;	-- aluop
+  pcsrc : out bit_vector(1 DOWNTO 0) ;	-- pcsrc
+  pcwrite : out BIT;	-- pcwrite
+  branch : out BIT;	-- branch
+  memwrite : out BIT;	-- memwrite
+  state : out bit_vector(3 DOWNTO 0) ;	-- state
+  vdd : in BIT;	-- vdd
+  vss : in BIT	-- vss
+  );
+END ctrl_fsm_boom;
+
+
+-- Architecture Declaration
+
+ARCHITECTURE behaviour_data_flow OF ctrl_fsm_boom IS
+  SIGNAL rtlalc_15 : REG_VECTOR(3 DOWNTO 0) REGISTER;	-- rtlalc_15
+  SIGNAL rtlalc_14 : REG_BIT REGISTER;	-- rtlalc_14
+  SIGNAL rtlalc_13 : REG_BIT REGISTER;	-- rtlalc_13
+  SIGNAL rtlalc_12 : REG_BIT REGISTER;	-- rtlalc_12
+  SIGNAL rtlalc_11 : REG_BIT REGISTER;	-- rtlalc_11
+  SIGNAL rtlalc_10 : REG_BIT REGISTER;	-- rtlalc_10
+  SIGNAL rtlalc_9 : REG_BIT REGISTER;	-- rtlalc_9
+  SIGNAL rtlalc_8 : REG_BIT REGISTER;	-- rtlalc_8
+  SIGNAL rtlalc_7 : REG_BIT REGISTER;	-- rtlalc_7
+  SIGNAL rtlalc_6 : REG_BIT REGISTER;	-- rtlalc_6
+  SIGNAL rtlalc_5 : REG_BIT REGISTER;	-- rtlalc_5
+  SIGNAL rtlalc_4 : REG_BIT REGISTER;	-- rtlalc_4
+  SIGNAL rtlalc_3 : REG_BIT REGISTER;	-- rtlalc_3
+  SIGNAL rtlalc_2 : REG_BIT REGISTER;	-- rtlalc_2
+  SIGNAL rtlalc_1 : REG_BIT REGISTER;	-- rtlalc_1
+  SIGNAL rtlalc_0 : REG_BIT REGISTER;	-- rtlalc_0
+  SIGNAL nextstate : REG_VECTOR(3 DOWNTO 0) REGISTER;	-- nextstate
+  SIGNAL aux3 : BIT;		-- aux3
+  SIGNAL aux4 : BIT;		-- aux4
+  SIGNAL aux5 : BIT;		-- aux5
+  SIGNAL aux6 : BIT;		-- aux6
+  SIGNAL aux7 : BIT;		-- aux7
+  SIGNAL aux9 : BIT;		-- aux9
+  SIGNAL aux10 : BIT;		-- aux10
+  SIGNAL aux11 : BIT;		-- aux11
+  SIGNAL aux12 : BIT;		-- aux12
+  SIGNAL aux13 : BIT;		-- aux13
+  SIGNAL aux14 : BIT;		-- aux14
+  SIGNAL aux15 : BIT;		-- aux15
+  SIGNAL aux16 : BIT;		-- aux16
+  SIGNAL aux17 : BIT;		-- aux17
+  SIGNAL aux18 : BIT;		-- aux18
+  SIGNAL aux19 : BIT;		-- aux19
+  SIGNAL aux20 : BIT;		-- aux20
+  SIGNAL aux21 : BIT;		-- aux21
+  SIGNAL aux22 : BIT;		-- aux22
+  SIGNAL aux23 : BIT;		-- aux23
+  SIGNAL aux24 : BIT;		-- aux24
+  SIGNAL aux25 : BIT;		-- aux25
+  SIGNAL aux27 : BIT;		-- aux27
+  SIGNAL aux28 : BIT;		-- aux28
+  SIGNAL aux29 : BIT;		-- aux29
+
+BEGIN
+  aux29 <= (NOT(nextstate(1)) AND nextstate(2));
+  aux28 <= NOT(nextstate(1) OR nextstate(2));
+  aux27 <= (NOT(opcode(4)) AND (NOT(opcode(0)) AND NOT(
+opcode(5))));
+  aux25 <= (NOT(nextstate(3)) AND NOT(nextstate(2)));
+  aux24 <= NOT(NOT(aux23) OR nextstate(2));
+  aux23 <= NOT(aux4 AND nextstate(1));
+  aux22 <= NOT(NOT(nextstate(2)) AND NOT(reset));
+  aux21 <= NOT(aux10 AND NOT(nextstate(2)));
+  aux20 <= (nextstate(0) AND nextstate(3));
+  aux19 <= (nextstate(0) AND aux10);
+  aux18 <= NOT(NOT(aux17) AND NOT(nextstate(2)));
+  aux17 <= NOT(NOT(nextstate(0)) AND NOT(nextstate(1)));
+  aux16 <= NOT(aux13 OR nextstate(2));
+  aux15 <= (aux14 AND nextstate(1));
+  aux14 <= (nextstate(0) AND NOT(nextstate(3)));
+  aux13 <= (aux4 OR nextstate(1));
+  aux12 <= NOT(NOT(aux11) OR NOT(nextstate(1)));
+  aux11 <= NOT(nextstate(0) OR NOT(nextstate(3)));
+  aux10 <= (NOT(nextstate(3)) AND NOT(nextstate(1)));
+  aux9 <= NOT((NOT(opcode(3)) OR NOT(aux3)) AND NOT(
+nextstate(0)));
+  aux7 <= (NOT(opcode(3)) AND NOT(opcode(2)));
+  aux6 <= (aux5 AND nextstate(2));
+  aux5 <= (NOT(aux4) AND nextstate(1));
+  aux4 <= NOT(NOT(nextstate(0)) AND NOT(nextstate(3)));
+  aux3 <= ((((NOT(opcode(2)) AND opcode(1)) AND NOT(
+opcode(4))) AND opcode(0)) AND opcode(5));
+  label0 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    nextstate (0) <= GUARDED ((aux6 OR ((aux3 OR NOT(nextstate(1))) AND (((NOT
+(nextstate(0)) OR opcode(2) OR NOT(opcode(1)) OR 
+opcode(4) OR NOT(opcode(0))) AND opcode(5)) OR ((opcode(3)
+ OR NOT(nextstate(0)) OR opcode(1) OR opcode(4) OR
+ opcode(0)) AND NOT(opcode(5)))) AND aux25)) AND 
+NOT(reset));
+  END BLOCK label0;
+  label1 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    nextstate (1) <= GUARDED ((aux6 OR (((NOT(aux9) AND NOT(nextstate(3)) AND 
+nextstate(1)) OR ((aux3 OR (aux7 AND aux27) OR nextstate(3)) 
+AND nextstate(0) AND NOT(nextstate(1)))) AND NOT(
+nextstate(2)))) AND NOT(reset));
+  END BLOCK label1;
+  label2 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    nextstate (2) <= GUARDED ((aux6 OR (((aux7 AND NOT(opcode(1)) AND aux27) 
+OR nextstate(1)) AND aux9 AND aux25)) AND NOT(reset
+));
+  END BLOCK label2;
+  label3 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    nextstate (3) <= GUARDED (((((aux7 AND opcode(1)) OR ((opcode(3) XOR 
+opcode(2)) AND NOT(opcode(1)))) AND aux27) OR nextstate(3)
+) AND nextstate(0) AND NOT(nextstate(1)) AND NOT(
+nextstate(2)) AND NOT(reset));
+  END BLOCK label3;
+  label4 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    rtlalc_0 <= GUARDED ((rtlalc_0 AND reset) OR ((((NOT(nextstate(0) XOR
+ nextstate(3)) OR NOT(nextstate(1))) AND rtlalc_0)
+ OR ((aux10 OR rtlalc_0) AND NOT(nextstate(0)) AND
+ nextstate(2)) OR (nextstate(0) AND rtlalc_0 AND 
+NOT(nextstate(2)))) AND NOT(reset)));
+  END BLOCK label4;
+  label5 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    rtlalc_1 <= GUARDED ((rtlalc_1 AND reset) OR ((((aux15 OR rtlalc_1) 
+AND aux13 AND nextstate(2)) OR (NOT(aux12) AND 
+rtlalc_1 AND NOT(nextstate(2)))) AND NOT(reset)));
+  END BLOCK label5;
+  label6 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    rtlalc_2 <= GUARDED ((NOT(aux18) OR rtlalc_2) AND NOT(aux16) AND NOT(
+reset));
+  END BLOCK label6;
+  label7 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    rtlalc_3 <= GUARDED (((nextstate(0) AND rtlalc_3) OR nextstate(3) OR 
+NOT(aux28)) AND (aux19 OR rtlalc_3) AND NOT(reset));
+  END BLOCK label7;
+  label8 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    rtlalc_4 <= GUARDED (((rtlalc_4 AND aux13) OR ((aux15 OR NOT(aux13)) 
+AND nextstate(2)) OR (aux12 AND NOT(nextstate(2)))) 
+AND NOT(reset));
+  END BLOCK label8;
+  label9 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    rtlalc_5 <= GUARDED (((rtlalc_5 AND nextstate(2)) OR ((((rtlalc_5 OR 
+aux20) AND nextstate(1)) OR (((rtlalc_5 AND 
+nextstate(3)) OR NOT(aux4)) AND NOT(nextstate(1)))) AND NOT(
+nextstate(2)))) AND NOT(reset));
+  END BLOCK label9;
+  label10 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    rtlalc_6 <= GUARDED (((rtlalc_6 AND aux21) OR aux16) AND NOT(reset));
+  END BLOCK label10;
+  label11 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    rtlalc_7 <= GUARDED ((rtlalc_7 AND reset) OR (((aux20 AND 
+nextstate(1) AND NOT(nextstate(2))) OR rtlalc_7) AND aux18 
+AND NOT(reset)));
+  END BLOCK label11;
+  label12 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    rtlalc_8 <= GUARDED ((rtlalc_8 AND aux22) OR (((NOT(aux20) AND 
+rtlalc_8 AND nextstate(1)) OR (aux4 AND (NOT(nextstate(0)
+) OR rtlalc_8) AND NOT(nextstate(1)))) AND NOT(
+aux22)));
+  END BLOCK label12;
+  label13 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    rtlalc_9 <= GUARDED ((rtlalc_9 AND reset) OR (NOT(aux24) AND (aux5 OR
+ rtlalc_9) AND NOT(reset)));
+  END BLOCK label13;
+  label14 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    rtlalc_10 <= GUARDED ((rtlalc_10 AND reset) OR (((aux4 AND rtlalc_10 
+AND nextstate(1)) OR (rtlalc_10 AND aux29) OR (aux11
+ AND aux28)) AND NOT(reset)));
+  END BLOCK label14;
+  label15 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    rtlalc_11 <= GUARDED ((rtlalc_11 AND reset) OR ((aux24 OR rtlalc_11) 
+AND ((NOT(aux5) AND nextstate(2)) OR (aux17 AND NOT(
+nextstate(2)))) AND NOT(reset)));
+  END BLOCK label15;
+  label16 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    rtlalc_12 <= GUARDED ((rtlalc_12 AND reset) OR (((aux4 AND rtlalc_12 
+AND nextstate(1)) OR (rtlalc_12 AND aux29) OR NOT(
+aux21)) AND NOT(reset)));
+  END BLOCK label16;
+  label17 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    rtlalc_13 <= GUARDED ((rtlalc_13 AND reset) OR (((NOT(aux29) AND aux23
+) OR rtlalc_13) AND aux21 AND NOT(reset)));
+  END BLOCK label17;
+  label18 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    rtlalc_14 <= GUARDED ((rtlalc_14 AND reset) OR ((((aux19 OR rtlalc_14)
+ AND nextstate(2)) OR (((nextstate(0) AND 
+rtlalc_14) OR nextstate(3) OR nextstate(1)) AND (aux14 OR 
+rtlalc_14) AND NOT(nextstate(2)))) AND NOT(reset)));
+  END BLOCK label18;
+  label19 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    rtlalc_15 (0) <= GUARDED (nextstate(0) OR reset);
+  END BLOCK label19;
+  label20 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    rtlalc_15 (1) <= GUARDED (nextstate(1) OR reset);
+  END BLOCK label20;
+  label21 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    rtlalc_15 (2) <= GUARDED aux22;
+  END BLOCK label21;
+  label22 : BLOCK ((clk AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    rtlalc_15 (3) <= GUARDED (nextstate(3) OR reset);
+  END BLOCK label22;
+
+state (0) <= rtlalc_15(0);
+
+state (1) <= rtlalc_15(1);
+
+state (2) <= rtlalc_15(2);
+
+state (3) <= rtlalc_15(3);
+
+memwrite <= rtlalc_3;
+
+branch <= rtlalc_2;
+
+pcwrite <= rtlalc_5;
+
+pcsrc (0) <= rtlalc_8;
+
+pcsrc (1) <= rtlalc_7;
+
+aluop (0) <= rtlalc_10;
+
+aluop (1) <= rtlalc_9;
+
+alusrcb (0) <= rtlalc_12;
+
+alusrcb (1) <= rtlalc_11;
+
+alusrca <= rtlalc_13;
+
+regwrite <= rtlalc_4;
+
+memtoreg <= rtlalc_0;
+
+regdst <= rtlalc_1;
+
+irwrite <= rtlalc_6;
+
+iord <= rtlalc_14;
+END;

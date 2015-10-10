@@ -1,0 +1,88 @@
+-- VHDL data flow description generated from `mux2_boom`
+--		date : Wed Sep 16 18:05:33 2015
+
+
+-- Entity Declaration
+
+ENTITY mux2_boom IS
+  PORT (
+  d0 : in bit_vector(31 DOWNTO 0) ;	-- d0
+  d1 : in bit_vector(31 DOWNTO 0) ;	-- d1
+  s : in BIT;	-- s
+  y : out bit_vector(31 DOWNTO 0) ;	-- y
+  vdd : in BIT;	-- vdd
+  vss : in BIT	-- vss
+  );
+END mux2_boom;
+
+
+-- Architecture Declaration
+
+ARCHITECTURE behaviour_data_flow OF mux2_boom IS
+
+BEGIN
+
+y (0) <= ((d1(0) AND s) OR (d0(0) AND NOT(s)));
+
+y (1) <= ((d1(1) AND s) OR (d0(1) AND NOT(s)));
+
+y (2) <= ((d1(2) AND s) OR (d0(2) AND NOT(s)));
+
+y (3) <= ((NOT(s) OR d1(3)) AND (d0(3) OR s));
+
+y (4) <= ((NOT(s) OR d1(4)) AND (d0(4) OR s));
+
+y (5) <= ((d1(5) AND s) OR (d0(5) AND NOT(s)));
+
+y (6) <= ((d1(6) AND s) OR (d0(6) AND NOT(s)));
+
+y (7) <= ((NOT(s) OR d1(7)) AND (d0(7) OR s));
+
+y (8) <= ((NOT(s) OR d1(8)) AND (d0(8) OR s));
+
+y (9) <= ((d1(9) AND s) OR (d0(9) AND NOT(s)));
+
+y (10) <= ((NOT(s) OR d1(10)) AND (d0(10) OR s));
+
+y (11) <= ((d1(11) AND s) OR (d0(11) AND NOT(s)));
+
+y (12) <= ((d1(12) AND s) OR (d0(12) AND NOT(s)));
+
+y (13) <= ((NOT(s) OR d1(13)) AND (d0(13) OR s));
+
+y (14) <= ((d1(14) AND s) OR (d0(14) AND NOT(s)));
+
+y (15) <= ((d1(15) AND s) OR (d0(15) AND NOT(s)));
+
+y (16) <= ((d1(16) AND s) OR (d0(16) AND NOT(s)));
+
+y (17) <= ((d1(17) AND s) OR (d0(17) AND NOT(s)));
+
+y (18) <= ((d1(18) AND s) OR (d0(18) AND NOT(s)));
+
+y (19) <= ((d1(19) AND s) OR (d0(19) AND NOT(s)));
+
+y (20) <= ((d1(20) AND s) OR (d0(20) AND NOT(s)));
+
+y (21) <= ((d1(21) AND s) OR (d0(21) AND NOT(s)));
+
+y (22) <= ((d1(22) AND s) OR (d0(22) AND NOT(s)));
+
+y (23) <= ((d1(23) AND s) OR (d0(23) AND NOT(s)));
+
+y (24) <= ((d1(24) AND s) OR (d0(24) AND NOT(s)));
+
+y (25) <= ((d1(25) AND s) OR (d0(25) AND NOT(s)));
+
+y (26) <= ((d1(26) AND s) OR (d0(26) AND NOT(s)));
+
+y (27) <= ((d1(27) AND s) OR (d0(27) AND NOT(s)));
+
+y (28) <= ((d1(28) AND s) OR (d0(28) AND NOT(s)));
+
+y (29) <= ((d1(29) AND s) OR (d0(29) AND NOT(s)));
+
+y (30) <= ((d1(30) AND s) OR (d0(30) AND NOT(s)));
+
+y (31) <= ((d1(31) AND s) OR (d0(31) AND NOT(s)));
+END;

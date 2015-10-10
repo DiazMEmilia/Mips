@@ -1,0 +1,322 @@
+-- VHDL data flow description generated from `datapath_model_boom`
+--		date : Tue Oct  6 09:30:14 2015
+
+
+-- Entity Declaration
+
+ENTITY datapath_model_boom IS
+  PORT (
+  rtl_map_5 : out bit_vector(31 DOWNTO 0) ;	-- rtl_map_5
+  rtl_map_4 : out BIT;	-- rtl_map_4
+  rtl_map_3 : out BIT;	-- rtl_map_3
+  rtl_map_2 : out BIT;	-- rtl_map_2
+  rtl_map_1 : out bit_vector(31 DOWNTO 0) ;	-- rtl_map_1
+  rtl_map_0 : out BIT;	-- rtl_map_0
+  instr : in bit_vector(31 DOWNTO 0) ;	-- instr
+  opb : in bit_vector(31 DOWNTO 0) ;	-- opb
+  pc : in bit_vector(31 DOWNTO 0) ;	-- pc
+  salto : out bit_vector(31 DOWNTO 0) ;	-- salto
+  pcjump : in bit_vector(27 DOWNTO 0) ;	-- pcjump
+  vss : in BIT;	-- vss
+  vdd : in BIT;	-- vdd
+  instrfunc : out bit_vector(5 DOWNTO 0) ;	-- instrfunc
+  instrop : out bit_vector(5 DOWNTO 0) ;	-- instrop
+  writedata : out bit_vector(31 DOWNTO 0) 	-- writedata
+  );
+END datapath_model_boom;
+
+
+-- Architecture Declaration
+
+ARCHITECTURE behaviour_data_flow OF datapath_model_boom IS
+
+BEGIN
+
+writedata (0) <= opb(0);
+
+writedata (1) <= opb(1);
+
+writedata (2) <= opb(2);
+
+writedata (3) <= opb(3);
+
+writedata (4) <= opb(4);
+
+writedata (5) <= opb(5);
+
+writedata (6) <= opb(6);
+
+writedata (7) <= opb(7);
+
+writedata (8) <= opb(8);
+
+writedata (9) <= opb(9);
+
+writedata (10) <= opb(10);
+
+writedata (11) <= opb(11);
+
+writedata (12) <= opb(12);
+
+writedata (13) <= opb(13);
+
+writedata (14) <= opb(14);
+
+writedata (15) <= opb(15);
+
+writedata (16) <= opb(16);
+
+writedata (17) <= opb(17);
+
+writedata (18) <= opb(18);
+
+writedata (19) <= opb(19);
+
+writedata (20) <= opb(20);
+
+writedata (21) <= opb(21);
+
+writedata (22) <= opb(22);
+
+writedata (23) <= opb(23);
+
+writedata (24) <= opb(24);
+
+writedata (25) <= opb(25);
+
+writedata (26) <= opb(26);
+
+writedata (27) <= opb(27);
+
+writedata (28) <= opb(28);
+
+writedata (29) <= opb(29);
+
+writedata (30) <= opb(30);
+
+writedata (31) <= opb(31);
+
+instrop (0) <= instr(26);
+
+instrop (1) <= instr(27);
+
+instrop (2) <= instr(28);
+
+instrop (3) <= instr(29);
+
+instrop (4) <= instr(30);
+
+instrop (5) <= instr(31);
+
+instrfunc (0) <= instr(0);
+
+instrfunc (1) <= instr(1);
+
+instrfunc (2) <= instr(2);
+
+instrfunc (3) <= instr(3);
+
+instrfunc (4) <= instr(4);
+
+instrfunc (5) <= instr(5);
+
+salto (0) <= pcjump(0);
+
+salto (1) <= pcjump(1);
+
+salto (2) <= pcjump(2);
+
+salto (3) <= pcjump(3);
+
+salto (4) <= pcjump(4);
+
+salto (5) <= pcjump(5);
+
+salto (6) <= pcjump(6);
+
+salto (7) <= pcjump(7);
+
+salto (8) <= pcjump(8);
+
+salto (9) <= pcjump(9);
+
+salto (10) <= pcjump(10);
+
+salto (11) <= pcjump(11);
+
+salto (12) <= pcjump(12);
+
+salto (13) <= pcjump(13);
+
+salto (14) <= pcjump(14);
+
+salto (15) <= pcjump(15);
+
+salto (16) <= pcjump(16);
+
+salto (17) <= pcjump(17);
+
+salto (18) <= pcjump(18);
+
+salto (19) <= pcjump(19);
+
+salto (20) <= pcjump(20);
+
+salto (21) <= pcjump(21);
+
+salto (22) <= pcjump(22);
+
+salto (23) <= pcjump(23);
+
+salto (24) <= pcjump(24);
+
+salto (25) <= pcjump(25);
+
+salto (26) <= pcjump(26);
+
+salto (27) <= pcjump(27);
+
+salto (28) <= pc(28);
+
+salto (29) <= pc(29);
+
+salto (30) <= pc(30);
+
+salto (31) <= pc(31);
+
+rtl_map_0 <= '1';
+
+rtl_map_1 (0) <= '0';
+
+rtl_map_1 (1) <= '0';
+
+rtl_map_1 (2) <= '1';
+
+rtl_map_1 (3) <= '0';
+
+rtl_map_1 (4) <= '0';
+
+rtl_map_1 (5) <= '0';
+
+rtl_map_1 (6) <= '0';
+
+rtl_map_1 (7) <= '0';
+
+rtl_map_1 (8) <= '0';
+
+rtl_map_1 (9) <= '0';
+
+rtl_map_1 (10) <= '0';
+
+rtl_map_1 (11) <= '0';
+
+rtl_map_1 (12) <= '0';
+
+rtl_map_1 (13) <= '0';
+
+rtl_map_1 (14) <= '0';
+
+rtl_map_1 (15) <= '0';
+
+rtl_map_1 (16) <= '0';
+
+rtl_map_1 (17) <= '0';
+
+rtl_map_1 (18) <= '0';
+
+rtl_map_1 (19) <= '0';
+
+rtl_map_1 (20) <= '0';
+
+rtl_map_1 (21) <= '0';
+
+rtl_map_1 (22) <= '0';
+
+rtl_map_1 (23) <= '0';
+
+rtl_map_1 (24) <= '0';
+
+rtl_map_1 (25) <= '0';
+
+rtl_map_1 (26) <= '0';
+
+rtl_map_1 (27) <= '0';
+
+rtl_map_1 (28) <= '0';
+
+rtl_map_1 (29) <= '0';
+
+rtl_map_1 (30) <= '0';
+
+rtl_map_1 (31) <= '0';
+
+rtl_map_2 <= '1';
+
+rtl_map_3 <= '1';
+
+rtl_map_4 <= '1';
+
+rtl_map_5 (0) <= '0';
+
+rtl_map_5 (1) <= '0';
+
+rtl_map_5 (2) <= '0';
+
+rtl_map_5 (3) <= '0';
+
+rtl_map_5 (4) <= '0';
+
+rtl_map_5 (5) <= '0';
+
+rtl_map_5 (6) <= '0';
+
+rtl_map_5 (7) <= '0';
+
+rtl_map_5 (8) <= '0';
+
+rtl_map_5 (9) <= '0';
+
+rtl_map_5 (10) <= '0';
+
+rtl_map_5 (11) <= '0';
+
+rtl_map_5 (12) <= '0';
+
+rtl_map_5 (13) <= '0';
+
+rtl_map_5 (14) <= '0';
+
+rtl_map_5 (15) <= '0';
+
+rtl_map_5 (16) <= '0';
+
+rtl_map_5 (17) <= '0';
+
+rtl_map_5 (18) <= '0';
+
+rtl_map_5 (19) <= '0';
+
+rtl_map_5 (20) <= '0';
+
+rtl_map_5 (21) <= '0';
+
+rtl_map_5 (22) <= '0';
+
+rtl_map_5 (23) <= '0';
+
+rtl_map_5 (24) <= '0';
+
+rtl_map_5 (25) <= '0';
+
+rtl_map_5 (26) <= '0';
+
+rtl_map_5 (27) <= '0';
+
+rtl_map_5 (28) <= '0';
+
+rtl_map_5 (29) <= '0';
+
+rtl_map_5 (30) <= '0';
+
+rtl_map_5 (31) <= '0';
+END;

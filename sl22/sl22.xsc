@@ -1,0 +1,138 @@
+N:a 0:-1:0 ps
+N:a 1:-1:0 ps
+N:a 2:-1:0 ps
+N:a 3:-1:0 ps
+N:a 4:-1:0 ps
+N:a 5:-1:0 ps
+N:a 6:-1:0 ps
+N:a 7:-1:0 ps
+N:a 8:-1:0 ps
+N:a 9:-1:0 ps
+N:a 10:-1:0 ps
+N:a 11:-1:0 ps
+N:a 12:-1:0 ps
+N:a 13:-1:0 ps
+N:a 14:-1:0 ps
+N:a 15:-1:0 ps
+N:a 16:-1:0 ps
+N:a 17:-1:0 ps
+N:a 18:-1:0 ps
+N:a 19:-1:0 ps
+N:a 20:-1:0 ps
+N:a 21:-1:0 ps
+N:a 22:-1:0 ps
+N:a 23:-1:0 ps
+N:a 24:-1:0 ps
+N:a 25:-1:0 ps
+N:y 0:-1:0 ps
+N:y 1:-1:0 ps
+N:y 2:-1:369 ps
+N:y 3:-1:369 ps
+N:y 4:-1:369 ps
+N:y 5:-1:369 ps
+N:y 6:-1:369 ps
+N:y 7:-1:369 ps
+N:y 8:-1:369 ps
+N:y 9:-1:369 ps
+N:y 10:-1:369 ps
+N:y 11:-1:369 ps
+N:y 12:-1:369 ps
+N:y 13:-1:369 ps
+N:y 14:-1:369 ps
+N:y 15:-1:369 ps
+N:y 16:-1:369 ps
+N:y 17:-1:369 ps
+N:y 18:-1:369 ps
+N:y 19:-1:369 ps
+N:y 20:-1:369 ps
+N:y 21:-1:369 ps
+N:y 22:-1:369 ps
+N:y 23:-1:369 ps
+N:y 24:-1:369 ps
+N:y 25:-1:369 ps
+N:y 26:-1:369 ps
+N:y 27:-1:369 ps
+B:y_27_ins:-1:369 ps
+B:y_26_ins:-1:369 ps
+B:y_25_ins:-1:369 ps
+B:y_24_ins:-1:369 ps
+B:y_23_ins:-1:369 ps
+B:y_22_ins:-1:369 ps
+B:y_21_ins:-1:369 ps
+B:y_20_ins:-1:369 ps
+B:y_19_ins:-1:369 ps
+B:y_18_ins:-1:369 ps
+B:y_17_ins:-1:369 ps
+B:y_16_ins:-1:369 ps
+B:y_15_ins:-1:369 ps
+B:y_14_ins:-1:369 ps
+B:y_13_ins:-1:369 ps
+B:y_12_ins:-1:369 ps
+B:y_11_ins:-1:369 ps
+B:y_10_ins:-1:369 ps
+B:y_9_ins:-1:369 ps
+B:y_8_ins:-1:369 ps
+B:y_7_ins:-1:369 ps
+B:y_6_ins:-1:369 ps
+B:y_5_ins:-1:369 ps
+B:y_4_ins:-1:369 ps
+B:y_3_ins:-1:369 ps
+B:y_2_ins:32:369 ps
+B:y_1_ins:-1:-1 ps
+B:y_0_ins:-1:-1 ps
+C:y 0:-1:0 ps
+C:y 1:-1:0 ps
+C:y 2:32:369 ps
+C:y 3:-1:369 ps
+C:y 4:-1:369 ps
+C:y 5:-1:369 ps
+C:y 6:-1:369 ps
+C:y 7:-1:369 ps
+C:y 8:-1:369 ps
+C:y 9:-1:369 ps
+C:y 10:-1:369 ps
+C:y 11:-1:369 ps
+C:y 12:-1:369 ps
+C:y 13:-1:369 ps
+C:y 14:-1:369 ps
+C:y 15:-1:369 ps
+C:y 16:-1:369 ps
+C:y 17:-1:369 ps
+C:y 18:-1:369 ps
+C:y 19:-1:369 ps
+C:y 20:-1:369 ps
+C:y 21:-1:369 ps
+C:y 22:-1:369 ps
+C:y 23:-1:369 ps
+C:y 24:-1:369 ps
+C:y 25:-1:369 ps
+C:y 26:-1:369 ps
+C:y 27:-1:369 ps
+C:a 0:32:0 ps
+C:a 1:-1:0 ps
+C:a 2:-1:0 ps
+C:a 3:-1:0 ps
+C:a 4:-1:0 ps
+C:a 5:-1:0 ps
+C:a 6:-1:0 ps
+C:a 7:-1:0 ps
+C:a 8:-1:0 ps
+C:a 9:-1:0 ps
+C:a 10:-1:0 ps
+C:a 11:-1:0 ps
+C:a 12:-1:0 ps
+C:a 13:-1:0 ps
+C:a 14:-1:0 ps
+C:a 15:-1:0 ps
+C:a 16:-1:0 ps
+C:a 17:-1:0 ps
+C:a 18:-1:0 ps
+C:a 19:-1:0 ps
+C:a 20:-1:0 ps
+C:a 21:-1:0 ps
+C:a 22:-1:0 ps
+C:a 23:-1:0 ps
+C:a 24:-1:0 ps
+C:a 25:-1:0 ps
+P:a 0:a 0:y_2_ins:32:-1 ps
+P:y_2_ins:y 2:y 2:32:-1 ps

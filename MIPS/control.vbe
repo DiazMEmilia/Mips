@@ -1,0 +1,580 @@
+-- VHDL data flow description generated from `control`
+--		date : Thu Oct  1 10:26:55 2015
+
+
+-- Entity Declaration
+
+ENTITY control IS
+  PORT (
+  vss : in BIT;	-- vss
+  vdd : in BIT;	-- vdd
+  state : out bit_vector(3 DOWNTO 0) ;	-- state
+  regwrite : out BIT;	-- regwrite
+  branch : out BIT;	-- branch
+  pcwrite : out BIT;	-- pcwrite
+  memwrite : out BIT;	-- memwrite
+  irwrite : out BIT;	-- irwrite
+  alusrca : out BIT;	-- alusrca
+  alusrcb : out bit_vector(1 DOWNTO 0) ;	-- alusrcb
+  pcsrc : out bit_vector(1 DOWNTO 0) ;	-- pcsrc
+  iord : out BIT;	-- iord
+  regdst : out BIT;	-- regdst
+  memtoreg : out BIT;	-- memtoreg
+  alucontrol : out bit_vector(2 DOWNTO 0) ;	-- alucontrol
+  func : in bit_vector(5 DOWNTO 0) ;	-- func
+  opcode : in bit_vector(5 DOWNTO 0) ;	-- opcode
+  reset : in BIT;	-- reset
+  clk : in BIT	-- clk
+  );
+END control;
+
+
+-- Architecture Declaration
+
+ARCHITECTURE behaviour_data_flow OF control IS
+  SIGNAL ctrl_ppal_rtlalc_15 : REG_VECTOR(3 DOWNTO 0) REGISTER;	-- ctrl_ppal_rtlalc_15
+  SIGNAL ctrl_ppal_rtlalc_14 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_14
+  SIGNAL ctrl_ppal_rtlalc_13 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_13
+  SIGNAL ctrl_ppal_rtlalc_12 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_12
+  SIGNAL ctrl_ppal_rtlalc_11 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_11
+  SIGNAL ctrl_ppal_rtlalc_10 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_10
+  SIGNAL ctrl_ppal_rtlalc_9 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_9
+  SIGNAL ctrl_ppal_rtlalc_8 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_8
+  SIGNAL ctrl_ppal_rtlalc_7 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_7
+  SIGNAL ctrl_ppal_rtlalc_6 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_6
+  SIGNAL ctrl_ppal_rtlalc_5 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_5
+  SIGNAL ctrl_ppal_rtlalc_4 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_4
+  SIGNAL ctrl_ppal_rtlalc_3 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_3
+  SIGNAL ctrl_ppal_rtlalc_2 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_2
+  SIGNAL ctrl_ppal_rtlalc_1 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_1
+  SIGNAL ctrl_ppal_rtlalc_0 : REG_BIT REGISTER;	-- ctrl_ppal_rtlalc_0
+  SIGNAL ctrl_ppal_nextstate : REG_VECTOR(3 DOWNTO 0) REGISTER;	-- ctrl_ppal_nextstate
+  SIGNAL ctrl_alu_rtldef_10 : BIT;		-- ctrl_alu_rtldef_10
+  SIGNAL ctrl_alu_rtldef_9 : BIT;		-- ctrl_alu_rtldef_9
+  SIGNAL ctrl_alu_rtldef_8 : BIT;		-- ctrl_alu_rtldef_8
+  SIGNAL ctrl_alu_rtldef_7 : BIT;		-- ctrl_alu_rtldef_7
+  SIGNAL ctrl_alu_rtldef_6 : BIT;		-- ctrl_alu_rtldef_6
+  SIGNAL ctrl_alu_rtldef_5 : BIT;		-- ctrl_alu_rtldef_5
+  SIGNAL ctrl_alu_rtldef_4 : BIT;		-- ctrl_alu_rtldef_4
+  SIGNAL ctrl_alu_rtldef_3 : BIT;		-- ctrl_alu_rtldef_3
+  SIGNAL ctrl_alu_rtldef_2 : BIT;		-- ctrl_alu_rtldef_2
+  SIGNAL ctrl_alu_rtldef_1 : BIT;		-- ctrl_alu_rtldef_1
+  SIGNAL ctrl_alu_rtldef_0 : BIT;		-- ctrl_alu_rtldef_0
+  SIGNAL ctrl_alu_p12_1_def_2 : BIT;		-- ctrl_alu_p12_1_def_2
+  SIGNAL ctrl_alu_p12_1_def_1 : BIT;		-- ctrl_alu_p12_1_def_1
+  SIGNAL ctrl_alu_p12_1_def_0 : BIT;		-- ctrl_alu_p12_1_def_0
+  SIGNAL t_aluop : BIT_VECTOR(1 DOWNTO 0);	-- t_aluop
+  SIGNAL ctrl_ppal_rtldef_1 : BIT;		-- ctrl_ppal_rtldef_1
+  SIGNAL ctrl_ppal_rtldef_0 : BIT;		-- ctrl_ppal_rtldef_0
+  SIGNAL ctrl_ppal_p43_1_def_8 : BIT;		-- ctrl_ppal_p43_1_def_8
+  SIGNAL ctrl_ppal_p43_1_def_7 : BIT;		-- ctrl_ppal_p43_1_def_7
+  SIGNAL ctrl_ppal_p43_1_def_6 : BIT;		-- ctrl_ppal_p43_1_def_6
+  SIGNAL ctrl_ppal_p43_1_def_5 : BIT;		-- ctrl_ppal_p43_1_def_5
+  SIGNAL ctrl_ppal_p43_1_def_1 : BIT;		-- ctrl_ppal_p43_1_def_1
+
+BEGIN
+  ctrl_ppal_p43_1_def_1 <= NOT((reset XOR '1'));
+  ctrl_ppal_p43_1_def_5 <= NOT(((((((opcode(0) XOR '0') OR (opcode(1) XOR 
+'0')) OR (opcode(2) XOR '0')) OR (opcode(3) XOR '0')
+) OR (opcode(4) XOR '0')) OR (opcode(5) XOR '0')));
+  ctrl_ppal_p43_1_def_6 <= NOT(((((((opcode(0) XOR '0') OR (opcode(1) XOR 
+'0')) OR (opcode(2) XOR '1')) OR (opcode(3) XOR '0')
+) OR (opcode(4) XOR '0')) OR (opcode(5) XOR '0')));
+  ctrl_ppal_p43_1_def_7 <= NOT(((((((opcode(0) XOR '0') OR (opcode(1) XOR 
+'0')) OR (opcode(2) XOR '0')) OR (opcode(3) XOR '1')
+) OR (opcode(4) XOR '0')) OR (opcode(5) XOR '0')));
+  ctrl_ppal_p43_1_def_8 <= NOT(((((((opcode(0) XOR '0') OR (opcode(1) XOR 
+'1')) OR (opcode(2) XOR '0')) OR (opcode(3) XOR '0')
+) OR (opcode(4) XOR '0')) OR (opcode(5) XOR '0')));
+  ctrl_ppal_rtldef_0 <= (('0' AND NOT(NOT(ctrl_ppal_p43_1_def_1))) OR (
+'1' AND NOT(ctrl_ppal_p43_1_def_1)));
+  ctrl_ppal_rtldef_1 <= (('0' AND NOT(ctrl_ppal_p43_1_def_1)) OR ('1' AND
+ ctrl_ppal_p43_1_def_1));
+  t_aluop (0) <= ctrl_ppal_rtlalc_10;
+  t_aluop (1) <= ctrl_ppal_rtlalc_9;
+  ctrl_alu_p12_1_def_0 <= NOT(((t_aluop(0) XOR '0') OR (t_aluop(1) XOR '0')
+));
+  ctrl_alu_p12_1_def_1 <= NOT(((t_aluop(0) XOR '1') OR (t_aluop(1) XOR '0')
+));
+  ctrl_alu_p12_1_def_2 <= NOT(((t_aluop(0) XOR '0') OR (t_aluop(1) XOR '1')
+));
+  ctrl_alu_rtldef_0 <= (('0' AND NOT(NOT((((((NOT((((((NOT(func(0)) AND 
+func(1)) AND NOT(func(2))) AND func(3)) AND NOT(func(4))
+) AND func(5))) AND NOT((((((func(0) AND NOT(
+func(1))) AND func(2)) AND NOT(func(3))) AND NOT(func(4)
+)) AND func(5)))) AND NOT((((((NOT(func(0)) AND 
+NOT(func(1))) AND func(2)) AND NOT(func(3))) AND NOT
+(func(4))) AND func(5)))) AND NOT((((((NOT(func(0)
+) AND func(1)) AND NOT(func(2))) AND NOT(func(3)))
+ AND NOT(func(4))) AND func(5)))) AND NOT((((((NOT
+(func(0)) AND NOT(func(1))) AND NOT(func(2))) AND 
+NOT(func(3))) AND NOT(func(4))) AND func(5)))) XOR 
+'1')))) OR ('1' AND NOT((((((NOT((((((NOT(func(0)) 
+AND func(1)) AND NOT(func(2))) AND func(3)) AND NOT(
+func(4))) AND func(5))) AND NOT((((((func(0) AND NOT(
+func(1))) AND func(2)) AND NOT(func(3))) AND NOT(func(4)
+)) AND func(5)))) AND NOT((((((NOT(func(0)) AND 
+NOT(func(1))) AND func(2)) AND NOT(func(3))) AND NOT
+(func(4))) AND func(5)))) AND NOT((((((NOT(func(0)
+) AND func(1)) AND NOT(func(2))) AND NOT(func(3)))
+ AND NOT(func(4))) AND func(5)))) AND NOT((((((NOT
+(func(0)) AND NOT(func(1))) AND NOT(func(2))) AND 
+NOT(func(3))) AND NOT(func(4))) AND func(5)))) XOR 
+'1'))));
+  ctrl_alu_rtldef_1 <= (('0' AND NOT(NOT(((((((NOT(func(0)) AND NOT(
+func(1))) AND NOT(func(2))) AND NOT(func(3))) AND NOT(
+func(4))) AND func(5)) XOR '1')))) OR ('1' AND NOT((((((
+(NOT(func(0)) AND NOT(func(1))) AND NOT(func(2))) 
+AND NOT(func(3))) AND NOT(func(4))) AND func(5)) XOR
+ '1'))));
+  ctrl_alu_rtldef_2 <= (('0' AND NOT(NOT(((((((NOT(func(0)) AND func(1))
+ AND NOT(func(2))) AND NOT(func(3))) AND NOT(
+func(4))) AND func(5)) XOR '1')))) OR ('1' AND NOT((((((
+(NOT(func(0)) AND func(1)) AND NOT(func(2))) AND 
+NOT(func(3))) AND NOT(func(4))) AND func(5)) XOR '1'
+))));
+  ctrl_alu_rtldef_3 <= (('0' AND NOT(NOT(((((((func(0) AND NOT(func(1)))
+ AND func(2)) AND NOT(func(3))) AND NOT(func(4))) 
+AND func(5)) XOR '1')))) OR ('1' AND NOT(((((((
+func(0) AND NOT(func(1))) AND func(2)) AND NOT(func(3)))
+ AND NOT(func(4))) AND func(5)) XOR '1'))));
+  ctrl_alu_rtldef_4 <= (('0' AND NOT(NOT(((((((NOT(func(0)) AND func(1))
+ AND NOT(func(2))) AND func(3)) AND NOT(func(4))) 
+AND func(5)) XOR '1')))) OR ('1' AND NOT(((((((NOT(
+func(0)) AND func(1)) AND NOT(func(2))) AND func(3)) AND
+ NOT(func(4))) AND func(5)) XOR '1'))));
+  ctrl_alu_rtldef_5 <= (('0' AND NOT(NOT(ctrl_alu_p12_1_def_2))) OR ('1'
+ AND NOT(ctrl_alu_p12_1_def_2)));
+  ctrl_alu_rtldef_6 <= (('0' AND NOT(ctrl_alu_p12_1_def_2)) OR ('1' AND 
+ctrl_alu_p12_1_def_2));
+  ctrl_alu_rtldef_7 <= (('0' AND NOT(NOT(ctrl_alu_p12_1_def_1))) OR ('1'
+ AND NOT(ctrl_alu_p12_1_def_1)));
+  ctrl_alu_rtldef_8 <= (('0' AND NOT(ctrl_alu_p12_1_def_1)) OR ('1' AND 
+ctrl_alu_p12_1_def_1));
+  ctrl_alu_rtldef_9 <= (('0' AND NOT(NOT(ctrl_alu_p12_1_def_0))) OR ('1'
+ AND NOT(ctrl_alu_p12_1_def_0)));
+  ctrl_alu_rtldef_10 <= (('0' AND NOT(ctrl_alu_p12_1_def_0)) OR ('1' AND 
+ctrl_alu_p12_1_def_0));
+  label0 : BLOCK ((NOT((clk XOR '1')) AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_nextstate (0) <= GUARDED (NOT(ctrl_ppal_p43_1_def_1) AND ((((((NOT(
+ctrl_ppal_nextstate(1)) AND NOT(ctrl_ppal_nextstate(2))) AND NOT(
+ctrl_ppal_nextstate(3))) AND NOT((NOT(((((((opcode(0) XOR '1') OR (
+opcode(1) XOR '1')) OR (opcode(2) XOR '0')) OR (opcode(3) 
+XOR '0')) OR (opcode(4) XOR '0')) OR (opcode(5) XOR 
+'1'))) OR NOT(((((((opcode(0) XOR '1') OR (opcode(1)
+ XOR '1')) OR (opcode(2) XOR '0')) OR (opcode(3) 
+XOR '1')) OR (opcode(4) XOR '0')) OR (opcode(5) XOR 
+'1')))))) AND NOT(ctrl_ppal_p43_1_def_6)) AND NOT(
+ctrl_ppal_p43_1_def_5)) OR (NOT(ctrl_ppal_nextstate(0)) AND ((
+ctrl_ppal_nextstate(1) AND ((NOT(ctrl_ppal_nextstate(3)) AND (NOT((((((
+(opcode(0) XOR '1') OR (opcode(1) XOR '1')) OR (
+opcode(2) XOR '0')) OR (opcode(3) XOR '0')) OR (opcode(4) 
+XOR '0')) OR (opcode(5) XOR '1'))) OR NOT(((((((
+opcode(0) XOR '1') OR (opcode(1) XOR '1')) OR (opcode(2) 
+XOR '0')) OR (opcode(3) XOR '1')) OR (opcode(4) XOR 
+'0')) OR (opcode(5) XOR '1'))))) OR (
+ctrl_ppal_nextstate(2) AND NOT(ctrl_ppal_nextstate(3))))) OR ((NOT(
+ctrl_ppal_nextstate(1)) AND NOT(ctrl_ppal_nextstate(2))) AND NOT(
+ctrl_ppal_nextstate(3)))))));
+  END BLOCK label0;
+  label1 : BLOCK ((NOT((clk XOR '1')) AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_nextstate (1) <= GUARDED ((((ctrl_ppal_nextstate(1) AND NOT(((NOT(reset) 
+AND ctrl_ppal_nextstate(0)) AND NOT(
+ctrl_ppal_nextstate(2))))) OR ((NOT(ctrl_ppal_nextstate(1)) AND (((
+ctrl_ppal_nextstate(3) OR ((((opcode(0) AND opcode(1)) AND NOT(
+opcode(2))) AND NOT(opcode(4))) AND opcode(5))) OR ((
+ctrl_ppal_p43_1_def_8 AND NOT(ctrl_ppal_p43_1_def_6)) AND NOT(
+ctrl_ppal_p43_1_def_7))) OR ctrl_ppal_p43_1_def_5)) AND ((NOT(reset) 
+AND ctrl_ppal_nextstate(0)) AND NOT(
+ctrl_ppal_nextstate(2))))) AND NOT(((reset OR (ctrl_ppal_nextstate(0) 
+AND ctrl_ppal_nextstate(2))) OR (NOT(
+ctrl_ppal_nextstate(0)) AND (ctrl_ppal_nextstate(3) OR (NOT(
+ctrl_ppal_nextstate(2)) AND (ctrl_ppal_nextstate(3) OR (((((opcode(0) 
+AND opcode(1)) AND opcode(3)) AND NOT(opcode(2))) 
+AND NOT(opcode(4))) AND opcode(5))))))))) OR ('0' 
+AND ((reset OR (ctrl_ppal_nextstate(0) AND 
+ctrl_ppal_nextstate(2))) OR (NOT(ctrl_ppal_nextstate(0)) AND (
+ctrl_ppal_nextstate(3) OR (NOT(ctrl_ppal_nextstate(2)) AND (
+ctrl_ppal_nextstate(3) OR (((((opcode(0) AND opcode(1)) AND opcode(3)) 
+AND NOT(opcode(2))) AND NOT(opcode(4))) AND 
+opcode(5)))))))));
+  END BLOCK label1;
+  label2 : BLOCK ((NOT((clk XOR '1')) AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_nextstate (2) <= GUARDED ((((((ctrl_ppal_nextstate(2) AND NOT(((NOT(reset)
+ AND ctrl_ppal_nextstate(0)) AND ((NOT(
+ctrl_ppal_nextstate(3)) AND ((((NOT(opcode(0)) OR NOT(opcode(1))) OR 
+opcode(2)) OR opcode(4)) OR NOT(opcode(5)))) OR (
+ctrl_ppal_nextstate(1) AND NOT(ctrl_ppal_nextstate(3))))))) OR (((NOT(
+ctrl_ppal_nextstate(2)) AND ctrl_ppal_p43_1_def_5) OR (
+ctrl_ppal_nextstate(1) AND NOT(ctrl_ppal_nextstate(2)))) AND ((NOT(
+reset) AND ctrl_ppal_nextstate(0)) AND ((NOT(
+ctrl_ppal_nextstate(3)) AND ((((NOT(opcode(0)) OR NOT(opcode(1))) OR 
+opcode(2)) OR opcode(4)) OR NOT(opcode(5)))) OR (
+ctrl_ppal_nextstate(1) AND NOT(ctrl_ppal_nextstate(3))))))) AND NOT((((
+reset OR ctrl_ppal_nextstate(3)) OR (NOT(
+ctrl_ppal_nextstate(1)) AND (ctrl_ppal_nextstate(3) OR ((((opcode(0) 
+AND opcode(1)) AND NOT(opcode(2))) AND NOT(opcode(4)
+)) AND opcode(5))))) OR (NOT(
+ctrl_ppal_nextstate(0)) AND (NOT(ctrl_ppal_nextstate(1)) OR 
+ctrl_ppal_nextstate(3)))))) OR ('0' AND (((reset OR 
+ctrl_ppal_nextstate(3)) OR (NOT(ctrl_ppal_nextstate(1)) AND (
+ctrl_ppal_nextstate(3) OR ((((opcode(0) AND opcode(1)) AND NOT(
+opcode(2))) AND NOT(opcode(4))) AND opcode(5))))) OR (NOT(
+ctrl_ppal_nextstate(0)) AND (NOT(ctrl_ppal_nextstate(1)) OR 
+ctrl_ppal_nextstate(3)))))) AND NOT((((((((((NOT(reset) AND NOT(
+ctrl_ppal_nextstate(0))) AND ctrl_ppal_nextstate(1)) AND NOT(
+ctrl_ppal_nextstate(3))) AND opcode(0)) AND opcode(3)) AND opcode(1)) 
+AND NOT(opcode(2))) AND NOT(opcode(4))) AND 
+opcode(5)))) OR ('1' AND (((((((((NOT(reset) AND NOT(
+ctrl_ppal_nextstate(0))) AND ctrl_ppal_nextstate(1)) AND NOT(
+ctrl_ppal_nextstate(3))) AND opcode(0)) AND opcode(3)) AND opcode(1)) 
+AND NOT(opcode(2))) AND NOT(opcode(4))) AND 
+opcode(5))));
+  END BLOCK label2;
+  label3 : BLOCK ((NOT((clk XOR '1')) AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_nextstate (3) <= GUARDED ((((ctrl_ppal_nextstate(3) AND NOT((((reset OR 
+NOT(ctrl_ppal_nextstate(0))) OR 
+ctrl_ppal_nextstate(1)) OR ctrl_ppal_nextstate(2)))) OR ('0' AND (((
+reset OR NOT(ctrl_ppal_nextstate(0))) OR 
+ctrl_ppal_nextstate(1)) OR ctrl_ppal_nextstate(2)))) AND NOT(((((((NOT(
+reset) AND ctrl_ppal_nextstate(0)) AND NOT(
+ctrl_ppal_nextstate(1))) AND NOT(ctrl_ppal_nextstate(2))) AND NOT(((((
+opcode(0) AND opcode(1)) AND NOT(opcode(2))) AND NOT(
+opcode(4))) AND opcode(5)))) AND ((ctrl_ppal_p43_1_def_6 
+OR ctrl_ppal_p43_1_def_8) OR ctrl_ppal_p43_1_def_7)
+) AND NOT(ctrl_ppal_p43_1_def_5)))) OR ('1' AND ((
+((((NOT(reset) AND ctrl_ppal_nextstate(0)) AND NOT
+(ctrl_ppal_nextstate(1))) AND NOT(
+ctrl_ppal_nextstate(2))) AND NOT(((((opcode(0) AND opcode(1)) AND NOT(
+opcode(2))) AND NOT(opcode(4))) AND opcode(5)))) AND ((
+ctrl_ppal_p43_1_def_6 OR ctrl_ppal_p43_1_def_8) OR 
+ctrl_ppal_p43_1_def_7)) AND NOT(ctrl_ppal_p43_1_def_5))));
+  END BLOCK label3;
+  label4 : BLOCK ((NOT((clk XOR '1')) AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_0 <= GUARDED ((((ctrl_ppal_rtlalc_0 AND NOT((NOT(reset) AND ((
+((ctrl_ppal_nextstate(0) AND 
+ctrl_ppal_nextstate(1)) AND ctrl_ppal_nextstate(2)) AND NOT(
+ctrl_ppal_nextstate(3))) OR (((NOT(ctrl_ppal_nextstate(0)) AND 
+ctrl_ppal_nextstate(1)) AND NOT(ctrl_ppal_nextstate(2))) AND 
+ctrl_ppal_nextstate(3)))))) OR ('0' AND (NOT(reset) AND ((((
+ctrl_ppal_nextstate(0) AND ctrl_ppal_nextstate(1)) AND 
+ctrl_ppal_nextstate(2)) AND NOT(ctrl_ppal_nextstate(3))) OR (((NOT(
+ctrl_ppal_nextstate(0)) AND ctrl_ppal_nextstate(1)) AND NOT(
+ctrl_ppal_nextstate(2))) AND ctrl_ppal_nextstate(3)))))) AND NOT(((((
+NOT(reset) AND NOT(ctrl_ppal_nextstate(0))) AND NOT(
+ctrl_ppal_nextstate(1))) AND ctrl_ppal_nextstate(2)) AND NOT(
+ctrl_ppal_nextstate(3))))) OR ('1' AND ((((NOT(reset) AND NOT(
+ctrl_ppal_nextstate(0))) AND NOT(ctrl_ppal_nextstate(1))) AND 
+ctrl_ppal_nextstate(2)) AND NOT(ctrl_ppal_nextstate(3)))));
+  END BLOCK label4;
+  label5 : BLOCK ((NOT((clk XOR '1')) AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_1 <= GUARDED ((((ctrl_ppal_rtlalc_1 AND NOT(((NOT(reset) AND 
+NOT(ctrl_ppal_nextstate(0))) AND (((
+ctrl_ppal_nextstate(1) AND NOT(ctrl_ppal_nextstate(2))) AND 
+ctrl_ppal_nextstate(3)) OR ((NOT(ctrl_ppal_nextstate(1)) AND 
+ctrl_ppal_nextstate(2)) AND NOT(ctrl_ppal_nextstate(3))))))) OR ('0' 
+AND ((NOT(reset) AND NOT(ctrl_ppal_nextstate(0))) 
+AND (((ctrl_ppal_nextstate(1) AND NOT(
+ctrl_ppal_nextstate(2))) AND ctrl_ppal_nextstate(3)) OR ((NOT(
+ctrl_ppal_nextstate(1)) AND ctrl_ppal_nextstate(2)) AND NOT(
+ctrl_ppal_nextstate(3))))))) AND NOT(((((NOT(reset) AND 
+ctrl_ppal_nextstate(0)) AND ctrl_ppal_nextstate(1)) AND 
+ctrl_ppal_nextstate(2)) AND NOT(ctrl_ppal_nextstate(3))))) OR ('1' AND 
+((((NOT(reset) AND ctrl_ppal_nextstate(0)) AND 
+ctrl_ppal_nextstate(1)) AND ctrl_ppal_nextstate(2)) AND NOT(
+ctrl_ppal_nextstate(3)))));
+  END BLOCK label5;
+  label6 : BLOCK ((NOT((clk XOR '1')) AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_2 <= GUARDED ((((ctrl_ppal_rtlalc_2 AND NOT((((NOT(reset) AND 
+NOT(ctrl_ppal_nextstate(0))) AND NOT(
+ctrl_ppal_nextstate(1))) AND NOT(ctrl_ppal_nextstate(2))))) OR (
+ctrl_ppal_nextstate(3) AND (((NOT(reset) AND NOT(ctrl_ppal_nextstate(0)
+)) AND NOT(ctrl_ppal_nextstate(1))) AND NOT(
+ctrl_ppal_nextstate(2))))) AND NOT(reset)) OR ('0' AND reset));
+  END BLOCK label6;
+  label7 : BLOCK ((NOT((clk XOR '1')) AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_3 <= GUARDED ((((ctrl_ppal_rtlalc_3 AND NOT((reset OR (((NOT(
+ctrl_ppal_nextstate(0)) AND NOT(ctrl_ppal_nextstate(1))) AND NOT(
+ctrl_ppal_nextstate(2))) AND NOT(ctrl_ppal_nextstate(3)))))) OR ('0' 
+AND (reset OR (((NOT(ctrl_ppal_nextstate(0)) AND NOT
+(ctrl_ppal_nextstate(1))) AND NOT(
+ctrl_ppal_nextstate(2))) AND NOT(ctrl_ppal_nextstate(3)))))) AND NOT(((
+((NOT(reset) AND ctrl_ppal_nextstate(0)) AND NOT(
+ctrl_ppal_nextstate(1))) AND ctrl_ppal_nextstate(2)) AND NOT(
+ctrl_ppal_nextstate(3))))) OR ('1' AND ((((NOT(reset) AND 
+ctrl_ppal_nextstate(0)) AND NOT(ctrl_ppal_nextstate(1))) AND 
+ctrl_ppal_nextstate(2)) AND NOT(ctrl_ppal_nextstate(3)))));
+  END BLOCK label7;
+  label8 : BLOCK ((NOT((clk XOR '1')) AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_4 <= GUARDED ((((ctrl_ppal_rtlalc_4 AND NOT((reset OR (((NOT(
+ctrl_ppal_nextstate(0)) AND NOT(ctrl_ppal_nextstate(1))) AND NOT(
+ctrl_ppal_nextstate(2))) AND NOT(ctrl_ppal_nextstate(3)))))) OR ('0' 
+AND (reset OR (((NOT(ctrl_ppal_nextstate(0)) AND NOT
+(ctrl_ppal_nextstate(1))) AND NOT(
+ctrl_ppal_nextstate(2))) AND NOT(ctrl_ppal_nextstate(3)))))) AND NOT((
+NOT(reset) AND ((((ctrl_ppal_nextstate(0) AND 
+ctrl_ppal_nextstate(1)) AND ctrl_ppal_nextstate(2)) AND NOT(
+ctrl_ppal_nextstate(3))) OR (NOT(ctrl_ppal_nextstate(0)) AND (((
+ctrl_ppal_nextstate(1) AND NOT(ctrl_ppal_nextstate(2))) AND 
+ctrl_ppal_nextstate(3)) OR ((NOT(ctrl_ppal_nextstate(1)) AND 
+ctrl_ppal_nextstate(2)) AND NOT(ctrl_ppal_nextstate(3))))))))) OR ('1' 
+AND (NOT(reset) AND ((((ctrl_ppal_nextstate(0) AND 
+ctrl_ppal_nextstate(1)) AND ctrl_ppal_nextstate(2)) AND NOT(
+ctrl_ppal_nextstate(3))) OR (NOT(ctrl_ppal_nextstate(0)) AND (((
+ctrl_ppal_nextstate(1) AND NOT(ctrl_ppal_nextstate(2))) AND 
+ctrl_ppal_nextstate(3)) OR ((NOT(ctrl_ppal_nextstate(1)) AND 
+ctrl_ppal_nextstate(2)) AND NOT(ctrl_ppal_nextstate(3)))))))));
+  END BLOCK label8;
+  label9 : BLOCK ((NOT((clk XOR '1')) AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_5 <= GUARDED ((((ctrl_ppal_rtlalc_5 AND NOT((reset OR (((
+ctrl_ppal_nextstate(0) AND NOT(ctrl_ppal_nextstate(1))) AND NOT(
+ctrl_ppal_nextstate(2))) AND NOT(ctrl_ppal_nextstate(3)))))) OR ('0' 
+AND (reset OR (((ctrl_ppal_nextstate(0) AND NOT(
+ctrl_ppal_nextstate(1))) AND NOT(ctrl_ppal_nextstate(2))) AND NOT(
+ctrl_ppal_nextstate(3)))))) AND NOT((NOT(reset) AND ((((
+ctrl_ppal_nextstate(0) AND ctrl_ppal_nextstate(1)) AND NOT(
+ctrl_ppal_nextstate(2))) AND ctrl_ppal_nextstate(3)) OR (((NOT(
+ctrl_ppal_nextstate(0)) AND NOT(ctrl_ppal_nextstate(1))) AND NOT(
+ctrl_ppal_nextstate(2))) AND NOT(ctrl_ppal_nextstate(3))))))) OR ('1' 
+AND (NOT(reset) AND ((((ctrl_ppal_nextstate(0) AND 
+ctrl_ppal_nextstate(1)) AND NOT(ctrl_ppal_nextstate(2))) AND 
+ctrl_ppal_nextstate(3)) OR (((NOT(ctrl_ppal_nextstate(0)) AND NOT(
+ctrl_ppal_nextstate(1))) AND NOT(ctrl_ppal_nextstate(2))) AND NOT(
+ctrl_ppal_nextstate(3)))))));
+  END BLOCK label9;
+  label10 : BLOCK ((NOT((clk XOR '1')) AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_6 <= GUARDED ((((ctrl_ppal_rtlalc_6 AND NOT((((NOT(reset) AND 
+NOT(ctrl_ppal_nextstate(1))) AND NOT(
+ctrl_ppal_nextstate(2))) AND NOT(ctrl_ppal_nextstate(3))))) OR (NOT(
+ctrl_ppal_nextstate(0)) AND (((NOT(reset) AND NOT(
+ctrl_ppal_nextstate(1))) AND NOT(ctrl_ppal_nextstate(2))) AND NOT(
+ctrl_ppal_nextstate(3))))) AND NOT(reset)) OR ('0' AND reset));
+  END BLOCK label10;
+  label11 : BLOCK ((NOT((clk XOR '1')) AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_7 <= GUARDED ((((ctrl_ppal_rtlalc_7 AND NOT((((NOT(reset) AND 
+NOT(ctrl_ppal_nextstate(0))) AND NOT(
+ctrl_ppal_nextstate(1))) AND NOT(ctrl_ppal_nextstate(2))))) OR ('0' AND
+ (((NOT(reset) AND NOT(ctrl_ppal_nextstate(0))) 
+AND NOT(ctrl_ppal_nextstate(1))) AND NOT(
+ctrl_ppal_nextstate(2))))) AND NOT(((((NOT(reset) AND 
+ctrl_ppal_nextstate(0)) AND ctrl_ppal_nextstate(1)) AND NOT(
+ctrl_ppal_nextstate(2))) AND ctrl_ppal_nextstate(3)))) OR ('1' AND ((((
+NOT(reset) AND ctrl_ppal_nextstate(0)) AND 
+ctrl_ppal_nextstate(1)) AND NOT(ctrl_ppal_nextstate(2))) AND 
+ctrl_ppal_nextstate(3))));
+  END BLOCK label11;
+  label12 : BLOCK ((NOT((clk XOR '1')) AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_8 <= GUARDED ((((ctrl_ppal_rtlalc_8 AND NOT((NOT(reset) AND ((
+((ctrl_ppal_nextstate(0) AND 
+ctrl_ppal_nextstate(1)) AND NOT(ctrl_ppal_nextstate(2))) AND 
+ctrl_ppal_nextstate(3)) OR (((NOT(ctrl_ppal_nextstate(0)) AND NOT(
+ctrl_ppal_nextstate(1))) AND NOT(ctrl_ppal_nextstate(2))) AND NOT(
+ctrl_ppal_nextstate(3))))))) OR ('0' AND (NOT(reset) AND ((((
+ctrl_ppal_nextstate(0) AND ctrl_ppal_nextstate(1)) AND NOT(
+ctrl_ppal_nextstate(2))) AND ctrl_ppal_nextstate(3)) OR (((NOT(
+ctrl_ppal_nextstate(0)) AND NOT(ctrl_ppal_nextstate(1))) AND NOT(
+ctrl_ppal_nextstate(2))) AND NOT(ctrl_ppal_nextstate(3))))))) AND NOT((
+(((NOT(reset) AND NOT(ctrl_ppal_nextstate(0))) AND
+ NOT(ctrl_ppal_nextstate(1))) AND NOT(
+ctrl_ppal_nextstate(2))) AND ctrl_ppal_nextstate(3)))) OR ('1' AND ((((
+NOT(reset) AND NOT(ctrl_ppal_nextstate(0))) AND NOT(
+ctrl_ppal_nextstate(1))) AND NOT(ctrl_ppal_nextstate(2))) AND 
+ctrl_ppal_nextstate(3))));
+  END BLOCK label12;
+  label13 : BLOCK ((NOT((clk XOR '1')) AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_9 <= GUARDED ((((ctrl_ppal_rtlalc_9 AND NOT((NOT(reset) AND ((
+NOT(ctrl_ppal_nextstate(1)) AND NOT(
+ctrl_ppal_nextstate(2))) OR (NOT(ctrl_ppal_nextstate(0)) AND ((NOT(
+ctrl_ppal_nextstate(2)) AND NOT(ctrl_ppal_nextstate(3))) OR (NOT(
+ctrl_ppal_nextstate(1)) AND NOT(ctrl_ppal_nextstate(2))))))))) OR ('0' 
+AND (NOT(reset) AND ((NOT(ctrl_ppal_nextstate(1)) 
+AND NOT(ctrl_ppal_nextstate(2))) OR (NOT(
+ctrl_ppal_nextstate(0)) AND ((NOT(ctrl_ppal_nextstate(2)) AND NOT(
+ctrl_ppal_nextstate(3))) OR (NOT(ctrl_ppal_nextstate(1)) AND NOT(
+ctrl_ppal_nextstate(2))))))))) AND NOT(((((NOT(reset) AND NOT(
+ctrl_ppal_nextstate(0))) AND ctrl_ppal_nextstate(1)) AND 
+ctrl_ppal_nextstate(2)) AND NOT(ctrl_ppal_nextstate(3))))) OR ('1' AND 
+((((NOT(reset) AND NOT(ctrl_ppal_nextstate(0))) 
+AND ctrl_ppal_nextstate(1)) AND 
+ctrl_ppal_nextstate(2)) AND NOT(ctrl_ppal_nextstate(3)))));
+  END BLOCK label13;
+  label14 : BLOCK ((NOT((clk XOR '1')) AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_10 <= GUARDED ((((ctrl_ppal_rtlalc_10 AND NOT((NOT(reset) AND (
+((ctrl_ppal_nextstate(0) AND NOT(
+ctrl_ppal_nextstate(1))) AND NOT(ctrl_ppal_nextstate(2))) OR ((NOT(
+ctrl_ppal_nextstate(0)) AND (ctrl_ppal_nextstate(1) OR NOT(
+ctrl_ppal_nextstate(2)))) AND NOT(ctrl_ppal_nextstate(3))))))) OR ('0' 
+AND (NOT(reset) AND (((ctrl_ppal_nextstate(0) AND 
+NOT(ctrl_ppal_nextstate(1))) AND NOT(
+ctrl_ppal_nextstate(2))) OR ((NOT(ctrl_ppal_nextstate(0)) AND (
+ctrl_ppal_nextstate(1) OR NOT(ctrl_ppal_nextstate(2)))) AND NOT(
+ctrl_ppal_nextstate(3))))))) AND NOT(((((NOT(reset) AND NOT(
+ctrl_ppal_nextstate(0))) AND NOT(ctrl_ppal_nextstate(1))) AND NOT(
+ctrl_ppal_nextstate(2))) AND ctrl_ppal_nextstate(3)))) OR ('1' AND ((((
+NOT(reset) AND NOT(ctrl_ppal_nextstate(0))) AND NOT(
+ctrl_ppal_nextstate(1))) AND NOT(ctrl_ppal_nextstate(2))) AND 
+ctrl_ppal_nextstate(3))));
+  END BLOCK label14;
+  label15 : BLOCK ((NOT((clk XOR '1')) AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_11 <= GUARDED ((((ctrl_ppal_rtlalc_11 AND NOT(((NOT(reset) AND 
+NOT(ctrl_ppal_nextstate(0))) AND (((
+ctrl_ppal_nextstate(1) AND ctrl_ppal_nextstate(2)) AND NOT(
+ctrl_ppal_nextstate(3))) OR (NOT(ctrl_ppal_nextstate(1)) AND NOT(
+ctrl_ppal_nextstate(2))))))) OR ('0' AND ((NOT(reset) AND NOT(
+ctrl_ppal_nextstate(0))) AND (((ctrl_ppal_nextstate(1) AND 
+ctrl_ppal_nextstate(2)) AND NOT(ctrl_ppal_nextstate(3))) OR (NOT(
+ctrl_ppal_nextstate(1)) AND NOT(ctrl_ppal_nextstate(2))))))) AND NOT((
+NOT(reset) AND (((ctrl_ppal_nextstate(0) AND NOT(
+ctrl_ppal_nextstate(1))) AND NOT(ctrl_ppal_nextstate(2))) OR (((NOT(
+ctrl_ppal_nextstate(0)) AND ctrl_ppal_nextstate(1)) AND NOT(
+ctrl_ppal_nextstate(2))) AND NOT(ctrl_ppal_nextstate(3))))))) OR ('1' 
+AND (NOT(reset) AND (((ctrl_ppal_nextstate(0) AND 
+NOT(ctrl_ppal_nextstate(1))) AND NOT(
+ctrl_ppal_nextstate(2))) OR (((NOT(ctrl_ppal_nextstate(0)) AND 
+ctrl_ppal_nextstate(1)) AND NOT(ctrl_ppal_nextstate(2))) AND NOT(
+ctrl_ppal_nextstate(3)))))));
+  END BLOCK label15;
+  label16 : BLOCK ((NOT((clk XOR '1')) AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_12 <= GUARDED ((((ctrl_ppal_rtlalc_12 AND NOT((NOT(reset) AND (
+((NOT(ctrl_ppal_nextstate(1)) AND NOT(
+ctrl_ppal_nextstate(2))) AND ctrl_ppal_nextstate(3)) OR (NOT(
+ctrl_ppal_nextstate(0)) AND ((ctrl_ppal_nextstate(1) AND NOT(
+ctrl_ppal_nextstate(3))) OR ((NOT(ctrl_ppal_nextstate(1)) AND NOT(
+ctrl_ppal_nextstate(2))) AND ctrl_ppal_nextstate(3)))))))) OR ('0' AND 
+(NOT(reset) AND (((NOT(ctrl_ppal_nextstate(1)) AND
+ NOT(ctrl_ppal_nextstate(2))) AND 
+ctrl_ppal_nextstate(3)) OR (NOT(ctrl_ppal_nextstate(0)) AND ((
+ctrl_ppal_nextstate(1) AND NOT(ctrl_ppal_nextstate(3))) OR ((NOT(
+ctrl_ppal_nextstate(1)) AND NOT(ctrl_ppal_nextstate(2))) AND 
+ctrl_ppal_nextstate(3)))))))) AND NOT((((NOT(reset) AND NOT(
+ctrl_ppal_nextstate(1))) AND NOT(ctrl_ppal_nextstate(2))) AND NOT(
+ctrl_ppal_nextstate(3))))) OR ('1' AND (((NOT(reset) AND NOT(
+ctrl_ppal_nextstate(1))) AND NOT(ctrl_ppal_nextstate(2))) AND NOT(
+ctrl_ppal_nextstate(3)))));
+  END BLOCK label16;
+  label17 : BLOCK ((NOT((clk XOR '1')) AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_13 <= GUARDED ((((ctrl_ppal_rtlalc_13 AND NOT((((NOT(reset) AND
+ NOT(ctrl_ppal_nextstate(1))) AND NOT(
+ctrl_ppal_nextstate(2))) AND NOT(ctrl_ppal_nextstate(3))))) OR ('0' AND
+ (((NOT(reset) AND NOT(ctrl_ppal_nextstate(1))) 
+AND NOT(ctrl_ppal_nextstate(2))) AND NOT(
+ctrl_ppal_nextstate(3))))) AND NOT((NOT(reset) AND (((NOT(
+ctrl_ppal_nextstate(1)) AND NOT(ctrl_ppal_nextstate(2))) AND 
+ctrl_ppal_nextstate(3)) OR (NOT(ctrl_ppal_nextstate(0)) AND ((
+ctrl_ppal_nextstate(1) AND NOT(ctrl_ppal_nextstate(3))) OR ((NOT(
+ctrl_ppal_nextstate(1)) AND NOT(ctrl_ppal_nextstate(2))) AND 
+ctrl_ppal_nextstate(3)))))))) OR ('1' AND (NOT(reset) AND (((NOT(
+ctrl_ppal_nextstate(1)) AND NOT(ctrl_ppal_nextstate(2))) AND 
+ctrl_ppal_nextstate(3)) OR (NOT(ctrl_ppal_nextstate(0)) AND ((
+ctrl_ppal_nextstate(1) AND NOT(ctrl_ppal_nextstate(3))) OR ((NOT(
+ctrl_ppal_nextstate(1)) AND NOT(ctrl_ppal_nextstate(2))) AND 
+ctrl_ppal_nextstate(3))))))));
+  END BLOCK label17;
+  label18 : BLOCK ((NOT((clk XOR '1')) AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_14 <= GUARDED ((((ctrl_ppal_rtlalc_14 AND NOT(((((NOT(reset) 
+AND NOT(ctrl_ppal_nextstate(0))) AND NOT(
+ctrl_ppal_nextstate(1))) AND NOT(ctrl_ppal_nextstate(2))) AND NOT(
+ctrl_ppal_nextstate(3))))) OR ('0' AND ((((NOT(reset) AND NOT(
+ctrl_ppal_nextstate(0))) AND NOT(ctrl_ppal_nextstate(1))) AND NOT(
+ctrl_ppal_nextstate(2))) AND NOT(ctrl_ppal_nextstate(3))))) AND NOT((((
+NOT(reset) AND ctrl_ppal_nextstate(0)) AND (
+ctrl_ppal_nextstate(2) XOR ctrl_ppal_nextstate(1))) AND NOT(
+ctrl_ppal_nextstate(3))))) OR ('1' AND (((NOT(reset) AND 
+ctrl_ppal_nextstate(0)) AND (ctrl_ppal_nextstate(2) XOR 
+ctrl_ppal_nextstate(1))) AND NOT(ctrl_ppal_nextstate(3)))));
+  END BLOCK label18;
+  label19 : BLOCK ((NOT((clk XOR '1')) AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_15 (0) <= GUARDED ((ctrl_ppal_rtldef_0 AND ctrl_ppal_nextstate(0)) 
+OR ctrl_ppal_rtldef_1);
+  END BLOCK label19;
+  label20 : BLOCK ((NOT((clk XOR '1')) AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_15 (1) <= GUARDED ((ctrl_ppal_rtldef_0 AND ctrl_ppal_nextstate(1)) 
+OR ctrl_ppal_rtldef_1);
+  END BLOCK label20;
+  label21 : BLOCK ((NOT((clk XOR '1')) AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_15 (2) <= GUARDED ((ctrl_ppal_rtldef_0 AND ctrl_ppal_nextstate(2)) 
+OR ctrl_ppal_rtldef_1);
+  END BLOCK label21;
+  label22 : BLOCK ((NOT((clk XOR '1')) AND NOT((clk'STABLE))) = '1')
+  BEGIN
+    ctrl_ppal_rtlalc_15 (3) <= GUARDED ((ctrl_ppal_rtldef_0 AND ctrl_ppal_nextstate(3)) 
+OR ctrl_ppal_rtldef_1);
+  END BLOCK label22;
+
+alucontrol (2) <= ((ctrl_alu_rtldef_9 AND ((ctrl_alu_rtldef_7 AND (
+(ctrl_alu_rtldef_5 AND '0') OR (ctrl_alu_rtldef_6 
+AND (((((ctrl_alu_rtldef_0 AND '0') OR (
+ctrl_alu_rtldef_1 AND '0')) OR (ctrl_alu_rtldef_2 AND '1')) OR (
+ctrl_alu_rtldef_3 AND '0')) OR ctrl_alu_rtldef_4)))) OR (
+ctrl_alu_rtldef_8 AND '1'))) OR (ctrl_alu_rtldef_10 AND '0'));
+
+alucontrol (1) <= ((ctrl_alu_rtldef_9 AND ((ctrl_alu_rtldef_7 AND (
+(ctrl_alu_rtldef_5 AND '0') OR (ctrl_alu_rtldef_6 
+AND (((((ctrl_alu_rtldef_0 AND '0') OR (
+ctrl_alu_rtldef_1 AND '1')) OR (ctrl_alu_rtldef_2 AND '1')) OR (
+ctrl_alu_rtldef_3 AND '0')) OR ctrl_alu_rtldef_4)))) OR (
+ctrl_alu_rtldef_8 AND '1'))) OR (ctrl_alu_rtldef_10 AND '1'));
+
+alucontrol (0) <= ((ctrl_alu_rtldef_9 AND ((ctrl_alu_rtldef_7 AND (
+(ctrl_alu_rtldef_5 AND '0') OR (ctrl_alu_rtldef_6 
+AND (((((ctrl_alu_rtldef_0 AND '0') OR (
+ctrl_alu_rtldef_1 AND '0')) OR (ctrl_alu_rtldef_2 AND '0')) OR (
+ctrl_alu_rtldef_3 AND '1')) OR ctrl_alu_rtldef_4)))) OR (
+ctrl_alu_rtldef_8 AND '0'))) OR (ctrl_alu_rtldef_10 AND '0'));
+
+iord <= ctrl_ppal_rtlalc_14;
+
+irwrite <= ctrl_ppal_rtlalc_6;
+
+regdst <= ctrl_ppal_rtlalc_1;
+
+memtoreg <= ctrl_ppal_rtlalc_0;
+
+regwrite <= ctrl_ppal_rtlalc_4;
+
+alusrca <= ctrl_ppal_rtlalc_13;
+
+alusrcb (1) <= ctrl_ppal_rtlalc_11;
+
+alusrcb (0) <= ctrl_ppal_rtlalc_12;
+
+pcsrc (1) <= ctrl_ppal_rtlalc_7;
+
+pcsrc (0) <= ctrl_ppal_rtlalc_8;
+
+pcwrite <= ctrl_ppal_rtlalc_5;
+
+branch <= ctrl_ppal_rtlalc_2;
+
+memwrite <= ctrl_ppal_rtlalc_3;
+
+state (3) <= ctrl_ppal_rtlalc_15(3);
+
+state (2) <= ctrl_ppal_rtlalc_15(2);
+
+state (1) <= ctrl_ppal_rtlalc_15(1);
+
+state (0) <= ctrl_ppal_rtlalc_15(0);
+END;

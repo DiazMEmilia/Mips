@@ -1,0 +1,1048 @@
+entity mips_model is
+   port (
+      spcen       : in      bit;
+      siord       : in      bit;
+      sirwrite    : in      bit;
+      sregdst     : in      bit;
+      smemtoreg   : in      bit;
+      sregwrite   : in      bit;
+      salusrca    : in      bit;
+      saluzero    : in      bit;
+      wememo      : in      bit;
+      salusrcb    : in      bit_vector(1 downto 0);
+      spcsrcmux   : in      bit_vector(1 downto 0);
+      rdmemo      : in      bit_vector(31 downto 0);
+      wdmemo      : in      bit_vector(31 downto 0);
+      adrmemo     : in      bit_vector(31 downto 0);
+      sinstrfunc  : in      bit_vector(5 downto 0);
+      sinstrop    : in      bit_vector(5 downto 0);
+      salucontrol : in      bit_vector(2 downto 0);
+      vss         : in      bit;
+      vdd         : in      bit;
+      xalusrcb    : out     bit_vector(1 downto 0);
+      xalucontrol : out     bit_vector(2 downto 0);
+      xpcen       : out     bit;
+      xpcsrc      : out     bit_vector(1 downto 0);
+      xaluzero    : out     bit;
+      xalusrca    : out     bit;
+      xregwrite   : out     bit;
+      xmemtoreg   : out     bit;
+      xregdst     : out     bit;
+      xinstrfunc  : out     bit_vector(5 downto 0);
+      xinstrop    : out     bit_vector(5 downto 0);
+      irwrite     : out     bit;
+      xiord       : out     bit;
+      xmemwrite   : out     bit;
+      xadr        : out     bit_vector(31 downto 0);
+      xwd         : out     bit_vector(31 downto 0);
+      xrd         : out     bit_vector(31 downto 0)
+ );
+end mips_model;
+
+architecture structural of mips_model is
+Component buf_x8
+   port (
+      i   : in      bit;
+      q   : out     bit;
+      vdd : in      bit;
+      vss : in      bit
+ );
+end component;
+
+
+begin
+
+xrd_0_ins : buf_x8
+   port map (
+      i   => rdmemo(0),
+      q   => xrd(0),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_1_ins : buf_x8
+   port map (
+      i   => rdmemo(1),
+      q   => xrd(1),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_2_ins : buf_x8
+   port map (
+      i   => rdmemo(2),
+      q   => xrd(2),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_3_ins : buf_x8
+   port map (
+      i   => rdmemo(3),
+      q   => xrd(3),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_4_ins : buf_x8
+   port map (
+      i   => rdmemo(4),
+      q   => xrd(4),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_5_ins : buf_x8
+   port map (
+      i   => rdmemo(5),
+      q   => xrd(5),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_6_ins : buf_x8
+   port map (
+      i   => rdmemo(6),
+      q   => xrd(6),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_7_ins : buf_x8
+   port map (
+      i   => rdmemo(7),
+      q   => xrd(7),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_8_ins : buf_x8
+   port map (
+      i   => rdmemo(8),
+      q   => xrd(8),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_9_ins : buf_x8
+   port map (
+      i   => rdmemo(9),
+      q   => xrd(9),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_10_ins : buf_x8
+   port map (
+      i   => rdmemo(10),
+      q   => xrd(10),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_11_ins : buf_x8
+   port map (
+      i   => rdmemo(11),
+      q   => xrd(11),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_12_ins : buf_x8
+   port map (
+      i   => rdmemo(12),
+      q   => xrd(12),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_13_ins : buf_x8
+   port map (
+      i   => rdmemo(13),
+      q   => xrd(13),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_14_ins : buf_x8
+   port map (
+      i   => rdmemo(14),
+      q   => xrd(14),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_15_ins : buf_x8
+   port map (
+      i   => rdmemo(15),
+      q   => xrd(15),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_16_ins : buf_x8
+   port map (
+      i   => rdmemo(16),
+      q   => xrd(16),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_17_ins : buf_x8
+   port map (
+      i   => rdmemo(17),
+      q   => xrd(17),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_18_ins : buf_x8
+   port map (
+      i   => rdmemo(18),
+      q   => xrd(18),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_19_ins : buf_x8
+   port map (
+      i   => rdmemo(19),
+      q   => xrd(19),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_20_ins : buf_x8
+   port map (
+      i   => rdmemo(20),
+      q   => xrd(20),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_21_ins : buf_x8
+   port map (
+      i   => rdmemo(21),
+      q   => xrd(21),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_22_ins : buf_x8
+   port map (
+      i   => rdmemo(22),
+      q   => xrd(22),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_23_ins : buf_x8
+   port map (
+      i   => rdmemo(23),
+      q   => xrd(23),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_24_ins : buf_x8
+   port map (
+      i   => rdmemo(24),
+      q   => xrd(24),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_25_ins : buf_x8
+   port map (
+      i   => rdmemo(25),
+      q   => xrd(25),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_26_ins : buf_x8
+   port map (
+      i   => rdmemo(26),
+      q   => xrd(26),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_27_ins : buf_x8
+   port map (
+      i   => rdmemo(27),
+      q   => xrd(27),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_28_ins : buf_x8
+   port map (
+      i   => rdmemo(28),
+      q   => xrd(28),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_29_ins : buf_x8
+   port map (
+      i   => rdmemo(29),
+      q   => xrd(29),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_30_ins : buf_x8
+   port map (
+      i   => rdmemo(30),
+      q   => xrd(30),
+      vdd => vdd,
+      vss => vss
+   );
+
+xrd_31_ins : buf_x8
+   port map (
+      i   => rdmemo(31),
+      q   => xrd(31),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_0_ins : buf_x8
+   port map (
+      i   => wdmemo(0),
+      q   => xwd(0),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_1_ins : buf_x8
+   port map (
+      i   => wdmemo(1),
+      q   => xwd(1),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_2_ins : buf_x8
+   port map (
+      i   => wdmemo(2),
+      q   => xwd(2),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_3_ins : buf_x8
+   port map (
+      i   => wdmemo(3),
+      q   => xwd(3),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_4_ins : buf_x8
+   port map (
+      i   => wdmemo(4),
+      q   => xwd(4),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_5_ins : buf_x8
+   port map (
+      i   => wdmemo(5),
+      q   => xwd(5),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_6_ins : buf_x8
+   port map (
+      i   => wdmemo(6),
+      q   => xwd(6),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_7_ins : buf_x8
+   port map (
+      i   => wdmemo(7),
+      q   => xwd(7),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_8_ins : buf_x8
+   port map (
+      i   => wdmemo(8),
+      q   => xwd(8),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_9_ins : buf_x8
+   port map (
+      i   => wdmemo(9),
+      q   => xwd(9),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_10_ins : buf_x8
+   port map (
+      i   => wdmemo(10),
+      q   => xwd(10),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_11_ins : buf_x8
+   port map (
+      i   => wdmemo(11),
+      q   => xwd(11),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_12_ins : buf_x8
+   port map (
+      i   => wdmemo(12),
+      q   => xwd(12),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_13_ins : buf_x8
+   port map (
+      i   => wdmemo(13),
+      q   => xwd(13),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_14_ins : buf_x8
+   port map (
+      i   => wdmemo(14),
+      q   => xwd(14),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_15_ins : buf_x8
+   port map (
+      i   => wdmemo(15),
+      q   => xwd(15),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_16_ins : buf_x8
+   port map (
+      i   => wdmemo(16),
+      q   => xwd(16),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_17_ins : buf_x8
+   port map (
+      i   => wdmemo(17),
+      q   => xwd(17),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_18_ins : buf_x8
+   port map (
+      i   => wdmemo(18),
+      q   => xwd(18),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_19_ins : buf_x8
+   port map (
+      i   => wdmemo(19),
+      q   => xwd(19),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_20_ins : buf_x8
+   port map (
+      i   => wdmemo(20),
+      q   => xwd(20),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_21_ins : buf_x8
+   port map (
+      i   => wdmemo(21),
+      q   => xwd(21),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_22_ins : buf_x8
+   port map (
+      i   => wdmemo(22),
+      q   => xwd(22),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_23_ins : buf_x8
+   port map (
+      i   => wdmemo(23),
+      q   => xwd(23),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_24_ins : buf_x8
+   port map (
+      i   => wdmemo(24),
+      q   => xwd(24),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_25_ins : buf_x8
+   port map (
+      i   => wdmemo(25),
+      q   => xwd(25),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_26_ins : buf_x8
+   port map (
+      i   => wdmemo(26),
+      q   => xwd(26),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_27_ins : buf_x8
+   port map (
+      i   => wdmemo(27),
+      q   => xwd(27),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_28_ins : buf_x8
+   port map (
+      i   => wdmemo(28),
+      q   => xwd(28),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_29_ins : buf_x8
+   port map (
+      i   => wdmemo(29),
+      q   => xwd(29),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_30_ins : buf_x8
+   port map (
+      i   => wdmemo(30),
+      q   => xwd(30),
+      vdd => vdd,
+      vss => vss
+   );
+
+xwd_31_ins : buf_x8
+   port map (
+      i   => wdmemo(31),
+      q   => xwd(31),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_0_ins : buf_x8
+   port map (
+      i   => adrmemo(0),
+      q   => xadr(0),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_1_ins : buf_x8
+   port map (
+      i   => adrmemo(1),
+      q   => xadr(1),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_2_ins : buf_x8
+   port map (
+      i   => adrmemo(2),
+      q   => xadr(2),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_3_ins : buf_x8
+   port map (
+      i   => adrmemo(3),
+      q   => xadr(3),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_4_ins : buf_x8
+   port map (
+      i   => adrmemo(4),
+      q   => xadr(4),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_5_ins : buf_x8
+   port map (
+      i   => adrmemo(5),
+      q   => xadr(5),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_6_ins : buf_x8
+   port map (
+      i   => adrmemo(6),
+      q   => xadr(6),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_7_ins : buf_x8
+   port map (
+      i   => adrmemo(7),
+      q   => xadr(7),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_8_ins : buf_x8
+   port map (
+      i   => adrmemo(8),
+      q   => xadr(8),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_9_ins : buf_x8
+   port map (
+      i   => adrmemo(9),
+      q   => xadr(9),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_10_ins : buf_x8
+   port map (
+      i   => adrmemo(10),
+      q   => xadr(10),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_11_ins : buf_x8
+   port map (
+      i   => adrmemo(11),
+      q   => xadr(11),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_12_ins : buf_x8
+   port map (
+      i   => adrmemo(12),
+      q   => xadr(12),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_13_ins : buf_x8
+   port map (
+      i   => adrmemo(13),
+      q   => xadr(13),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_14_ins : buf_x8
+   port map (
+      i   => adrmemo(14),
+      q   => xadr(14),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_15_ins : buf_x8
+   port map (
+      i   => adrmemo(15),
+      q   => xadr(15),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_16_ins : buf_x8
+   port map (
+      i   => adrmemo(16),
+      q   => xadr(16),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_17_ins : buf_x8
+   port map (
+      i   => adrmemo(17),
+      q   => xadr(17),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_18_ins : buf_x8
+   port map (
+      i   => adrmemo(18),
+      q   => xadr(18),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_19_ins : buf_x8
+   port map (
+      i   => adrmemo(19),
+      q   => xadr(19),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_20_ins : buf_x8
+   port map (
+      i   => adrmemo(20),
+      q   => xadr(20),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_21_ins : buf_x8
+   port map (
+      i   => adrmemo(21),
+      q   => xadr(21),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_22_ins : buf_x8
+   port map (
+      i   => adrmemo(22),
+      q   => xadr(22),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_23_ins : buf_x8
+   port map (
+      i   => adrmemo(23),
+      q   => xadr(23),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_24_ins : buf_x8
+   port map (
+      i   => adrmemo(24),
+      q   => xadr(24),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_25_ins : buf_x8
+   port map (
+      i   => adrmemo(25),
+      q   => xadr(25),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_26_ins : buf_x8
+   port map (
+      i   => adrmemo(26),
+      q   => xadr(26),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_27_ins : buf_x8
+   port map (
+      i   => adrmemo(27),
+      q   => xadr(27),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_28_ins : buf_x8
+   port map (
+      i   => adrmemo(28),
+      q   => xadr(28),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_29_ins : buf_x8
+   port map (
+      i   => adrmemo(29),
+      q   => xadr(29),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_30_ins : buf_x8
+   port map (
+      i   => adrmemo(30),
+      q   => xadr(30),
+      vdd => vdd,
+      vss => vss
+   );
+
+xadr_31_ins : buf_x8
+   port map (
+      i   => adrmemo(31),
+      q   => xadr(31),
+      vdd => vdd,
+      vss => vss
+   );
+
+xmemwrite_ins : buf_x8
+   port map (
+      i   => wememo,
+      q   => xmemwrite,
+      vdd => vdd,
+      vss => vss
+   );
+
+xiord_ins : buf_x8
+   port map (
+      i   => siord,
+      q   => xiord,
+      vdd => vdd,
+      vss => vss
+   );
+
+irwrite_ins : buf_x8
+   port map (
+      i   => sirwrite,
+      q   => irwrite,
+      vdd => vdd,
+      vss => vss
+   );
+
+xinstrop_0_ins : buf_x8
+   port map (
+      i   => sinstrop(0),
+      q   => xinstrop(0),
+      vdd => vdd,
+      vss => vss
+   );
+
+xinstrop_1_ins : buf_x8
+   port map (
+      i   => sinstrop(1),
+      q   => xinstrop(1),
+      vdd => vdd,
+      vss => vss
+   );
+
+xinstrop_2_ins : buf_x8
+   port map (
+      i   => sinstrop(2),
+      q   => xinstrop(2),
+      vdd => vdd,
+      vss => vss
+   );
+
+xinstrop_3_ins : buf_x8
+   port map (
+      i   => sinstrop(3),
+      q   => xinstrop(3),
+      vdd => vdd,
+      vss => vss
+   );
+
+xinstrop_4_ins : buf_x8
+   port map (
+      i   => sinstrop(4),
+      q   => xinstrop(4),
+      vdd => vdd,
+      vss => vss
+   );
+
+xinstrop_5_ins : buf_x8
+   port map (
+      i   => sinstrop(5),
+      q   => xinstrop(5),
+      vdd => vdd,
+      vss => vss
+   );
+
+xinstrfunc_0_ins : buf_x8
+   port map (
+      i   => sinstrfunc(0),
+      q   => xinstrfunc(0),
+      vdd => vdd,
+      vss => vss
+   );
+
+xinstrfunc_1_ins : buf_x8
+   port map (
+      i   => sinstrfunc(1),
+      q   => xinstrfunc(1),
+      vdd => vdd,
+      vss => vss
+   );
+
+xinstrfunc_2_ins : buf_x8
+   port map (
+      i   => sinstrfunc(2),
+      q   => xinstrfunc(2),
+      vdd => vdd,
+      vss => vss
+   );
+
+xinstrfunc_3_ins : buf_x8
+   port map (
+      i   => sinstrfunc(3),
+      q   => xinstrfunc(3),
+      vdd => vdd,
+      vss => vss
+   );
+
+xinstrfunc_4_ins : buf_x8
+   port map (
+      i   => sinstrfunc(4),
+      q   => xinstrfunc(4),
+      vdd => vdd,
+      vss => vss
+   );
+
+xinstrfunc_5_ins : buf_x8
+   port map (
+      i   => sinstrfunc(5),
+      q   => xinstrfunc(5),
+      vdd => vdd,
+      vss => vss
+   );
+
+xregdst_ins : buf_x8
+   port map (
+      i   => sregdst,
+      q   => xregdst,
+      vdd => vdd,
+      vss => vss
+   );
+
+xmemtoreg_ins : buf_x8
+   port map (
+      i   => smemtoreg,
+      q   => xmemtoreg,
+      vdd => vdd,
+      vss => vss
+   );
+
+xregwrite_ins : buf_x8
+   port map (
+      i   => sregwrite,
+      q   => xregwrite,
+      vdd => vdd,
+      vss => vss
+   );
+
+xalusrca_ins : buf_x8
+   port map (
+      i   => salusrca,
+      q   => xalusrca,
+      vdd => vdd,
+      vss => vss
+   );
+
+xaluzero_ins : buf_x8
+   port map (
+      i   => saluzero,
+      q   => xaluzero,
+      vdd => vdd,
+      vss => vss
+   );
+
+xpcsrc_0_ins : buf_x8
+   port map (
+      i   => spcsrcmux(0),
+      q   => xpcsrc(0),
+      vdd => vdd,
+      vss => vss
+   );
+
+xpcsrc_1_ins : buf_x8
+   port map (
+      i   => spcsrcmux(1),
+      q   => xpcsrc(1),
+      vdd => vdd,
+      vss => vss
+   );
+
+xpcen_ins : buf_x8
+   port map (
+      i   => spcen,
+      q   => xpcen,
+      vdd => vdd,
+      vss => vss
+   );
+
+xalucontrol_0_ins : buf_x8
+   port map (
+      i   => salucontrol(0),
+      q   => xalucontrol(0),
+      vdd => vdd,
+      vss => vss
+   );
+
+xalucontrol_1_ins : buf_x8
+   port map (
+      i   => salucontrol(1),
+      q   => xalucontrol(1),
+      vdd => vdd,
+      vss => vss
+   );
+
+xalucontrol_2_ins : buf_x8
+   port map (
+      i   => salucontrol(2),
+      q   => xalucontrol(2),
+      vdd => vdd,
+      vss => vss
+   );
+
+xalusrcb_0_ins : buf_x8
+   port map (
+      i   => salusrcb(0),
+      q   => xalusrcb(0),
+      vdd => vdd,
+      vss => vss
+   );
+
+xalusrcb_1_ins : buf_x8
+   port map (
+      i   => salusrcb(1),
+      q   => xalusrcb(1),
+      vdd => vdd,
+      vss => vss
+   );
+
+
+end structural;

@@ -1,0 +1,286 @@
+entity sl2 is
+   port (
+      a   : in      bit_vector(31 downto 0);
+      y   : out     bit_vector(31 downto 0);
+      vdd : in      bit;
+      vss : in      bit
+ );
+end sl2;
+
+architecture structural of sl2 is
+Component zero_x0
+   port (
+      nq  : out     bit;
+      vdd : in      bit;
+      vss : in      bit
+ );
+end component;
+
+Component buf_x8
+   port (
+      i   : in      bit;
+      q   : out     bit;
+      vdd : in      bit;
+      vss : in      bit
+ );
+end component;
+
+
+begin
+
+y_0_ins : zero_x0
+   port map (
+      nq  => y(0),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_1_ins : zero_x0
+   port map (
+      nq  => y(1),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_2_ins : buf_x8
+   port map (
+      i   => a(0),
+      q   => y(2),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_3_ins : buf_x8
+   port map (
+      i   => a(1),
+      q   => y(3),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_4_ins : buf_x8
+   port map (
+      i   => a(2),
+      q   => y(4),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_5_ins : buf_x8
+   port map (
+      i   => a(3),
+      q   => y(5),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_6_ins : buf_x8
+   port map (
+      i   => a(4),
+      q   => y(6),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_7_ins : buf_x8
+   port map (
+      i   => a(5),
+      q   => y(7),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_8_ins : buf_x8
+   port map (
+      i   => a(6),
+      q   => y(8),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_9_ins : buf_x8
+   port map (
+      i   => a(7),
+      q   => y(9),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_10_ins : buf_x8
+   port map (
+      i   => a(8),
+      q   => y(10),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_11_ins : buf_x8
+   port map (
+      i   => a(9),
+      q   => y(11),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_12_ins : buf_x8
+   port map (
+      i   => a(10),
+      q   => y(12),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_13_ins : buf_x8
+   port map (
+      i   => a(11),
+      q   => y(13),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_14_ins : buf_x8
+   port map (
+      i   => a(12),
+      q   => y(14),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_15_ins : buf_x8
+   port map (
+      i   => a(13),
+      q   => y(15),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_16_ins : buf_x8
+   port map (
+      i   => a(14),
+      q   => y(16),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_17_ins : buf_x8
+   port map (
+      i   => a(15),
+      q   => y(17),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_18_ins : buf_x8
+   port map (
+      i   => a(16),
+      q   => y(18),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_19_ins : buf_x8
+   port map (
+      i   => a(17),
+      q   => y(19),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_20_ins : buf_x8
+   port map (
+      i   => a(18),
+      q   => y(20),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_21_ins : buf_x8
+   port map (
+      i   => a(19),
+      q   => y(21),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_22_ins : buf_x8
+   port map (
+      i   => a(20),
+      q   => y(22),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_23_ins : buf_x8
+   port map (
+      i   => a(21),
+      q   => y(23),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_24_ins : buf_x8
+   port map (
+      i   => a(22),
+      q   => y(24),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_25_ins : buf_x8
+   port map (
+      i   => a(23),
+      q   => y(25),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_26_ins : buf_x8
+   port map (
+      i   => a(24),
+      q   => y(26),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_27_ins : buf_x8
+   port map (
+      i   => a(25),
+      q   => y(27),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_28_ins : buf_x8
+   port map (
+      i   => a(26),
+      q   => y(28),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_29_ins : buf_x8
+   port map (
+      i   => a(27),
+      q   => y(29),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_30_ins : buf_x8
+   port map (
+      i   => a(28),
+      q   => y(30),
+      vdd => vdd,
+      vss => vss
+   );
+
+y_31_ins : buf_x8
+   port map (
+      i   => a(29),
+      q   => y(31),
+      vdd => vdd,
+      vss => vss
+   );
+
+
+end structural;

@@ -1,0 +1,4 @@
+vasy -Vaop -I vhd ctrl_fsm
+boom -l 3 -d 0 ctrl_fsm ctrl_fsm_boom
+boog ctrl_fsm_boom ctrl_fsm_boog -x 0 -m 4
+loon ctrl_fsm_boog ctrl_fsm -x 0 -m 4

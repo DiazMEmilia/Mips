@@ -1,0 +1,4 @@
+vasy -Vaop -I vhd memoria
+boom -l 3 -d 0 memoria memoria_boom
+boog memoria_boom memoria_boog -x 0 -m 4
+loon memoria_boog memoria -x 0 -m 4

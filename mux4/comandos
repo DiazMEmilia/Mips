@@ -1,0 +1,4 @@
+vasy -Vaop -I vhd mux4
+boom -l 3 -d 0 mux4 mux4_boom
+boog mux4_boom mux4_boog -x 0 -m 4
+loon mux4_boog mux4 -x 0 -m 4
